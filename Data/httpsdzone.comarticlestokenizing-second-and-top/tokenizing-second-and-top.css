@@ -1,0 +1,2341 @@
+<!DOCTYPE HTML>
+
+
+<html xmlns:ng="http://angularjs.org" id="ng-app" lang="en" ng-app="TH">
+
+<head ng-controller="DZHeadController">
+<!--
+
+##::::: ##: ########::::::: ###:::: ########:: ########:::: ##:::: ##: ####: ########:: ####: ##::: ##:: ######::
+##: ##: ##: ##.....::::::: ## ##::: ##.... ##: ##.....::::: ##:::: ##:. ##:: ##.... ##:. ##:: ###:: ##: ##... ##:
+##: ##: ##: ##::::::::::: ##:. ##:: ##:::: ##: ##:::::::::: ##:::: ##:: ##:: ##:::: ##:: ##:: ####: ##: ##:::..::
+##: ##: ##: ######:::::: ##:::. ##: ########:: ######:::::: #########:: ##:: ########::: ##:: ## ## ##: ##:: ####
+##: ##: ##: ##...::::::: #########: ##.. ##::: ##...::::::: ##.... ##:: ##:: ##.. ##:::: ##:: ##. ####: ##::: ##:
+##: ##: ##: ##:::::::::: ##.... ##: ##::. ##:: ##:::::::::: ##:::: ##:: ##:: ##::. ##::: ##:: ##:. ###: ##::: ##:
+ ###. ###:: ########:::: ##:::: ##: ##:::. ##: ########:::: ##:::: ##: ####: ##:::. ##: ####: ##::. ##:. ######::
+
+Skills wanted: Java, AngularJS, Spring, Hibernate, UX and Responsive Design
+http://dzone.applytojob.com/apply
+
+-->
+
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+        <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+
+    <meta name="description" ng-attr-content="{{ service.description }}" content="In my previous post, I described how to&amp;nbsp;extract second- and top-level domains from a URL in Java.Now, I'll build a Lucene Tokenizer out of it, and a Solr..." />
+    <meta name="keywords" ng-attr-content="{{ service.keywords }}" content="programming, software development, devops, java, agile, web, iot, database, mobile, big data, cloud,article" />
+
+    <meta property="og:description" ng-attr-content="{{ service.description }}" content="In my previous post, I described how to&amp;nbsp;extract second- and top-level domains from a URL in Java.Now, I'll build a Lucene Tokenizer out of it, and a Solr..." />
+
+    <meta ng-attr-content="{{ service.noIndex ? 'noindex' : '' }}" ng-attr-name="{{ service.noIndex ? 'robots' : '' }}"
+          name="" content="" />
+
+    <meta property="og:site_name" ng-attr-content="{{ service.siteName }}" content="dzone.com" />
+    <meta property="og:title" ng-attr-content="{{ service.title }}" content="Tokenizing Second- and Top-Level Domains for a URL in Lucene and Solr - DZone Big Data" />
+    <meta property="og:url" ng-attr-content="{{ service.canonical }}" content="https://dzone.com/articles/tokenizing-second-and-top" />
+    <meta ng-if="service.img" ng-attr-content="{{ service.img }}" property="og:image" content="https://dzone.com/themes/dz20/images/ArticleImg_6.jpg" />
+    <meta ng-if="service.type" ng-attr-content="{{ service.type }}" property="og:type" content="article" />
+
+    <meta name="twitter:site" content="@dzone" />
+    <meta ng-if="service.twitterImage" ng-attr-content="{{ service.twitterImage }}" name="twitter:image" content="https://dzone.com/themes/dz20/images/ArticleImg_6.jpg" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:description" ng-attr-content="{{ service.description }}" content="In my previous post, I described how to&amp;nbsp;extract second- and top-level domains from a URL in Java.Now, I'll build a Lucene Tokenizer out of it, and a Solr..." />
+    <meta name="twitter:title" ng-attr-content="{{ service.title }}" content="Tokenizing Second- and Top-Level Domains for a URL in Lucene and Solr - DZone Big Data"/>
+
+    <meta ng-if="service.wordCount" property="article:wordcount" ng-attr-content="{{service.wordCount}}" content="395" />
+    <meta name="referrer" content="origin">
+
+        <meta name="parsely-title" content="Tokenizing Second- and Top-Level Domains for a URL in Lucene and Solr - DZone Big Data" />
+        <meta name="parsely-link" content="https://dzone.com/articles/tokenizing-second-and-top" />
+        <meta name="parsely-type" content="article" />
+        <meta name="parsely-image-url" content="https://dzone.com/themes/dz20/images/ArticleImg_6.jpg" />
+        <meta name="parsely-pub-date" content="2012-11-22 00:48:55.0" />
+        <meta name="parsely-section" content="Big Data" />
+        <meta name="parsely-author" content="Kelvin Tan" />
+        <meta name="parsely-tags" content="programming, software development, devops, java, agile, web, iot, database, mobile, big data, cloud,article" />
+        <meta name=?parsely-post-id? content="485719" />
+
+
+    <link rel="dns-prefetch" href="//www.googletagservices.com"/>
+    <link rel="dns-prefetch" href="//pixel-geo.prfct.co"/>
+    <link rel="dns-prefetch" href="//secure.adnxs.com"/>
+    <link rel="dns-prefetch" href="//hn.inspectlet.com"/>
+    <link rel="dns-prefetch" href="//inspectletws.herokuapp.com"/>
+    <link rel="dns-prefetch" href="//tag.perfectaudience.com"/>
+    <link rel="dns-prefetch" href="//www.google-analytics.com"/>
+    <link rel="image_src"   ng-href="{{ service.img }}" href="https://dzone.com/themes/dz20/images/ArticleImg_6.jpg" /><!--formatted-->
+
+
+    <link rel="canonical" ng-href="{{service.canonical}}" href="https://dzone.com/articles/tokenizing-second-and-top"/>
+    <link ng-if="service.prevPage" rel="prev" ng-href="{{ service.prevPage }}" href="" />
+    <link ng-if="service.nextPage" rel="next" ng-href="{{ service.nextPage }}" href=""/>
+    <link rel="icon" type="image/x-icon" href="/themes/dz20/images/favicon.png">
+
+    <title ng-bind="service.title">Tokenizing Second- and Top-Level Domains for a URL in Lucene and Solr - DZone Big Data</title>
+
+    <meta name="df-verify" content="df0d76632b4543" />
+
+<link rel="stylesheet" type="text/css" href="//dz2cdn3.dzone.com/storage/pub/10886541-combined.css" charset="utf-8"/><link rel="stylesheet" type="text/css" href="//dz2cdn3.dzone.com/storage/pub/10886564-combined.css" charset="utf-8"/>
+</head>
+<body>
+
+    <div class="container-fluid header" th-element="header" th-element-groups="[]" ng-hide="$root.isHidden('header')" data-th-element-name="header"><div class="row mainHeaderRow" th-element="mainHeaderRow" th-element-groups="['header']" ng-hide="$root.isHidden('mainHeaderRow')" data-th-element-name="mainHeaderRow"><div class="col-md-12 mainHeader headerHeaderV2 oUhbWOfRPSwBoUhM" th-element="mainHeader" th-element-groups="['header','mainHeaderRow']" ng-hide="$root.isHidden('mainHeader')" data-th-element-name="mainHeader" data-th-widget="header.headerV2" data-widget-header-header-v2="" ng-controller="mainHeader">
+<script type="text/ng-template" id="like-article.html">
+        <div class="dz-like"
+             ng-class='{liked: status.liked}'
+             ng-click='like()'
+
+<a href="#">
+    <i ng-class="{'icon-thumbs-up-alt': status.liked, 'icon-thumbs-up liked': !status.liked}"></i>
+    <span>Like ({{ status.score }})</span>
+</a>
+</div>
+</script>
+
+<script type="text/ng-template" id="refcard-save.html">
+    <button type="button" ng-class="{'icon-star gold': status.saved, 'icon-star-empty': !status.saved}"
+            ng-click="save()" class="btn btn-save btn-lg"><span class="save-title">Save</span><span ng-if="status.saved"
+                                                                                                    class="d-letter">D</span>
+    </button>
+</script>
+
+<div class="header-top">
+    <div class="header-container">
+        <div class="pull-left">
+            <div class="logo" >
+                <a class="inner" href="/"><img src="/themes/dz20/images/DZLogo.png" alt="DZone"></a>
+            </div>
+
+        <div class="active-portal"> / <a href="/big-data-analytics-tutorials-tools-news">Big Data Zone</a></div>
+        </div>
+        <div class="pull-right">
+
+
+            
+                <div class="dz-intro">Over a million developers have joined DZone.</div>
+                <div class="mobile-invisible sign-in-join" ng-if="!$root.user.authenticated"><a href="#" ng-click="loginForm(0)">Log In</a> <span class="dz-intro-span">/</span> <a href="#" ng-click="loginForm(1)">Sign Up</a></div>
+                <div class="join-icon mobile-invisible"><i class="icon-user" ng-if="!$root.user.authenticated" ng-click="loginForm(1)"></i></div>
+                <div class="join-icon mobile-visible" ng-cloak><img src="/themes/dz20/images/DZone_MobileLogin2.png" class="mobile-visible" ng-if="!$root.user.authenticated" ng-click="loginForm(0)"></div>
+                <div class="headerSearch">
+                    <span class="icon-search dropdown-toggle" ng-click="focusSearch()" id="dropdownMenu2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"></span>
+                    <ul class="dropdown-menu" aria-labelledby="dropdownMenu2">
+                        <li>
+                            <form class="form-wrapper">
+                                <input id="search" ng-model="searchT" type="text" placeholder="Search" required>
+                                <input type="button" value="Search" class="btn btn-action" ng-click="allResults()" ng-disabled="searchT.length < 3">
+                            </form>
+                        </li>
+                        <div class="results-area" ng-cloak>
+                            <div class="col-md-12"><th-loader flag="loading"></th-loader></div>
+                            <li ng-repeat="node in nodes">
+                                <div class="results-container">
+                                    <img dz-image-fid-width="80" dz-image-fid="{{ node.thumb }}">
+                                    <a class="title" target="{{ node.type=='link'? '_blank' : '_self'}}" ng-href="{{node.urlOrigin}}">{{node.title}}</a>
+                                    <p class="source">
+                                        <span class="type">{{node.type}}</span>
+                                        <span class="source-bullet"> &middot;</span>
+                                        <span ng-if="node.type=='link'" class="link-source">{{ node.urlSource.name }}</span>
+                                        <span ng-if="node.type=='link'" class="source-bullet"> &middot;</span>
+                                        <span class="source-date" am-time-ago="node.articleDate"></span>
+                                        <span ng-if="node.type != 'guide'">
+                                            by <a href="{{ node.authors[0].url }}" target="_blank" class="author-name" th-popup="users.profile.mini" popup-data="{user: node.authors[0].id}">{{node.authors[0].realName }}</a>
+                                        </span>
+                                    </p>
+                                    <div class="hover-buttons" ng-if="node.type=='refcard'">
+                                        <a type="button" class="btn download" href="{{node.pdf}}"><i class="icon-download"></i> Download</a>
+                                        <dz-save template="refcard-save.html" node="node" class="save-btn"></dz-save>
+                                        <span class="download-count"><i class="icon-download"></i> {{node.downloads}}</span>
+                                    </div>
+                                    <div class="clear"></div>
+                                </div>
+                            </li>
+                        </div>
+
+                        <div class="totalResults" ng-if="totalResults"><span>{{totalResults}} search results</span></div>
+                        <li class="btn-vall" ng-if="haveResults">
+                            <input type="button" value="View All Results" ng-click="allResults()" class="btn btn-action" ng-disabled="searchT.length < 3">
+                        </li>
+
+                    </ul>
+                </div>
+
+        </div>
+    </div>
+</div>
+
+<div class="header-bottom">
+
+
+    <ul class="portals header-container">
+            <li>
+                <a href="/refcardz" 
+                   id="header-refcardz"><em>Refcardz</em></a></li>
+            <li>
+                <a href="/guides" 
+                   id="header-guides"><em>Guides</em></a></li>
+            <li>
+                <a href="/portals" 
+                   id="header-portals"><em>Zones</em></a></li>
+            <li>
+                <a href="https://jobs.dzone.com?ref=nav" 
+                   id="header-jobs"><em>Jobs</em></a></li>
+        <li style="color: #d9dcdd">|</li>
+
+        <li>
+            <a  ng-class="{'active-state': isActivePortal(2)}" href="/agile-methodology-training-tools-news" id="header-2">
+            Agile</a>
+        </li>
+        <li>
+            <a  ng-class="{'active-state': isActivePortal(4001)}" href="/artificial-intelligence-tutorials-tools-news" id="header-4001">
+            AI</a>
+        </li>
+        <li>
+            <a class="active-state" ng-class="{'active-state': isActivePortal(3)}" href="/big-data-analytics-tutorials-tools-news" id="header-3">
+            Big Data</a>
+        </li>
+        <li>
+            <a  ng-class="{'active-state': isActivePortal(4)}" href="/cloud-computing-tutorials-tools-news" id="header-4">
+            Cloud</a>
+        </li>
+        <li>
+            <a  ng-class="{'active-state': isActivePortal(5)}" href="/database-sql-nosql-tutorials-tools-news" id="header-5">
+            Database</a>
+        </li>
+        <li>
+            <a  ng-class="{'active-state': isActivePortal(6)}" href="/devops-tutorials-tools-news" id="header-6">
+            DevOps</a>
+        </li>
+        <li>
+            <a  ng-class="{'active-state': isActivePortal(7)}" href="/enterprise-integration-training-tools-news" id="header-7">
+            Integration</a>
+        </li>
+        <li>
+            <a  ng-class="{'active-state': isActivePortal(8)}" href="/iot-developer-tutorials-tools-news-reviews" id="header-8">
+            IoT</a>
+        </li>
+        <li>
+            <a  ng-class="{'active-state': isActivePortal(1)}" href="/java-jdk-development-tutorials-tools-news" id="header-1">
+            Java</a>
+        </li>
+        <li>
+            <a  ng-class="{'active-state': isActivePortal(6001)}" href="/microservices-news-tutorials-tools" id="header-6001">
+            Microservices</a>
+        </li>
+        <li>
+            <a  ng-class="{'active-state': isActivePortal(7001)}" href="/open-source-news-tutorials-tools" id="header-7001">
+            Open Source</a>
+        </li>
+        <li>
+            <a  ng-class="{'active-state': isActivePortal(10)}" href="/apm-tools-performance-monitoring-optimization" id="header-10">
+            Performance</a>
+        </li>
+        <li>
+            <a  ng-class="{'active-state': isActivePortal(2001)}" href="/application-web-network-security" id="header-2001">
+            Security</a>
+        </li>
+        <li>
+            <a  ng-class="{'active-state': isActivePortal(11)}" href="/web-development-programming-tutorials-tools-news" id="header-11">
+            Web Dev</a>
+        </li>
+    </ul>
+</div>
+</div></div></div><div class="container-fluid body withSlider" th-element="body" th-element-groups="[]" ng-hide="$root.isHidden('body')" data-th-element-name="body"><div class="row mainContentRow" th-element="mainContentRow" th-element-groups="['body']" ng-hide="$root.isHidden('mainContentRow')" data-th-element-name="mainContentRow"><div class="col-md-12 announcementBar1 announcementBar oUhbYlrRaqMaoUhM" th-element="announcementBar1" th-element-groups="['body','mainContentRow']" ng-hide="$root.isHidden('announcementBar1')" data-th-element-name="announcementBar1" data-th-widget="announcementBar" data-widget-announcement-bar="" ng-controller="announcementBar1"><div ng-if="announcement && toShow" back-img hasImage="{{announcement.hasImage}}" img="{{announcement.img}}" imgBackup="{{announcement.img2}}" id="acontainer" class="ann-container" ng-cloak>
+    <div class="ann-body">{{announcement.body}}</div><a ng-if="announcement.link" class="ann-link" ng-click="track(announcement.id)" ng-ref="{{announcement.link}}">{{announcement.title}}<span class="icon-right-dir"></span></a>
+</div>
+</div><div class="col-md-12 articleContent5 articleContent oUhbblYOaqbcblYOaqbcC" th-element="articleContent5" th-element-groups="['body','mainContentRow']" ng-hide="$root.isHidden('articleContent5')" data-th-element-name="articleContent5" data-th-widget="article.content" data-widget-article-content="" header-change-trigger="" ng-controller="articleContent5">
+<script type="text/ng-template" id="like-article.html">
+        <div class="dz-like"
+             ng-class='{liked: status.liked}'
+             ng-click='like()'
+
+<a href="#">
+    <i ng-class="{'icon-thumbs-up-alt': status.liked, 'icon-thumbs-up liked': !status.liked}"></i>
+    <span>Like ({{ status.score }})</span>
+</a>
+</div>
+</script>
+
+<script type="text/ng-template" id="link-article-save.html">
+<div class="save "
+     ng-class="{'icon-star gold': status.saved, 'icon-star-empty': !status.saved}"
+     ng-click="save()"><span
+        class="action-label">
+    {{ status.saved ? 'Saved' : 'Save' }}</span></div>
+</script>
+
+<script type="text/ng-template" id="like-article.html">
+    <div class="dz-like" ng-class="{'icon-thumbs-up-alt liked': status.liked, 'icon-thumbs-up': !status.liked}" ng-click="like()"><span class="action-label"><span>Like</span><span ng-if="status.liked" class="d-letter">d</span></span>
+        <a href="#">
+            <span>({{ status.score }})</span>
+        </a>
+    </div>
+</script>
+
+<div class="articles-wrap" ng-if="articles[0].id == 485719">
+
+    <div ng-if="ads.top.show() && articles[0].readyForAd"
+         class="ad-container">
+        <div dc-slot="ads.top.slot()" tags="ads.top.tags(articles[0])" size="ads.top.size()"></div>
+    </div>
+
+
+    <div>
+        <th-if-scroll relative-to="top" from="0" to="50" callback="activateT(articles[0])"></th-if-scroll>
+    </div>
+
+
+<div class="article-stream widget-top-border"
+     ng-class="{'widget-top-border': articles[0].published }"
+     itemscope
+     itemtype="https://schema.org/Article"
+     ng-if="articles[0].id == 485719">
+    <div class="social-media-icons mobile-only" follow-dzone><div class="top-social">
+    <p>Let's be friends:</p>
+    <ul class="icons-only" ng-class="{open: isOpen}" click-outside="outside()">
+        <li class="rss-icon" id="rss-spotlight-1">
+            <a href="/pages/feeds"><i class="icon-rss-1"></i></a>
+        </li>
+        <li class="twitter-icon">
+            <a href="https://twitter.com/DZone" target="_blank"><i class="icon-twitter"></i></a>
+        </li>
+        <li class="facebook-icon">
+            <a href="https://www.facebook.com/DZone-259639764711" target="_blank"><i class="icon-facebook-1"></i></a>
+        </li>
+        <li class="google-icon">
+            <a href="https://plus.google.com/+dzone/posts" target="_blank"><i class="icon-gplus"></i></a>
+        </li>
+        <li class="linkedin-icon">
+            <a href="https://www.linkedin.com/company/dzone" target="_blank"><i class="icon-linkedin-1"></i></a>
+        </li>
+
+    </ul>
+</div>
+</div>
+    <div ng-if="!edition || (width > 1024 && edition)" class="content-right-images" header-affix-element="div.content">
+
+        <div class="article-adsponsor"
+             ng-if="(articles[0].partner && articles[0].showLogo) || articles[0].partner.isSponsoringArticle" itemtype="http://schema.org/Organization">
+                <div class="adsponsor">
+                    <a href="https://www.hortonworks.com?utm_campaign=dzonelogo&utm_medium=display&utm_source=dzone&utm_id=2217877"
+                        itemprop="url">
+                        <img src="//dz2cdn3.dzone.com/storage/partner-logo/10290198-hortonworks-logo.jpg"
+                              itemprop="logo"/>
+                    </a>
+                </div>
+        </div>
+
+        <div class="sidebar-ad" ng-if="articles[0].readyForAd" dc-slot="ads.sb1.slot(articles[0], 0)"
+             tags="ads.sb1.tags(articles[0], 0)" size="ads.sb1.size(articles[0], 0)"></div>
+
+        <div ng-if="articles[0].readyForAd && 0 > 1 && !articles[0].partner.isSponsoringArticle"
+             dc-slot="ads.sb2.slot(articles[0], 0)"
+             tags="ads.sb2.tags(articles[0], 0)" size="ads.sb2.size(articles[0], 0)"></div>
+
+    </div>
+
+    <article itemscope itemtype="http://schema.org/Blog" >
+        <div itemprop="publisher" itemscope itemtype="https://schema.org/Organization">
+            <div itemprop="logo" itemscope itemtype="https://schema.org/ImageObject">
+                <meta itemprop="url"
+                      content="https://dzone.com/themes/dz20/images/logo.png">
+            </div>
+            <meta itemprop="name"
+                  content="DZone">
+        </div>
+        <div class="content" ng-class="{'content-full': (width <= 1024 && edition)}"
+             >
+            <meta itemprop="thumbnailUrl"
+                  content="/themes/dz20/images/ArticleImg_6.jpg"/>
+            <meta itemprop="url"
+                  content="/articles/tokenizing-second-and-top"/>
+            <meta itemprop="dateCreated"
+                  content="2012-11-22T00:48:55Z"/>
+            <meta itemprop="keywords"
+                  content=""/>
+            <meta itemprop="accessMode"
+                  content="textual"/>
+            <meta itemprop="datePublished"
+                  content="2012-11-22T00:48:55Z"/>
+            <meta itemprop="author"
+                  content="Kelvin Tan"/>
+            <meta itemprop="dateModified"
+                  content="2012-11-22T00:48:55Z"/>
+            <meta itemprop="mainEntityOfPage"
+                  content="https://dzone.com/articles/tokenizing-second-and-top"/>
+                <div itemprop="image" itemscope itemtype="https://schema.org/ImageObject">
+                    <meta itemprop="image" 
+                          content="/themes/dz20/images/ArticleImg_6.jpg"
+/>
+                    <meta itemprop="url" 
+                          content="/themes/dz20/images/ArticleImg_6.jpg"
+>
+                    <meta itemprop="width" content="370">
+                    <meta itemprop="height" content="230">
+                </div>
+
+            <div class="header">
+                <div class="header-title">
+                    <div class="title" ng-if="articles[0].rawType != 'guide'">
+                        <h1 class="article-title" itemprop="headline">
+                            Tokenizing Second- and Top-Level Domains for a URL in Lucene and Solr
+                        </h1>
+                    </div>
+
+                    <div class="guide-title" ng-if="articles[0].rawType == 'guide'" ng-cloak>
+                        <div class="guide-intro">
+                            DZone's Guide to
+                        </div>
+                        <h1 class="article-title" itemprop="headline">
+                            Tokenizing Second- and Top-Level Domains for a URL in Lucene and Solr
+                        </h1>
+                    </div>
+
+                    <div class="subhead">
+                        <h3 itemprop="alternativeHeadline">
+                            
+                        </h3>
+                    </div>
+
+                    <div class="publish-meta" ng-if="articles[0].rawType != 'guide' && articles[0].rawType != 'whitepaper'">
+
+
+<div class="article-author-meta" >
+    <a href="/users/863625/ktan.html">
+         <img src="https://secure.gravatar.com/avatar/5de8aee78fb84dea44d2e984d9c40893?d=identicon&r=PG" 
+                                                                                               class="avatar"
+                                                                                               width="40"/>
+    </a> by
+
+    <div class="author-info">
+                        <span class="author-name">
+                            <a th-popup="users.profile.mini" itemprop="author"
+                               popup-data="{user: 863625}"
+                               href="/users/863625/ktan.html">
+                                Kelvin Tan</a>
+                        </span>
+
+    </div>
+ &middot;
+</div>
+                        <span class="author-date">Nov. 22, 12</span>
+                        &middot;
+                            <a href="/big-data-analytics-tutorials-tools-news"
+                                id="portal-name"><span
+                                    class="portal-name">Big Data
+                                Zone</span></a>
+                        &middot;
+                            <article-type type="'none'"></article-type>
+                    </div>
+
+                    <div class="publish-meta" ng-if="articles[0].rawType == 'whitepaper'" ng-cloak>
+                        Free Resource
+                    </div>
+
+                </div>
+            </div>
+            <div class="obsolete-warning" ng-if="article.isOld" ng-cloak>
+                <old-warning-message time="article.articleDate" body="daysOldBody" type="article.rawType" title="daysOldTitle"></old-warning-message>
+            </div>
+
+            <div class="author-n-useraction">
+                <div class="like action">
+                    <dz-like template="like-article.html" node="articles[0]">        <div class="dz-like"
+             
+
+<a href="#">
+    <i ng-class="{'icon-thumbs-up-alt': status.liked, 'icon-thumbs-up liked': !status.liked}"></i>
+    <span>Like (0)</span>
+</a>
+</div>
+
+                    </dz-like>
+                </div>
+
+                <div class="comment action">
+                    <p ng-show="!articles[0].isLocked" slider-toggle="commentsSlider" slider-data="{parent: articles[0]}"
+                       activate-with-url-params="{showComments: articles[0].id}">
+                        <span><i class="icon-comment" tooltip-html-unsafe="{{ commentTooltip(articles[0]) }}"></span></i>
+                        Comment (<span class="comment-after number-of-comments" itemprop="commentCount"
+                                       ng-bind="articles[0].nComments">0</span>)
+                    </p>
+                    <p ng-show="articles[0].isLocked">
+                <span ng-cloak><i class="icon-icon-comment comment-disabled"
+                                  tooltip-html-unsafe="Comments have been disabled for this article"></i></span>
+                    </p>
+                </div>
+
+                <div class="save action">
+                    <dz-save template="link-article-save.html" node="articles[0]"
+                             class="save"><div class="save icon-star-empty"
+     ><span
+        class="action-label">Save</span></div>
+
+                    </dz-save>
+            </div>
+
+            <div class="tweet action"><a ng-href="#"
+                                         ng-click='shareTwitter($event, articles[0].header.title, articles[0].url)'
+                                         class="title" target="_blank"><span><i class="icon-twitter"></i></span>
+                <span class="action-label">Tweet</span></a>
+            </div>
+
+            <div class="pull-right">
+                    <div class="article-views action" ng-cloak><i class="icon-eye"></i> {{ articles[0].views | formatCount}}
+
+                        <span class="action-label">Views</span>
+                    </div>
+
+                    <div class="user-n-admin-action action" ng-if="canEdit(articles[0]) || canDelete(articles[0])">
+                        <div class="mod-tools" dropdown is-open="dropdown.open" ng-cloak>
+                            <span dropdown-toggle>
+                                <i class="icon-cog"></i>
+                            </span>
+                            <ul class="dropdown-menu">
+                                <li><a ng-if="canEdit(articles[0])"
+                                       ng-href="/content/{{ articles[0].id }}/edit.html">Edit</a>
+                                </li>
+                                <li><a href="#" ng-if="canDelete(articles[0])" ng-click="delete(articles[0])">Delete</a>
+                                </li>
+                                <li><a href="#" ng-if="perms.canPublish"
+                                       ng-click="toggleComments(articles[0])">{{ articles[0].isLocked
+                                    ? 'Enable' : 'Disable' }} comments</a></li>
+                                <li><a href="#" ng-if="perms.canPublish && !articles[0].isLocked"
+                                       ng-click="toggleLimitComments(articles[0])">
+                                    {{ articles[0].isLimited ? 'Remove comment limits' : 'Enable moderated comments' }}
+                                </a></li>
+
+                            </ul>
+                        </div>
+                    </div>
+            </div>
+        </div>
+                <div class="signin-prompt">
+                    <p>Join the DZone community and get the full member experience.</p>
+                    <a id="article-signin-prompt" href="#" ng-click="loginForm()">Join For Free</a>
+                </div>
+                <div class="arrow-down"></div>
+
+            <div class="article-bumper article-bumper-top"
+                 ng-if="articles[0].rawType == 'article' && articles[0].showLogo && articles[0].partner.top.text | partnerBumperLinks:articles[0].partner.top.id"
+                 ng-bind-html="articles[0].partner.top.text | partnerBumperLinks:articles[0].partner.top.id">
+                <p><strong><a href="https://hortonworks.com/products/sandbox/?utm_campaign=dzonepre/postroll&amp;utm_medium=display&amp;apos;&amp;utm_source=dzone&amp;utm_id=2216633" rel="nofollow" target="_blank" style="-webkit-text-stroke-width: 0px; background: rgb(255, 255, 255); box-sizing: border-box; color: rgb(41, 168, 255); font-size: 15px; font-style: normal; font-variant-caps: normal; font-variant-ligatures: normal; letter-spacing: normal; orphans: 2; text-align: left; text-decoration: none; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px;">Hortonworks Sandbox</a>&nbsp;for HDP and HDF is your chance to get started on learning, developing, testing and trying out new features. Each&nbsp;<a href="https://hortonworks.com/products/sandbox/?utm_campaign=dzonepre/postroll&amp;utm_medium=display&amp;apos;&amp;utm_source=dzone&amp;utm_id=2216633" rel="nofollow" target="_blank" style="-webkit-text-stroke-width: 0px; background: rgb(255, 255, 255); box-sizing: border-box; color: rgb(41, 168, 255); font-size: 15px; font-style: normal; font-variant-caps: normal; font-variant-ligatures: normal; letter-spacing: normal; orphans: 2; text-align: left; text-decoration: none; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px;">download</a>&nbsp;comes preconfigured with interactive tutorials, sample data and developments from the Apache community.</strong></p>
+            </div>
+
+            <div ng-if="!edition || (articles[0].rawType != 'refcard' && articles[0].rawType != 'guide')">
+                <div class="content-html" dz-code-container
+                    ng-non-bindable
+                    itemprop="text">
+                    <p></p>
+<p>In my previous post, I described how to&nbsp;<a href="http://www.supermind.org/blog/1078/extracting-second-level-domains-and-top-level-domains-tld-from-a-url-in-java" style="color: rgb(74, 113, 228); " rel="nofollow">extract second- and top-level domains from a URL in Java</a>.</p>
+<p>Now, I'll build a Lucene Tokenizer out of it, and a Solr TokenizerFactory class.</p>
+<p>DomainTokenizer doesn't do anything really fancy. It first returns the hostname as the first token, then the 2nd-level domain as the second token, and the top-level domain as the last token.</p>
+<p>e.g. given the URL&nbsp;<a href="http://www.supermind.org/" style="color: rgb(74, 113, 228); " rel="nofollow">http://www.supermind.org</a>, it'll return</p>
+<p><a href="http://www.supermind.org" rel="nofollow">www.supermind.org</a><br />.supermind.org<br />.org</p>
+<p>Doing so allows you to quickly return all documents in the Lucene or Solr index matching the second-level domain or the TLD.</p>
+<p></p>
+<pre class="brush:java">package org.supermind.solr.analysis;
+import org.apache.lucene.analysis.Tokenizer;
+import org.apache.lucene.analysis.tokenattributes.CharTermAttribute;
+
+import java.io.IOException;
+import java.io.Reader;
+import java.net.URL;
+
+public class DomainTokenizer extends Tokenizer {
+  private final CharTermAttribute termAtt = addAttribute(CharTermAttribute.class);
+
+  public static final int STATE_UNINITIALIZED = -1;
+  public static final int STATE_INITIALIZED = 0;
+  public static final int STATE_2LD = 1;
+  public static final int STATE_TLD = 2;
+  public static final int STATE_DONE = 3;
+
+  private int state = STATE_UNINITIALIZED;
+
+  private URL url = null;
+  private SecondLDExtractor extractor;
+  private boolean index2LD;
+  private boolean indexTLD;
+
+  public DomainTokenizer(Reader input, SecondLDExtractor extractor, boolean index2LD, boolean indexTLD) {
+    super(input);
+    this.extractor = extractor;
+    this.index2LD = index2LD;
+    this.indexTLD = indexTLD;
+  }
+
+  @Override
+  public boolean incrementToken() throws IOException {
+    if (state == STATE_DONE) return false;
+
+    clearAttributes();
+    if (this.url == null) {
+      state = STATE_INITIALIZED;
+
+      StringBuilder sb = new StringBuilder();
+      int upto = 0;
+      char[] buffer = new char[512];
+      while (true) {
+        final int length = input.read(buffer, upto, buffer.length - upto);
+        if (length == -1) break;
+        upto += length;
+        sb.append(buffer);
+      }
+      this.url = new URL(sb.toString());
+      if (!index2LD &amp;&amp; !indexTLD) state = STATE_DONE;
+      termAtt.append(url.getHost());
+      return true;
+    } else if (index2LD &amp;&amp; state &lt; STATE_2LD) {
+      state = STATE_2LD;
+      String twold = extractor.extract2LD(url.getHost());
+      termAtt.append(&quot;.&quot;+twold);
+      return true;
+    } else if (indexTLD &amp;&amp; state &lt; STATE_TLD) {
+      state = STATE_TLD;
+      String tld = extractor.extractTLD(url.getHost());
+      termAtt.append(tld);
+      return true;
+    }
+    state = STATE_DONE;
+    return false;
+  }
+}</pre>
+<p></p>
+<p>and here's the corresponding Solr TokenizerFactory.<br /></p>
+<p></p>
+<pre class="brush:java">package org.supermind.solr.analysis;
+import org.apache.lucene.analysis.Tokenizer;
+import org.apache.solr.analysis.BaseTokenizerFactory;
+
+import java.io.Reader;
+import java.util.Map;
+
+public class DomainTokenizerFactory extends BaseTokenizerFactory {
+  private SecondLDExtractor extractor;
+  private boolean index2LD;
+  private boolean indexTLD;
+
+  @Override
+  public void init(Map&lt;String, String&gt; args) {
+    super.init(args);
+    assureMatchVersion();
+    index2LD = getBoolean(&quot;index2LD&quot;, true);
+    indexTLD = getBoolean(&quot;indexTLD&quot;, true);
+    if (index2LD || indexTLD) {
+      initTLDExtractor();
+    }
+  }
+
+  private void initTLDExtractor() {
+    extractor = new SecondLDExtractor();
+    extractor.init();
+  }
+
+  public Tokenizer create(Reader input) {
+    DomainTokenizer tokenizer = new DomainTokenizer(input, extractor, index2LD, indexTLD);
+    return tokenizer;
+  }
+}</pre>
+<p></p>
+<p>Here's a sample fieldType definition.<br /></p>
+<p></p>
+<pre class="brush:xml">&lt;fieldType name=&quot;domain&quot; class=&quot;solr.TextField&quot; positionIncrementGap=&quot;100&quot;&gt;
+      &lt;analyzer&gt;
+        &lt;tokenizer class=&quot;org.supermind.solr.analysis.DomainTokenizerFactory&quot;/&gt;
+      &lt;/analyzer&gt;
+&lt;/fieldType&gt;</pre>
+<p></p>
+<p></p>
+                </div>
+            </div>
+
+            <div ng-if="(articles[0].rawType == 'refcard' || articles[0].rawType == 'guide') && edition" ng-cloak>
+                <div class="content-html" dz-code-container
+                    itemprop="text" ng-cloak>
+                    <a ng-href="{{articles[0].pdf}}">
+                        <img class="pub-image" dz-image-fid-width="740" dz-image-fid="{{ articles[0].articleImage }}" width="420" itemprop="image">
+                    </a>
+                    <div class="pub-content content-html" ng-bind-html="article.shortDesc"></div>
+                </div>
+            </div>
+
+
+            <div class="article-bumper article-bumper-bottom"
+                 ng-if="articles[0].showLogo && articles[0].rawType == 'article' && articles[0].partner.bottom.text | partnerBumperLinks:articles[0].partner.bottom.id"
+                 ng-bind-html="articles[0].partner.bottom.text | partnerBumperLinks:articles[0].partner.bottom.id">
+                <p><strong><a href="https://community.hortonworks.com/index.html?utm_campaign=dzonepre/postrollv2&amp;utm_medium=3rd-party-resource&amp;utm_source=dzone&amp;utm_id=2307295" rel="nofollow" target="_blank" style="-webkit-text-stroke-width: 0px; background: rgb(255, 255, 255); box-sizing: border-box; color: rgb(41, 168, 255); font-size: 15px; font-style: normal; font-variant-caps: normal; font-variant-ligatures: normal; letter-spacing: normal; orphans: 2; text-align: left; text-decoration: none; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px;">Hortonworks Community Connection (HCC)</a>&nbsp;is an online collaboration destination for developers, DevOps, customers and partners to get answers to questions, collaborate on technical articles and share code examples from GitHub. &nbsp;<a href="https://community.hortonworks.com/index.html?utm_campaign=dzonepre/postrollv2&amp;utm_medium=3rd-party-resource&amp;utm_source=dzone&amp;utm_id=2307295" rel="nofollow" target="_blank" style="-webkit-text-stroke-width: 0px; background: rgb(255, 255, 255); box-sizing: border-box; color: rgb(41, 168, 255); font-size: 15px; font-style: normal; font-variant-caps: normal; font-variant-ligatures: normal; letter-spacing: normal; orphans: 2; text-align: left; text-decoration: none; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px;">Join the discussion.</a></strong></p>
+            </div>
+
+            <div class="article-bumper article-bumper-bottom" ng-if="articles[0].rawType != 'article'" ng-cloak></div>
+
+                    <div ng-if="!edition" class="related">
+                        <h3>Like This Article? Read More From DZone</h3>
+                        <div class="row">
+                            <div class="relateddiv col-xs-6 col-md-6">
+                                <a href="/articles/risk-based-testing?fromrel=true">
+                                    <img class="relatedimg col-xs-3 col-md-3" src="https://dz2cdn3.dzone.com/thumbnail?fid=10874770&w=120" width="60"></a>
+                                <a href="/articles/risk-based-testing?fromrel=true" class="col-xs-9 col-md-9">Risk-Based Testing [Podcast]</a>
+                            </div>
+
+                            <div class="relateddiv col-xs-6 col-md-6">
+                                <a href="/articles/agile-private-equity?fromrel=true">
+                                    <img class="relatedimg col-xs-3 col-md-3" src="https://dz2cdn4.dzone.com/thumbnail?fid=10874655&w=120" width="60"></a>
+                                <a href="/articles/agile-private-equity?fromrel=true" class="col-xs-9 col-md-9">
+                                Agile in Private Equity</a>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="relateddiv col-xs-6 col-md-6">
+                                <a href="/articles/plan-for-drupal-9?fromrel=true">
+                                    <img class="relatedimg col-xs-3 col-md-3" src="https://dz2cdn3.dzone.com/thumbnail?fid=10876290&w=120"></a>
+                                <a href="/articles/plan-for-drupal-9?fromrel=true" class="col-xs-9 col-md-9">Plan for Drupal 9</a>
+                            </div>
+
+                            <div class="relateddiv col-xs-6 col-md-6">
+                                <a href="/refcardz/data-warehousing?fromrel=true">
+                                    <img class="relatedimg col-xs-3 col-md-3" src="https://dz2cdn1.dzone.com/thumbnail?fid=10109444&w=120" width="60"></a>
+                                <a href="/refcardz/data-warehousing?fromrel=true" class="col-xs-9 col-md-9">
+                                    <p class="relatedres">Free DZone Refcard</p>
+                                Data Warehousing</a>
+                            </div>
+                        </div>
+                    </div>
+
+
+            <div class="assetdiv" ng-if="articles[0].rawType != 'article' && articles[0].pdf">
+                    <a class="btn-asset" ng-href="#" ng-click="loginForm()">DOWNLOAD</a>
+            </div>
+
+
+            <div class="article-topics">
+                <div class="topic-label">Topics:</div>
+                <div class="topics">
+                        
+                </div>
+            </div>
+            <div class="author-n-useraction">
+                <div class="like action">
+                    <dz-like template="like-article.html" node="articles[0]">        <div class="dz-like"
+             
+
+<a href="#">
+    <i ng-class="{'icon-thumbs-up-alt': status.liked, 'icon-thumbs-up liked': !status.liked}"></i>
+    <span>Like (0)</span>
+</a>
+</div>
+
+                    </dz-like>
+                </div>
+
+                <div class="comment action">
+                    <p ng-show="!articles[0].isLocked" slider-toggle="commentsSlider" slider-data="{parent: articles[0]}"
+                       activate-with-url-params="{showComments: articles[0].id}">
+                        <span><i class="icon-comment" tooltip-html-unsafe="{{ commentTooltip(articles[0]) }}"></span></i>
+                        Comment (<span class="comment-after number-of-comments" itemprop="commentCount"
+                                       ng-bind="articles[0].nComments">0</span>)
+                    </p>
+                    <p ng-show="articles[0].isLocked">
+            <span ng-cloak><i class="icon-icon-comment comment-disabled"
+                              tooltip-html-unsafe="Comments have been disabled for this article"></i></span>
+                    </p>
+                </div>
+
+                <div class="save action">
+                    <dz-save template="link-article-save.html" node="articles[0]"
+                             class="save"><div class="save icon-star-empty"
+     ><span
+        class="action-label">Save</span></div>
+
+                    </dz-save>
+            </div>
+
+            <div class="tweet action"><a ng-href="#"
+                                         ng-click='shareTwitter($event, articles[0].header.title, articles[0].url)'
+                                         class="title" target="_blank"><span><i class="icon-twitter"></i></span>
+                <span class="action-label">Tweet</span></a>
+            </div>
+
+            <div class="pull-right">
+                    <div class="article-views action" ng-cloak><i class="icon-eye"></i> {{ articles[0].views | formatCount}}
+
+                        <span
+                                class="action-label">Views</span></div>
+
+                    <div class="user-n-admin-action action" ng-if="!edition && (canEdit(articles[0]) || canDelete(articles[0]))">
+                        <div class="mod-tools" dropdown is-open="dropdown.open" ng-cloak>
+                            <span dropdown-toggle>
+                                <i class="icon-cog"></i>
+                            </span>
+                            <ul class="dropdown-menu">
+                                <li><a ng-if="canEdit(articles[0])"
+                                       ng-href="/content/{{ articles[0].id }}/edit.html">Edit</a></li>
+                                <li><a href="#" ng-if="canDelete(articles[0])" ng-click="delete(articles[0])">Delete</a>
+                                </li>
+                                <li><a href="#" ng-if="perms.canPublish"
+                                       ng-click="toggleComments(articles[0])">{{ articles[0].isLocked
+                                    ? 'Enable' : 'Disable' }} comments</a></li>
+                                <li><a href="#" ng-if="perms.canPublish && !articles[0].isLocked"
+                                       ng-click="toggleLimitComments(articles[0])">
+                                    {{ articles[0].isLimited ? 'Remove comment limits' : 'Enable moderated comments'
+                                    }}</a></li>
+                            </ul>
+                        </div>
+                    </div>
+            </div>
+        </div>
+                <div class="attribution">
+                    <p >Published at DZone with permission
+                        of 
+                        <span itemprop="author">Kelvin Tan
+                        . <span ng-if="articles[0].source"><a
+                            href="http://www.supermind.org/blog/1081/tokenizing-second-level-and-top-level-domain-for-a-url-in-lucene-and-solr"
+                             target="_blank">See the original article here.<i
+                                class="icon-link-ext-alt"></i></a></span></p>
+                    <p>Opinions expressed by DZone contributors are their own.</p>
+                </div>
+        <load-article node="article || articles[0]"></load-article>
+    </article>
+
+    <div class="col-md-12 col-sm-12 col-xs-12">
+        <th-if-scroll relative-to="bottom" from="-20" to="0" callback="activateB(articles[0])"></th-if-scroll>
+    </div>
+</div>
+
+
+<div class="layout-card widget-top-border partner-resources-block">
+
+    <div class="main-container">
+        <div class="row">
+            <div class="featured-header">
+                <h2>Big Data<span> Partner Resources</span></h2>
+            </div>
+        </div>
+        <div class="row column">
+                <div class="s-asset asset-title">
+                    <div class="margin-rule">
+                        <div class="title-content">
+                            <div class="title"><a href="https://hortonworks.com/info/industry-solution-guide-using-apache-nifi-attunity-replicate/?utm_campaign=dzonenififordummies&utm_medium=3rd-party-resource&utm_source=dzone&utm_id=2292641" ng-click="$root.linkGo($event, '/sponsor/go?l=2501742&i=310529')"
+                                                  target="_blank">Industry Solution Guide for Using Apache NiFi and Attunity Replicate</a></div>
+                            <div class="sponsor-name">Hortonworks</div>
+                        </div>
+                        <div class="icon"><a href="https://hortonworks.com/info/industry-solution-guide-using-apache-nifi-attunity-replicate/?utm_campaign=dzonenififordummies&utm_medium=3rd-party-resource&utm_source=dzone&utm_id=2292641"><i
+                                class="icon-icon-comment ext icon-link-ext-alt"></i></a></div>
+                    </div>
+                </div>
+                <div class="s-asset asset-title">
+                    <div class="margin-rule">
+                        <div class="title-content">
+                            <div class="title"><a href="https://go.streamsets.com/dzone-ebook-tame-and-simplify-apache-kafka.html" ng-click="$root.linkGo($event, '/sponsor/go?l=2482351&i=308525')"
+                                                  target="_blank">eBook: Simplify Apache Kafka</a></div>
+                            <div class="sponsor-name">StreamSets</div>
+                        </div>
+                        <div class="icon"><a href="https://go.streamsets.com/dzone-ebook-tame-and-simplify-apache-kafka.html"><i
+                                class="icon-icon-comment ext icon-link-ext-alt"></i></a></div>
+                    </div>
+                </div>
+                <div class="s-asset asset-title">
+                    <div class="margin-rule">
+                        <div class="title-content">
+                            <div class="title"><a href="https://hpccsystems.com/mastering-data-lakes-with-hpcc-systems?utm_campaign=dzone&utm_medium=banner&utm_source=sponsorship&utm_content=landingpage" ng-click="$root.linkGo($event, '/sponsor/go?l=2582319&i=322530')"
+                                                  target="_blank">Mastering Data Lakes with HPCC Systems</a></div>
+                            <div class="sponsor-name">HPCC Systems</div>
+                        </div>
+                        <div class="icon"><a href="https://hpccsystems.com/mastering-data-lakes-with-hpcc-systems?utm_campaign=dzone&utm_medium=banner&utm_source=sponsorship&utm_content=landingpage"><i
+                                class="icon-icon-comment ext icon-link-ext-alt"></i></a></div>
+                    </div>
+                </div>
+                <div class="s-asset asset-title">
+                    <div class="margin-rule">
+                        <div class="title-content">
+                            <div class="title"><a href="https://hortonworks.com/info/data-lake-vs-data-warehouse/?utm_campaign=dzonedatalakes&utm_medium=3rd-party-resource&utm_source=dzone&utm_id=2222872" ng-click="$root.linkGo($event, '/sponsor/go?l=2501741&i=310528')"
+                                                  target="_blank">Data Lake vs. Data Warehouse</a></div>
+                            <div class="sponsor-name">Hortonworks</div>
+                        </div>
+                        <div class="icon"><a href="https://hortonworks.com/info/data-lake-vs-data-warehouse/?utm_campaign=dzonedatalakes&utm_medium=3rd-party-resource&utm_source=dzone&utm_id=2222872"><i
+                                class="icon-icon-comment ext icon-link-ext-alt"></i></a></div>
+                    </div>
+                </div>
+                <div class="s-asset asset-title">
+                    <div class="margin-rule">
+                        <div class="title-content">
+                            <div class="title"><a href="https://go.streamsets.com/dzone-wp-12-best-practices-modern-data-ingestion.html" ng-click="$root.linkGo($event, '/sponsor/go?l=2482353&i=308527')"
+                                                  target="_blank">White Paper: 12 Best Practices for Modern Data Ingestion</a></div>
+                            <div class="sponsor-name">StreamSets</div>
+                        </div>
+                        <div class="icon"><a href="https://go.streamsets.com/dzone-wp-12-best-practices-modern-data-ingestion.html"><i
+                                class="icon-icon-comment ext icon-link-ext-alt"></i></a></div>
+                    </div>
+                </div>
+                <div class="s-asset asset-title">
+                    <div class="margin-rule">
+                        <div class="title-content">
+                            <div class="title"><a href="https://hpccsystems.com/clearfunnel-whitepaper-2018?utm_campaign=&utm_medium=text&utm_source=dzone&utm_content=partner_resource" ng-click="$root.linkGo($event, '/sponsor/go?l=2465020&i=307549')"
+                                                  target="_blank">Whitepaper: Scaling Capabilities to Build a Homogeneous Big Data Ecosystem</a></div>
+                            <div class="sponsor-name">HPCC Systems</div>
+                        </div>
+                        <div class="icon"><a href="https://hpccsystems.com/clearfunnel-whitepaper-2018?utm_campaign=&utm_medium=text&utm_source=dzone&utm_content=partner_resource"><i
+                                class="icon-icon-comment ext icon-link-ext-alt"></i></a></div>
+                    </div>
+                </div>
+                <div class="s-asset asset-title">
+                    <div class="margin-rule">
+                        <div class="title-content">
+                            <div class="title"><a href="https://hpccsystems.com/data-lakes-a-serious-consideration-for-serious-data-science?utm_campaign=dzone&utm_medium=banner&utm_source=sponsorship&utm_content=landingpage" ng-click="$root.linkGo($event, '/sponsor/go?l=2582320&i=322531')"
+                                                  target="_blank">Data Lakes: A Serious Consideration for Serious Data Science</a></div>
+                            <div class="sponsor-name">HPCC Systems</div>
+                        </div>
+                        <div class="icon"><a href="https://hpccsystems.com/data-lakes-a-serious-consideration-for-serious-data-science?utm_campaign=dzone&utm_medium=banner&utm_source=sponsorship&utm_content=landingpage"><i
+                                class="icon-icon-comment ext icon-link-ext-alt"></i></a></div>
+                    </div>
+                </div>
+                <div class="s-asset asset-title">
+                    <div class="margin-rule">
+                        <div class="title-content">
+                            <div class="title"><a href="https://go.streamsets.com/dzone-wp-6-simple-steps-replatforming.html" ng-click="$root.linkGo($event, '/sponsor/go?l=2482352&i=308526')"
+                                                  target="_blank">White Paper: 6 Simple Steps for Replatforming in the Age of the Data Lake</a></div>
+                            <div class="sponsor-name">StreamSets</div>
+                        </div>
+                        <div class="icon"><a href="https://go.streamsets.com/dzone-wp-6-simple-steps-replatforming.html"><i
+                                class="icon-icon-comment ext icon-link-ext-alt"></i></a></div>
+                    </div>
+                </div>
+        </div>
+    </div>
+
+</div>
+
+<div class="layout-card widget-top-border mobile-partner-resources-block">
+
+    <div class="main-container">
+        <div class="row">
+            <div class="featured-header">
+                <h2>Big Data<span> Partner Resources</span></h2>
+            </div>
+        </div>
+        <div class="row column">
+                    <div class="s-asset asset-title">
+                        <div class="margin-rule">
+                            <div class="title-content">
+                                <div class="title"><a href="https://hortonworks.com/info/industry-solution-guide-using-apache-nifi-attunity-replicate/?utm_campaign=dzonenififordummies&utm_medium=3rd-party-resource&utm_source=dzone&utm_id=2292641" ng-click="$root.linkGo($event, '/sponsor/go?l=2501742&i=310529')"
+                                                      target="_blank">Industry Solution Guide for Using Apache NiFi and Attunity Replicate</a></div>
+                                <div class="sponsor-name">Hortonworks</div>
+                            </div>
+                            <div class="icon"><a href="https://hortonworks.com/info/industry-solution-guide-using-apache-nifi-attunity-replicate/?utm_campaign=dzonenififordummies&utm_medium=3rd-party-resource&utm_source=dzone&utm_id=2292641"><i
+                                    class="icon-icon-comment ext icon-link-ext-alt"></i></a></div>
+                        </div>
+                    </div>
+                    <div class="s-asset asset-title">
+                        <div class="margin-rule">
+                            <div class="title-content">
+                                <div class="title"><a href="https://go.streamsets.com/dzone-ebook-tame-and-simplify-apache-kafka.html" ng-click="$root.linkGo($event, '/sponsor/go?l=2482351&i=308525')"
+                                                      target="_blank">eBook: Simplify Apache Kafka</a></div>
+                                <div class="sponsor-name">StreamSets</div>
+                            </div>
+                            <div class="icon"><a href="https://go.streamsets.com/dzone-ebook-tame-and-simplify-apache-kafka.html"><i
+                                    class="icon-icon-comment ext icon-link-ext-alt"></i></a></div>
+                        </div>
+                    </div>
+                    <div class="s-asset asset-title">
+                        <div class="margin-rule">
+                            <div class="title-content">
+                                <div class="title"><a href="https://hpccsystems.com/mastering-data-lakes-with-hpcc-systems?utm_campaign=dzone&utm_medium=banner&utm_source=sponsorship&utm_content=landingpage" ng-click="$root.linkGo($event, '/sponsor/go?l=2582319&i=322530')"
+                                                      target="_blank">Mastering Data Lakes with HPCC Systems</a></div>
+                                <div class="sponsor-name">HPCC Systems</div>
+                            </div>
+                            <div class="icon"><a href="https://hpccsystems.com/mastering-data-lakes-with-hpcc-systems?utm_campaign=dzone&utm_medium=banner&utm_source=sponsorship&utm_content=landingpage"><i
+                                    class="icon-icon-comment ext icon-link-ext-alt"></i></a></div>
+                        </div>
+                    </div>
+                    <div class="s-asset asset-title">
+                        <div class="margin-rule">
+                            <div class="title-content">
+                                <div class="title"><a href="https://hortonworks.com/info/data-lake-vs-data-warehouse/?utm_campaign=dzonedatalakes&utm_medium=3rd-party-resource&utm_source=dzone&utm_id=2222872" ng-click="$root.linkGo($event, '/sponsor/go?l=2501741&i=310528')"
+                                                      target="_blank">Data Lake vs. Data Warehouse</a></div>
+                                <div class="sponsor-name">Hortonworks</div>
+                            </div>
+                            <div class="icon"><a href="https://hortonworks.com/info/data-lake-vs-data-warehouse/?utm_campaign=dzonedatalakes&utm_medium=3rd-party-resource&utm_source=dzone&utm_id=2222872"><i
+                                    class="icon-icon-comment ext icon-link-ext-alt"></i></a></div>
+                        </div>
+                    </div>
+        </div>
+    </div>
+
+</div>
+
+    <div class="ad-silver row" ng-if="articles[1] && !articles[1].partner.isSponsoringArticle && width >= 768">
+    </div>
+
+    <div class="ad-gold row" ng-if="articles[1] && !articles[1].partner.isSponsoringArticle && width < 768">
+        <div class="col-md-12">
+            <div ng-if="ads.gold1.show()" dc-slot="ads.gold1.slot()" tags="ads.gold1.tags(articles[0])"
+                 class="leaderboard-ad" size="ads.gold1.size()"></div>
+        </div>
+    </div>
+
+
+</div>
+<div class="articles-wrap" ng-repeat="article in articles" ng-if="$index > 0 || article.id != 485719" ng-include="'/static/article/article.html'"></div>
+
+<div style="clear: both;"></div>
+<th-if-scroll ng-if="!isPreview" relative-to="bottom" from="-50" to="50" callback="loadMore()"></th-if-scroll>
+</div></div></div><div class="container-fluid footerOuter" th-element="footerOuter" th-element-groups="[]" ng-hide="$root.isHidden('footerOuter')" data-th-element-name="footerOuter"><div class="row row2" th-element="row2" th-element-groups="['footerOuter']" ng-hide="$root.isHidden('row2')" data-th-element-name="row2"><div class="col-md-12 container3" th-element="container3" th-element-groups="['footerOuter','row2']" ng-hide="$root.isHidden('container3')" data-th-element-name="container3"><div class="container container3" th-element="container3" th-element-groups="['footerOuter','row2','container3']" ng-hide="$root.isHidden('container3')" data-th-element-name="container3"><div class="row footer" th-element="footer" th-element-groups="['footerOuter','row2','container3','container3']" ng-hide="$root.isHidden('footer')" data-th-element-name="footer"></div></div></div></div></div><div class=" sidebar sidebarTapBar oUhbkSMadabbWQbVkcC oUhbkSMadabfWVcC" th-element="sidebar" th-element-groups="[]" ng-hide="$root.isHidden('sidebar')" data-th-element-name="sidebar" data-th-widget="sidebar.tapBar" data-widget-sidebar-tap-bar="" ng-controller="sidebar"><div class="content" ng-if="!$root.botInfo.isRenderBot" sidebar-list>
+<div class=" sidebar.content" th-element="sidebar.content" th-element-groups="['sidebar']" ng-hide="$root.isHidden('sidebar.content')" data-th-element-name="sidebar.content"><div class="col-md-12 sidebarContentList8 sidebarContentList oUhbkSMaaqbcdvVkcC" th-element="sidebarContentList8" th-element-groups="['sidebar','sidebar.content']" ng-hide="$root.isHidden('sidebarContentList8')" data-th-element-name="sidebarContentList8" data-th-widget="sidebar.content.list" data-widget-sidebar-content-list="" ng-controller="sidebarContentList8"><ul class="nodes-list" dnd-list="display">
+
+    <div class="header" ng-if="edition">
+        <h3><strong>{{ editionName }}</strong></h3>
+            </div>
+
+
+    <li ng-repeat="node in display" id="{{::node.id}}-{{edition}}-{{$index}}" class="list-entry" ng-class="{active: isActive(node)}" sidebar-item="node"
+        >
+            <div ng-if="node.type != 'article' && node.type != 'ad'" class="resource {{ node.type }}">
+                <div class="sidebar-content">{{ node.blurb }}</div>
+            </div>
+        <div class="sidebar-content ">
+            <a ng-class="{badge1: edition}" data-badge="{{$index + 1}}" ng-if="node.type != 'ad'" ng-href="{{ ::node.url }}" ng-click="tap()" sidebar-click="node">
+                <div class="sidebar-node-image" ng-if="edition"><img class="imageList" dz-image-fid-width="80" dz-image-fid="{{ ::node.imageUrl }}"></div>
+                <div ng-class="{'sidebar-node-title' : edition}">
+                    <div ng-if="node.type == 'whitepaper' || node.type == 'refcard' || node.type == 'guide'" class="sidebar-resource">Free&nbsp;{{node.type}}</div>
+                    <p>{{ ::node.title }}</p>
+                </div>
+            </a>
+        </div>
+    </li>
+    <th-if-scroll relative-to="bottom" from="-100" to="50" callback="loadMore()"></th-if-scroll>
+    <th-loader flag="loading()" />
+</ul>
+</div></div></div>
+<span class="tap" ng-class="{tapEdition: edition}" ng-click="tap()" ng-if="!$root.botInfo.isRenderBot">
+    <i class="icon-angle-double-left left"></i>
+    <i class="icon-angle-double-right right"></i>
+</span>
+</div><div class=" componentsSlider6 componentsSlider oUhballbvbdSaoUhM" th-element="componentsSlider6" th-element-groups="[]" ng-hide="$root.isHidden('componentsSlider6')" data-th-element-name="componentsSlider6" data-th-widget="components.slider" data-widget-components-slider="" ng-controller="componentsSlider6"><!--<i class="icon-cancel" ng-click="close()"></i>-->
+
+<div class="background" ng-class="{open: _sliderOpen}" ng-if="_ready" ng-click="close()">
+</div>
+
+<div class="slider-outer-wrapper" ng-class="{open: _sliderOpen}">
+    
+    <div class="row slider-inner-wrapper" ng-if="_ready">
+<div class=" componentsSlider6.widgets" th-element="componentsSlider6.widgets" th-element-groups="['componentsSlider6']" ng-hide="$root.isHidden('componentsSlider6.widgets')" data-th-element-name="componentsSlider6.widgets"><div class="col-md-12 contentCommentsSlider7 contentCommentsSlider oUhbaqbcaibvnWffWVcC" th-element="contentCommentsSlider7" th-element-groups="['componentsSlider6','componentsSlider6.widgets']" ng-hide="$root.isHidden('contentCommentsSlider7')" data-th-element-name="contentCommentsSlider7" data-th-widget="content.commentsSlider" data-widget-content-comments-slider="" ng-controller="contentCommentsSlider7"><script type="text/ng-template" id="link-article-save.html">
+    <div ng-class="{'icon-star gold': status.saved, 'icon-star-empty': !status.saved}" ng-click="save()" class="save"><span class="save-title">Save</span><span ng-if="status.saved" class="d-letter">d</span></div>
+</script>
+
+
+<div class="comment-slider-content">
+
+    <div class="node-info">
+        <div class="comment-title">
+            <h1 class="parent-title">{{ parent.title || parent.header.title}}</h1>
+            <!--<a ng-if="parent.title" ng-href="{{ parent.linkSource }}">-->
+            <!--<i class="icon-link-2" tooltip-html-unsafe="Permalink"></i>-->
+            <!--</a>  -->
+            <h3 ng-if="parent.tldr"  class="tldr">{{ parent.tldr }}</h3>
+            <h3 ng-if="parent.title" class="link-description" >{{ parent.linkDescription }}</h3>
+            <a ng-if="parent.title" ng-href="{{parent.url}}" class="link-source">{{ parent.urlSource.name }}</a>
+        </div>
+    </div>
+    <div class="author-n-article-info">
+        <div class="author-avatar">
+            <a ng-href="{{ parent.authors[0].url || parent.authorUrl }}">
+                <img dz-image-fid-width="80" dz-image-fid="{{ parent.authors[0].avatar || parent.authorAvatar }}" class="avatar" width="40" />
+            </a>
+        </div>
+        <div class="author-name">
+            by <a th-popup="users.profile.mini" popup-data="{user: parent.authors[0].id || parent.authorId }" ng-href="{{ parent.authors[0].url || parent.authorUrl }}">{{ parent.authors[0].realName || parent.author}}
+            </a>
+
+            <div ng-if="parent.authors[0].isStaff || parent.isStaff" class="mbv-award staff-area">
+                <i tooltip="Staff of DZone" class="icon-staff"></i>
+            </div>
+
+            <div ng-if="parent.authors[0].isMVB || parent.isMVB" class="mbv-award">
+                <i tooltip="Most Valuable Blogger" class="icon-mvb-1"></i>
+            </div>
+
+            <div class="mvb-partner">
+                <user-is-partner user="parent.authors[0].id"></user-is-partner>
+            </div>
+
+            <div class="zone-leader">
+                <user-is-zone-leader user="parent.authors[0].id"></user-is-zone-leader>
+            </div>
+
+        </div>
+        <div class="publish-date">
+            &middot; <span class="author-date">{{ parent.articleDate | date:'MMM. dd, yyyy' }} {{ parent.linkDate | date:'MMM. dd, yyyy' }}</span>
+        </div>
+        <div class="portal-link">
+            &middot; <a href="{{ parent.portal.url }}" id="portal-name" ng-cloak><span class="portal-name">{{ parent.portal.name }} Zone</span></a>
+        </div>
+    </div>
+    <div class="user-actions">
+        <div class="like action" ng-if="parent.title">
+            <dz-like template="like-article.html" callback="addVoter()" node="parent" ng-if="parent.articleDate"></dz-like>
+            <dz-like callback="addVoter()" callback="addVoter()" node="parent" ng-if="parent.linkDate"></dz-like>
+        </div>
+
+        <div class="like action" ng-if="!parent.title">
+            <dz-like template="like-article.html" callback="addVoter()" node="parent"></dz-like>
+        </div>
+
+
+        <div class="save-article action"><dz-save template="link-article-save.html" node="parent" class="save"></dz-save></div>
+
+        <div class="tweet action">
+            <a ng-href="#" ng-click='shareTwitter($event, parent.title || parent.header.title,parent.linkSource || parent.url)' class="title" target="_blank"><i class="icon-twitter"></i>Tweet</a>
+        </div>
+
+        <div class="pull-right">
+            <div class="view-count action">
+                <i class="icon-eye"></i> {{ parent.views }} <span ng-if="!parent.title">Views</span><span ng-if="parent.title" class="action-label">Clicks</span>
+            </div>
+
+            <div class="user-n-admin-action action" ng-if="canEdit(parent) || canDelete(parent)">
+                <div class="mod-tools" dropdown is-open="dropdown.open">
+                    <span dropdown-toggle><i class="icon-cog"></i></span>
+                    <ul class="dropdown-menu">
+                        <li><a ng-href="/content/{{ parent.id }}/edit.html">Edit</a></li>
+                        <li><a href="#" ng-if="canDelete(parent)" ng-click="deleteLink(parent)">Delete</a></li>
+                        <li><a href="#" ng-if="canPublish && !parent.title" ng-click="toggleComments(parent)">{{ parent.isLocked ? 'Enable' : 'Disable' }} comments</a></li>
+                        <li><a href="#" ng-if="canPublish && !parent.isLocked && !parent.title" ng-click="toggleLimitComments(parent)">
+                            {{ parent.isLimited ? 'Remove comment limits' : 'Enable moderated comments' }}
+                        </a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div th-defer-until="_sliderOpen">
+        <!--<div content-comment-box parent="parent.id" count="parent.nComments" limited="parent.isLimited" class="comment-box"></div>-->
+    </div>
+</div>
+
+</div></div>    </div>
+</div>
+
+</div>
+
+    <div class="row">
+        <a href="#" class="back-to-top"><i class="icon-up-big"></i></a>
+    </div>
+
+
+
+    <script type="text/ng-template" id="/themes/dz20/widgets/header/sections/widget.html">
+<span dropdown is-open="dropdown.open" ng-class="{small: width < 768}">
+    <span dropdown-toggle class="sections"><i class="icon-menu"></i>
+        <span class="menuLabel" ng-if="width < 768"></span></span>
+    <ul class="dropdown-menu ul-first" ng-style="width < 768 ? {'top': headerSize + 0 + 'px', 'padding-top': '15px'} : {}">
+        <li><a href="/links">Links</a></li>
+        <li><a href="/refcardz">Refcardz</a></li>
+        <li><a href="/guides">Guides</a></li>
+        <li><a href="/about">About Us</a></li>
+        <li class="divider"></li>
+
+        <li class="post-title"><span>Zones</span></li>
+        <li ng-repeat="topic in portals" class="dropdown">
+            <a ng-href="{{ topic.url }}">{{ topic.name }}</a>
+        </li>
+        <li class="divider"></li>
+        <li class="post-title"><span>Post</span></li>
+        <li><a href="/links">Link</a></li>
+        <li><a href="/article/post.html">Article</a></li>
+    </ul>
+</span>
+
+
+    </script>
+
+<script type="text/ng-template" id="followus.html">
+<div class="top-social">
+    <p>Let's be friends:</p>
+    <ul class="icons-only" ng-class="{open: isOpen}" click-outside="outside()">
+        <li class="rss-icon" id="rss-spotlight-1">
+            <a href="/pages/feeds"><i class="icon-rss-1"></i></a>
+        </li>
+        <li class="twitter-icon">
+            <a href="https://twitter.com/DZone" target="_blank"><i class="icon-twitter"></i></a>
+        </li>
+        <li class="facebook-icon">
+            <a href="https://www.facebook.com/DZone-259639764711" target="_blank"><i class="icon-facebook-1"></i></a>
+        </li>
+        <li class="google-icon">
+            <a href="https://plus.google.com/+dzone/posts" target="_blank"><i class="icon-gplus"></i></a>
+        </li>
+        <li class="linkedin-icon">
+            <a href="https://www.linkedin.com/company/dzone" target="_blank"><i class="icon-linkedin-1"></i></a>
+        </li>
+
+            <ul class="social-dropdown dropdown-menu">
+                <li class="rss" id="rss-spotlight"><a href="/pages/feeds"><i class="icon-rss-squared"></i> <span>RSS Feed</span></a></li>
+                <li class="twitter" id="twitter-spotlight">
+                    <a href="https://twitter.com/DZone" class="twitter-follow-button" data-show-count="true"
+                       data-show-screen-name="false">Follow @DZone</a>
+                </li>
+                <li class="fb-like" id="fb-spotlight" data-href="https://www.facebook.com/DZone-259639764711/timeline/"
+                    data-layout="button_count" data-action="like" data-show-faces="true" data-share="false"></li>
+                <li class="google-plus" id="gplus-spotlight">
+                    <div class="g-follow" data-annotation="bubble" data-height="20"
+                         data-href="https://plus.google.com/108688665090780146602" data-rel="publisher"></div>
+                </li>
+                <li class="linkedin" id="linkedin-spotlight">
+                    <script type="IN/FollowCompany" data-id="114427" data-counter="right"></script>
+                </li>
+            </ul>
+    </ul>
+</div>
+</script><script type="text/ng-template" id="dzlike.html">
+<div class="dz-like " ng-class="{liked: status.liked}" ng-click="like()">
+    <a href="#">
+        <i class="icon-up-dir"></i>
+        <span>{{ status.score }}</span>
+    </a>
+</div>
+</script><script type="text/ng-template" id="dztopicselect.html"><ui-select  ng-if="canAddTopics" ng-model="editing.topics" theme="bootstrap" multiple tagging tagging-label="(add topic)"
+           tagging-tokens=",">
+    <ui-select-match class="input-tags"><div class="topics-tag">{{ $item }}</div></ui-select-match>
+    <ui-select-choices
+            refresh="topicsRefresh($select.search)"
+            refresh-delay="250"
+            repeat="topic in foundTopics | filter: $select.search">
+        <div ng-bind-html="topic | highlight: $select.search"></div>
+    </ui-select-choices>
+</ui-select>
+<ui-select ng-if="!canAddTopics" ng-model="editing.topics" theme="bootstrap" multiple>
+    <ui-select-match><div class="topics-tag">{{ $item }}</div></ui-select-match>
+    <ui-select-choices
+            refresh="topicsRefresh($select.search)"
+            refresh-delay="250"
+            repeat="topic in foundTopics | filter: $select.search">
+        <div ng-bind-html="topic | highlight: $select.search"></div>
+    </ui-select-choices>
+</ui-select></script><script type="text/ng-template" id="dzsave.html"><i class="icon-star-empty" ng-class="{'icon-star gold': status.saved, 'icon-star-empty': !status.saved}" tooltip-html-unsafe="{{status.saved ? 'Saved' : 'Save'}}" ng-click="save()"></i>
+<!--<span ng-class="{'gold count': status.saved}">{{ status.count }}</span>--></script><script type="text/ng-template" id="overlay.html"><div class="ngdialog th-overlay">
+    <div class="ngdialog-overlay">
+        <div class="overlay-box">
+            <i class="icon-spin5 animate-spin"></i>
+
+            <p>{{ message }}</p>
+        </div>
+    </div>
+</div></script><script type="text/ng-template" id="inline-editable.html"><div class="inline-editable" ng-if="!status.editing" ng-click="edit()" ng-transclude></div>
+<div class="inline-editor-wrapper" ng-if="status.editing">
+    <textarea class="inline-editor" ng-model="status.editValue" ng-if="type == 'textarea'"></textarea>
+    <input class="inline-editor" ng-model="status.editValue" ng-if="type == 'input'"></textarea>
+    <div class="inline-editor-tools">
+        <button class="btn select-ok" ng-disabled="!status.editValue" ng-click="save()"><i class="icon-check-1"></i></button>
+        <button class="btn select-cancel" ng-disabled="!editable" ng-click="cancel()"><i class="icon-cancel-1"></i></button>
+    </div>
+</div></script><script type="text/ng-template" id="dzupload.html"><span class="btn btn-upload" >
+    <div ng-bind-html="label"></div>
+    <div class="progress-container" ng-style="{visibility: uploading ? 'visible' : 'hidden'}">
+        <progressbar max="100" value="progress"><span>{{ progress }}</span></progressbar>
+    </div>
+    <input type="file" ng-file-drop ng-file-select ng-file-change="upload($files)" />
+</span></script><script type="text/ng-template" id="dzfollow.html"><button class="btn btn-follow" ng-class="{'btn-success': !status.followed, 'btn-warning': status.followed, 'hidden': followed.id == $root.user.id}" ng-click="follow()"><span ng-if="!status.followed"><i class="icon-plus"></i> Follow</span><span ng-if="status.followed" class="following">Following</span><span ng-if="status.followed" class="hover">Unfollow</span></button></script><script type="text/ng-template" id="dzphoto.html"><i class="icon-camera-alt photo" type="file" ng-file-drop ng-file-select ng-file-change="upload($files)"></i></script><script type="text/ng-template" id="dialog.skeleton.html"><div class="dialog-title">
+    <h1 ng-if="$dialog.title">{{ $dialog.title }}</h1>
+</div>
+<div class="dialog-body {{ $dialog.extraClass }}" ng-include="$dialog.template"></div>
+<div class="dialog-footer">
+    <div class="dialog-buttons" ng-if="$dialog.buttons">
+        <button ng-repeat="button in $dialog.buttons" ng-hide="button.hidden" ng-disabled="button.disabled || $dialog.executing"
+                class="btn btn-{{ button.type || 'info' }}" ng-click="$dialog.runAction(button)">
+            <span class="icon-spin6 animate-spin" ng-if="button.executing"></span>{{ button.label || button.name }}</button>
+    </div>
+</div></script><script type="text/ng-template" id="dialog.message.html"><div class="message-icon">
+    <i class="icon-{{ icon }}"></i>
+</div>
+<div class="message-text">
+    <p class="message-title" ng-bind-html="trustAsHtml(title)"></p>
+    <p ng-bind-html="trustAsHtml(message)"></p>
+</div>
+</script><script type="text/ng-template" id="dialog.confirm.html"><p>{{ message }}</p></script>
+<script type="text/javascript">
+
+    var TH_CORE_VARS = {};
+
+    try {
+        TH_CORE_VARS.additional = {};
+
+        TH_CORE_VARS.additional.matchedUrl = {"name":"dzone:articles:view","mapping":"/articles/**","mappingPatterns":{}};
+        TH_CORE_VARS.additional.request = [{"site":{"keywords":"programming, software development, devops, java, agile, web, iot, database, mobile, big data, cloud","name":"DZone.com","description":"Programming, Web Development, and DevOps news, tutorials and tools for beginners to experts. Hundreds of free publications, over 1M members, totally free.","id":7,"title":"DZone: Programming & DevOps news, tutorials & tools"},"dev":false,"context":"","theme":"dz20","cdn":["dz2cdn1.dzone.com","dz2cdn2.dzone.com","dz2cdn3.dzone.com","dz2cdn4.dzone.com"],"user":{"realName":null,"authenticated":false,"profile":"/users/2500002/anon-user.html","name":"Anonymous","GDPRStatus":null,"id":2500002,"avatar":"https://secure.gravatar.com/avatar/?d=identicon&r=PG"}}];
+        TH_CORE_VARS.additional.loadedScripts = [["/lib/jquery/jquery.js","/lib/lodash/lodash.js","/lib/moment/moment.js","/scripts/utils.js","/lib/angular/angular.js","/lib/angular/angular-sanitize.js","/lib/local-storage/angular-local-storage.js","/lib/bootstrap/dropdown.js","/lib/angular-ui/bootstrap.js","/lib/angular-ui/select.js","/lib/bootstrap-switch/bootstrap-switch.js","/lib/ngDialog/js/ngDialog.js","/lib/angular-moment/angular-moment.js","/scripts/app.js","/scripts/socket.js","/scripts/services.js","/scripts/ui-services.js","/scripts/directives.js","/scripts/filters.js","/lib/angular/angular-cookies.js","/lib/angulartics/angulartics.js","/lib/angulartics/angulartics-ga.js","/lib/angular-touch/angular-touch.min.js","/lib/elastic/elastic.js","/lib/ng-file-upload/angular-file-upload-all.js","/scripts/dzone.js","/scripts/ads.js","/scripts/social-media.js","/scripts/head.js","/scripts/links.js","/scripts/utilities/directives.js","/scripts/utilities/services.js","/scripts/utilities/editor.js","/lib/bootstrap-slider/bootstrap-slider.js","/lib/bootstrap-slider/directive.js","/lib/sb/sb.js","/lib/angular-draganddrop/draganddrop.js","/lib/flexmenu/flexmenu.min.js","/widgets/article/content/utils.js","/widgets/components/slider/service.js","/widgets/header/headerV2/resize.js","/widgets/sidebar/content/list/service.js","/widgets/sidebar/tapBar/directive.js","/widgets/sidebar/tapBar/service.js"]];
+        TH_CORE_VARS.additional.botInfo = [{"isRenderBot":false}];
+        TH_CORE_VARS.additional.portals = [[{"hideFromHomepageWidgets":false,"hideFromNav":false,"code":"agile","color":"red","name":"Agile","topic":8,"id":2,"shortTitle":"agile-methodology-training-tools-news","url":"/agile-methodology-training-tools-news"},{"hideFromHomepageWidgets":false,"hideFromNav":false,"code":"ai","color":"purple","name":"AI","topic":2551,"id":4001,"shortTitle":"artificial-intelligence-tutorials-tools-news","url":"/artificial-intelligence-tutorials-tools-news"},{"hideFromHomepageWidgets":false,"hideFromNav":false,"code":"big-data","color":"green","name":"Big Data","topic":6129,"id":3,"shortTitle":"big-data-analytics-tutorials-tools-news","url":"/big-data-analytics-tutorials-tools-news"},{"hideFromHomepageWidgets":false,"hideFromNav":false,"code":"cloud","color":"orange","name":"Cloud","topic":30,"id":4,"shortTitle":"cloud-computing-tutorials-tools-news","url":"/cloud-computing-tutorials-tools-news"},{"hideFromHomepageWidgets":false,"hideFromNav":false,"code":"database","color":"purple","name":"Database","topic":59,"id":5,"shortTitle":"database-sql-nosql-tutorials-tools-news","url":"/database-sql-nosql-tutorials-tools-news"},{"hideFromHomepageWidgets":false,"hideFromNav":false,"code":"devops","color":"yellow","name":"DevOps","topic":31,"id":6,"shortTitle":"devops-tutorials-tools-news","url":"/devops-tutorials-tools-news"},{"hideFromHomepageWidgets":false,"hideFromNav":false,"code":"integration","color":"green","name":"Integration","topic":1138,"id":7,"shortTitle":"enterprise-integration-training-tools-news","url":"/enterprise-integration-training-tools-news"},{"hideFromHomepageWidgets":false,"hideFromNav":false,"code":"iot","color":"orange","name":"IoT","topic":48,"id":8,"shortTitle":"iot-developer-tutorials-tools-news-reviews","url":"/iot-developer-tutorials-tools-news-reviews"},{"hideFromHomepageWidgets":false,"hideFromNav":false,"code":"java","color":"purple","name":"Java","topic":1,"id":1,"shortTitle":"java-jdk-development-tutorials-tools-news","url":"/java-jdk-development-tutorials-tools-news"},{"hideFromHomepageWidgets":false,"hideFromNav":false,"code":"microservices","color":"green","name":"Microservices","topic":13268,"id":6001,"shortTitle":"microservices-news-tutorials-tools","url":"/microservices-news-tutorials-tools"},{"hideFromHomepageWidgets":true,"hideFromNav":true,"code":"mobile","color":"yellow","name":"Mobile","topic":29,"id":9,"shortTitle":"mobile-app-developer-tutorials-tools-news","url":"/mobile-app-developer-tutorials-tools-news"},{"hideFromHomepageWidgets":false,"hideFromNav":false,"code":"open-source","color":"purple","name":"Open Source","topic":75,"id":7001,"shortTitle":"open-source-news-tutorials-tools","url":"/open-source-news-tutorials-tools"},{"hideFromHomepageWidgets":false,"hideFromNav":false,"code":"performance","color":"red","name":"Performance","topic":653,"id":10,"shortTitle":"apm-tools-performance-monitoring-optimization","url":"/apm-tools-performance-monitoring-optimization"},{"hideFromHomepageWidgets":false,"hideFromNav":false,"code":"security","color":"green","name":"Security","topic":85,"id":2001,"shortTitle":"application-web-network-security","url":"/application-web-network-security"},{"hideFromHomepageWidgets":false,"hideFromNav":false,"code":"webdev","color":"orange","name":"Web Dev","topic":35,"id":11,"shortTitle":"web-development-programming-tutorials-tools-news","url":"/web-development-programming-tutorials-tools-news"},{"hideFromHomepageWidgets":true,"hideFromNav":true,"code":"developer-marketing","color":"green","name":"Developer Marketing","topic":1382104,"id":1001,"shortTitle":"developer-marketing","url":"/developer-marketing"},{"hideFromHomepageWidgets":true,"hideFromNav":true,"code":"inspiration-station ","color":"purple","name":"Writers'","topic":16873,"id":3001,"shortTitle":"writers-zone","url":"/writers-zone"},{"hideFromHomepageWidgets":true,"hideFromNav":true,"code":"dev-career","color":"green","name":"Developer Career","topic":1382104,"id":5001,"shortTitle":"dev-career","url":"/dev-career"}]];
+        TH_CORE_VARS.additional.loadedStyles = [["/lib/bootstrap/bootstrap.less","/lib/fontello/css/fontello.css","/lib/fontello/css/animation.css","/lib/angular-ui/select.css","/lib/ngDialog/css/ngDialog.css","/less/ngDialog-theme.less","/less/container.less","/lib/bootstrap-switch/bootstrap-switch.css","/less/dzone20.less","/less/fonts.less","/less/directives.less","/lib/sb/sb.css","/lib/bootstrap-slider/bootstrap-slider.css","/less/layout.less","/widgets/announcementBar/widget.less","/widgets/article/content/article-content.less","/widgets/components/slider/widget.less","/widgets/content/commentsSlider/widget.less","/widgets/header/headerV2/widget.less","/widgets/sidebar/content/list/list.less","/widgets/sidebar/tapBar/sidebar-list.less","/widgets/sidebar/tapBar/widget.less"]];
+        TH_CORE_VARS.additional.model = [{"metaData":{"title":"Tokenizing Second- and Top-Level Domains for a URL in Lucene and Solr - DZone Big Data","description":"In my previous post, I described how to&nbsp;extract second- and top-level domains from a URL in Java.Now, I'll build a Lucene Tokenizer out of it, and a Solr...","keywords":"programming, software development, devops, java, agile, web, iot, database, mobile, big data, cloud,article","siteName":"dzone.com","url":"https://dzone.com","img":"https://dzone.com/themes/dz20/images/ArticleImg_6.jpg","imgprop":"og:image","twitterImage":"https://dzone.com/themes/dz20/images/ArticleImg_6.jpg","type":"article","wordCount":395,"canonical":"https://dzone.com/articles/tokenizing-second-and-top","noIndex":false,"noFollow":false,"prevPage":null,"nextPage":null,"pubDate":"2012-11-22 00:48:55.0","id":485719,"author":"Kelvin Tan","section":"Big Data","useEscapedFragment":false,"robots":false,"robotsTag":""},"lastAuthor":{"id":863625,"username":"ktan","realname":"Kelvin Tan","type":"user","plug":"ktan","gold":0,"silver":0,"bronze":0,"reputation":0,"moderator":false,"superuser":false,"emailHash":"0c582b1a3ec13f0de7169dbc1f8ba145459c9669aa53e68be629ac03a22b5238","avatar":"https://dzone.com/users/863625/photo/view.html","tagline":""},"articleType":"article/","enableThreadedComments":true,"portal":{"id":3,"code":"big-data","title":"Big Data","shortTitle":"big-data-analytics-tutorials-tools-news","blurb":"Big Data Analytics news and training resources from DZone, the trusted source for learning advanced software design, web development and devops best practices."},"contentType":"article","content":{"id":"485719","type":"article","plug":"tokenizing-second-and-top","creationDate":"2012-11-22 00:48:55.0"}}];
+        TH_CORE_VARS.additional.requiresModule = ["dndLists","generalDirectives","monospaced.elastic","angularFileUpload","ui.bootstrap-slider","angulartics","angulartics.google.analytics","ngCookies","ngSanitize","ui.select","ui.bootstrap","angularMoment","ngTouch","ngDialog","LocalStorageModule"];
+        TH_CORE_VARS.additional.TH_CSRF = "-6676328957519791849";
+            } catch (e) {
+        console.error(e);
+    }
+</script>
+
+<script type='text/javascript'>
+    var googletag = googletag || {};
+    googletag.cmd = googletag.cmd || [];
+    (function () {
+        var gads = document.createElement('script');
+        gads.async = true;
+        gads.type = 'text/javascript';
+        var useSSL = 'https:' == document.location.protocol;
+        gads.src = (useSSL ? 'https:' : 'http:') +
+                '//www.googletagservices.com/tag/js/gpt.js';
+        var node = document.getElementsByTagName('script')[0];
+        node.parentNode.insertBefore(gads, node);
+    })();
+</script>
+<script type="text/javascript" src="//dz2cdn2.dzone.com/storage/pub/10886546-combined.js" charset="utf-8"></script><script type="text/javascript" src="//dz2cdn2.dzone.com/storage/pub/10886559-combined.js" charset="utf-8"></script><script>
+    (function (i, s, o, g, r, a, m) {
+        i['GoogleAnalyticsObject'] = r;
+        i[r] = i[r] || function () {
+                    (i[r].q = i[r].q || []).push(arguments)
+                }, i[r].l = 1 * new Date();
+        a = s.createElement(o),
+                m = s.getElementsByTagName(o)[0];
+        a.async = 1;
+        a.src = g;
+        m.parentNode.insertBefore(a, m)
+    })(window, document, 'script', '//www.google-analytics.com/analytics.js', 'ga');
+
+    ga('create', 'UA-410289-1', 'auto');
+    ga('require', 'linkid', 'linkid.js');
+    ga('require', 'GTM-TSD9TZP');
+    ga('set', 'siteSpeedSampleRate', 25);
+    //ga('send', 'pageview');
+</script>
+
+<!-- Begin Inspectlet Embed Code -->
+<script type="text/javascript" id="inspectletjs">
+    window.__insp = window.__insp || [];
+    __insp.push(['wid', 1999343779]);
+    (function () {
+        function __ldinsp() {
+            var insp = document.createElement('script');
+            insp.type = 'text/javascript';
+            insp.async = true;
+            insp.id = "inspsync";
+            insp.src = ('https:' == document.location.protocol ? 'https' : 'http') + '://cdn.inspectlet.com/inspectlet.js';
+            var x = document.getElementsByTagName('script')[0];
+            x.parentNode.insertBefore(insp, x);
+        }
+
+        if (window.attachEvent) window.attachEvent('onload', __ldinsp);
+        else window.addEventListener('load', __ldinsp, false);
+    })();
+</script>
+<!-- End Inspectlet Embed Code -->
+
+
+
+<script src="https://cdn.optimizely.com/js/664902255.js"></script>
+
+<!-- Google Tag Manager -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+        new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+        j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+        'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-K25QL22');</script>
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-K25QL22"
+                  height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Google Tag Manager -->
+
+<!-- START Parse.ly Include: DOM-Free -->
+<script>
+    if(document.domain=='dzone.com'){
+        (function(d) {
+            var site = document.domain, // replace with the domain of your site (e.g. parsely.com)
+                    b = d.body,
+                    e = d.createElement("div");
+            e.innerHTML = '<span id="parsely-cfg" data-parsely-site="'+site+'"></span>';
+            e.id = "parsely-root";
+            e.style.display = "none";
+            b.appendChild(e);
+        })(document);
+        (function(s, p, d) {
+            var h=d.location.protocol, i=p+"-"+s,
+                    e=d.getElementById(i), r=d.getElementById(p+"-root"),
+                    u=h==="https:"?"d1z2jf7jlzjs58.cloudfront.net"
+                            :"static."+p+".com";
+            if (e) return;
+            e = d.createElement(s); e.id = i; e.async = true;
+            e.src = h+"//"+u+"/p.js"; r.appendChild(e);
+        })("script", "parsely", document);
+    }
+</script>
+<!-- END Parse.ly Include: DOM-Free -->
+<script type="text/javascript">
+    (function() {
+            function controller($scope, TH$Dialog, $location, $rootScope, $timeout, TH$SharedVars, $service, TH$LocalStorage) {
+    {
+        $scope.location = $location.path();
+    }
+
+    $scope.searchT ='';
+
+    TH$SharedVars.bind($scope, 'searchT', 'searchTerm', true)
+
+    $scope.loginForm = function (where) {
+        switch (where) {
+            case 0:
+                login()
+                break;
+            case 1:
+                signIn()
+                break;
+            default:
+                login()
+        }
+    };
+
+    var login = function(){
+        TH$Dialog.open({
+            loadWidget: 'users.loginForm',
+            size: 'membershipForm'
+        });
+    };
+    var signIn = function(){
+        TH$Dialog.open({
+            loadWidget: 'users.signInForm',
+            size: 'membershipForm'
+        });
+    };
+
+
+    $timeout(function() {
+        $(".portals").flexMenu();
+    }, 0);
+
+
+    $scope.isActivePortal = function (portalId) {
+        return $rootScope.model.portal && $rootScope.model.portal.id == portalId;
+    };
+
+    $scope.allResults = function() {
+        window.location='/search';
+    }
+
+    $("#search").keyup(function (e) {
+        var length = ($scope.searchT) ? $scope.searchT.length : 0;
+        $scope.searchT = ($scope.searchT) ? $scope.searchT : '';
+
+        if(e.keyCode == 13 && length > 2) {
+            $scope.allResults();
+        }else {
+            $scope.search();
+        }
+    });
+
+    $scope.focusSearch = function(){
+        $timeout(function(){$("#search").focus();},100)
+    }
+
+    $scope.search = function(){
+        var length = ($scope.searchT) ? $scope.searchT.length : 0;
+        $scope.loading = (length > 2);
+        if(length < 3){
+            if($scope.nodes || $scope.nodes == [] ){
+                $timeout(function(){
+                    $scope.nodes = [];
+                    $scope.cType = [];
+                    $scope.related = [];
+                    $scope.pager = [];
+                    $scope.searchParam = [];
+                    $scope.totalResults = null;
+
+                },100)
+            }
+            return false;
+        }
+
+        var term = $scope.searchT;
+        if ($scope.prevTerm == term) {return;}
+        $scope.prevTerm = term;
+
+
+        TH$LocalStorage.value('searchValue', term);
+        term = (term) ? term : '';
+        $service.nextPage({term: term, pageSize: 7}, null, true).then(function (data) {
+            $scope.loading = false;
+            var curPage = 1;
+            $scope.nodes = data.pages.newest[curPage];
+            $scope.haveResults = ($scope.nodes) ? true : false;
+            $scope.totalResults = data.totalItems;
+        })
+    }
+}
+            var WMODEL_DATA = {};
+            WMODEL_DATA.applyFades = true;
+        WMODEL_DATA.slot = null;
+        WMODEL_DATA.isAdmin = false;
+        WMODEL_DATA.getPortals = null;
+        WMODEL_DATA.OPTIONS = {};
+        WMODEL_DATA.user = {"karma":20,"country":null,"website":null,"city":null,"about":null,"avatar":"https://secure.gravatar.com/avatar/?d=identicon&r=PG","realName":"$$ANON_USER$$","websiteUrl":"","jobRole":null,"tagline":null,"company":null,"id":2500002,"job":null};
+        TH.installWidgetController('header.headerV2', 'mainHeader', WMODEL_DATA, typeof controller == 'function' ? controller : null, [{name: 'nextPage', data: true}], ' oUhbWOfRPSwBoUhM', null);
+        })();
+        (function() {
+            function controller($scope, TH$Service, $window, $rootScope) {
+    var body = $(".body"),
+        announcement = $(".announcementBar"),
+        marginRight = body.css("marginRight"),
+        marginLeft  = body.css("marginLeft");
+    $scope.track = function(id){
+        var data = {
+            siteNotification : id
+        };
+        TH$Service.exec('dzoneUsers.trackAnnouncementBar', data).then(function(){
+        });
+        $window.location.href = $scope.announcement.link;
+    };
+
+    $(window).resize(function() {
+        marginRight = body.css("marginRight")
+        marginLeft  = body.css("marginLeft")
+        $scope.setBarWidth()
+    });
+
+    if(!(announcement.next().is( ".layout-card"))) {
+
+        announcement.css("margin-bottom", "10px");
+    }
+
+    $scope.toShow = ($scope.announcement && $scope.announcement.anononly) ?  !($rootScope.user.authenticated) : true;
+    
+    $scope.setBarWidth = function(){
+        var container = $("#acontainer");
+        container.css("margin-right", "-"+marginRight)
+        container.css("margin-left", "-"+marginLeft)
+    }
+}
+
+TH.directive('backImg', function(){
+    return function(scope, element, attrs){
+        if(attrs.hasimage == "true"){
+            var img = new Image();
+            img.onload = a(attrs.img, element, scope);
+            img.onerror = a(attrs.imgbackup, element, scope);
+            img.src = attrs.img;
+        }
+        scope.setBarWidth();
+    };
+});
+
+var a = function(url, element){
+    element.css({
+        'background-image': 'url(' + url +')',
+        'background-size' : 'cover'
+    });
+};
+            var WMODEL_DATA = {};
+            WMODEL_DATA.OPTIONS = {};
+        WMODEL_DATA.announcement = null;
+        TH.installWidgetController('announcementBar', 'announcementBar1', WMODEL_DATA, typeof controller == 'function' ? controller : null, null, ' oUhbYlrRaqMaoUhM', null);
+        })();
+        (function() {
+            function controller($scope, $sce, $analytics, $service, SideBarService, TH$Dialog,$rootScope, TH$Location, $q, $window,
+                    /**infoBarService,*/ DZtopicsString, shareThis, $location, TH$Service, DZHeadService, $timeout, ArticleAdsService) {
+
+    var current = ($scope.articles && $scope.articles.length) ? $scope.articles[0] : null;
+    var loading = null;
+    var lastLoaded = current;
+    var cache = {};
+
+
+    $scope.width = $(window).width();
+
+    $scope.voted = null;
+
+    $scope.canDelete = function(article) {
+        return article.canDelete;
+    };
+
+    $scope.canEdit = function(article) {
+        return article.canEdit;
+    };
+
+    $scope.canPublish = function (article) {
+        return article.canPublish;
+    };
+
+    $scope.loginForm = function () {
+
+        TH$Dialog.open({
+            loadWidget: 'users.loginForm',
+            size      : 'membershipForm'
+        });
+    };
+
+    $scope.delete= function(article) {
+        TH$Dialog.confirm("Are you sure you want to permanently delete this article?").then(function() {
+            TH$Service.action('delete', {type: 'node', id: article.id}).then(function() {
+                TH$Dialog.success('Article deleted');
+                newArticle(article.type);
+            });
+        });
+    };
+
+    $scope.publish = function(article) {
+        TH$Dialog.confirm("Are you sure you want to publish this article?").then(function () {
+            TH$Service.action('nodes.publish', {type: 'node', id: article.id}, {}, true)
+                .then(function () {
+                    TH$Dialog.success('Article Published', 'Your article was successfully published');
+                    article.published = true;
+                }, function () {
+                    TH$Dialog.error('Article not Published', 'There was an error publishing teh article');
+                });
+        });
+    };
+
+    $scope.shareTwitter = function($event, title, url){
+        $event.preventDefault();
+        $event.stopPropagation();
+        var twitter = 'https://twitter.com/intent/tweet';
+        var link = $location.protocol() + '://' + location.host + url;
+        var ref = location.host;
+        var params = '?text='+title+'&url='+link+'&ref=dzone.com&via=DZone';
+        var win = window.open(twitter+params, '_blank');
+        win.focus();
+    };
+
+    function newArticle(type) {
+        current.article = {
+            body: '',
+            title: '',
+            image: null,
+            topics: [],
+            sources: [],
+            notes: '',
+            published: false,
+            canDelete: false
+        };
+
+        current.bodyImages = [];
+        setEditUrl(null, type);
+    };
+
+    function setEditUrl(id, type) {
+        TH$Location.apply(function ($location) {
+
+            var url;
+
+            if (id) {
+                if (type == 'article') {
+                    url = '/content/' + id + '/edit.html';
+                } else {
+                    url = '/dzone/staff/' + type + (type == 'refcard' ? 'z' : 's') + '/' + id + '/edit.html';
+                }
+            } else {
+                if (type == 'article') {
+                    url = '/content/article/post.html';
+                } else if (type == 'refcard'){
+                    url = '/dzone/staff/' + type + 'z' + '/add.html';
+                }else{
+                    url = '/content/article/post.html'
+                }
+            }
+            $timeout(function(){
+                $location.path(url);
+            },1000);
+        });
+    };
+
+    function setCurrentInSidebar(article) {
+        var title = (article.header) ? article.header.title : article.title;
+        var titleEll = (article.header) ? article.header.titleEll : article.title;
+        SideBarService.active = article.title ? article : {
+            id: article.id,
+            type: 'article',
+            title:  $scope.edition ? titleEll : title,
+            url: article.url,
+            imageUrl: article.articleImage
+        }
+    }
+
+    if (current) {
+        loadPartner(current);
+        loadRichSnippetData(current);
+        setCurrentInSidebar(current);
+        setMeta(current);
+        current.fullHtml = $sce.trustAsHtml(current.articleContent);
+    }
+
+    function setMeta(current){
+        var portal = (current.portal) ? current.portal.name : '';
+        var keywords = (current.articleTags) ? current.articleTags.toString() : portal;
+        var title = current.header ? current.header.title : current.title;
+
+        if(!title){
+            return;
+        }
+        DZHeadService.title = title+' - DZone '+portal;
+        DZHeadService.description = current.metaDescription;
+        DZHeadService.keywords = keywords;
+        DZHeadService.url = $location.absUrl();
+        DZHeadService.canonical = $location.protocol() + '://' + $location.host() + current.url;
+        var imageLink = current.header ? current.header.imageLink : current.imageLink;
+        //var imgUrl = $location.host() + imageLink;
+        DZHeadService.img = imageLink;
+        DZHeadService.type = current.articleType;
+        DZHeadService.wordCount = current.wordCount;
+    }
+
+    function getArticle(id) {
+
+        if (cache[id]) {
+            return $q.when(cache[id]);
+        } else {
+            var promise =  $service({article: id});
+
+            promise.then(function(article) {
+                article.fullHtml = $sce.trustAsHtml(article.articleContent);
+            });
+
+            return promise;
+        }
+    }
+
+    function loadArticleInList(id) {
+        loading = id;
+
+        if (cache[id]) {
+            $scope.articles.push(cache[id]);
+            lastLoaded = cache[id];
+            loading = null;
+        } else {
+            $scope.articles.push({type: 'loader'});
+
+            getArticle(id)
+                .then(function(article) {
+                    $scope.articles.pop();
+                    $scope.articles.push(article);
+                    lastLoaded = article;
+                    loading = null;
+                    cache[article.id] = article;
+
+                    loadPartner(article);
+                    loadRichSnippetData(current);
+                });
+        }
+    }
+
+    //$scope.imageUrlBase = $location.protocol() + "://" + $location.host();
+
+    function loadRichSnippetData(article) {
+
+        var rs = {
+            bodyProp: 'articleBody',
+            date: moment(article.articleDate).format()
+        };
+
+        switch (article.articleType) {
+
+            case 'news':
+                rs.type = 'https://schema.org/NewsArticle';
+                break;
+            case 'snippet':
+                rs.type = 'https://schema.org/Code';
+                rs.bodyProp = '';
+                break;
+            case 'review':
+                rs.type = 'https://schema.org/Review';
+                rs.bodyProp = 'reviewBody';
+                break;
+            case 'tutorial':
+            case 'analysis':
+                rs.type = 'https://schema.org/TechArticle';
+                break;
+            case 'opinion':
+                rs.type = 'https://schema.org/BlogPosting';
+                break;
+            default:
+                rs.type = 'https://schema.org/Article';
+                break;
+        }
+
+        article.rs = rs;
+    }
+
+    var articleNumber = 1;
+
+    function attachPartner(article, partners) {
+
+        article.showLogo = true;
+
+        if (!_.isNumber(partners.lastUsed)) {
+            //partners.lastUsed = 0;
+            toUse = partners.lastUsed
+        }else{
+            toUse = partners.lastUsed + 1;
+        }
+
+        if (toUse >= partners.length || !toUse) {
+            toUse = 0;
+        }
+
+        if(partners){
+            article.showLogo = (partners.length < 2 && articleNumber % 2) ? false : article.showLogo;
+        }else{
+            article.showLogo = false;
+        }
+
+        if(!articleNumber || article.partner){
+            return;
+        }
+
+        article.readyForAd = true;
+        article.partner = partners[toUse];
+        $scope.partners.lastUsed = toUse;
+        articleNumber++;
+    }
+
+
+    function loadPartner(article) {
+
+        var partners = $scope.partners;
+
+        if (!article.portalId) {
+            if ($scope.portal) {
+                article.portal = _.findWhere($scope.portals, {id: $scope.portal.id});
+            } else {
+                //_.each(article.articleTagIds, function (id) {
+                //    var portal = _.findWhere($scope.portals, {topic: id});
+                //
+                //    if (portal) {
+                //        article.portal = portal;
+                //    }
+                //});
+            }
+        } else {
+            article.portal = _.findWhere($scope.portals, {id: article.portalId});
+        }
+        if (article.portal) {
+            if (partners[article.portal.id]) {
+                var _partners = partners[article.portal.id];
+                _partners.lastUsed = $scope.partners.lastUsed;
+                attachPartner(article, _partners);
+            } else {
+                $service.partners({portal: article.portal.id}).then(function(_partners) {
+                    partners[article.portal.id] = _partners;
+                    attachPartner(article, _partners);
+                });
+            }
+        }
+
+        if (article.readyForAd || article.partner) {
+            article.readyForAd = true;
+            return;
+        }
+
+    }
+
+    $scope.loadMore = function() {
+
+        if (loading) {
+            return;
+        }
+
+        var next = SideBarService.findNext(lastLoaded ? lastLoaded.id : null);
+
+        if (next) {
+            loadArticleInList(next);
+        }
+
+
+    };
+
+    $scope.activate = function(article) {
+
+        if(article.type == 'loader'){
+            return;
+        }
+
+        $rootScope.model.portal = article.portal;
+        $scope.addShareCount(article);
+
+        //infoBarService.setnComments(article.nComments);
+        //infoBarService.setArticle(article);
+
+        if (current && article.id == current.id) {
+            return;
+        }
+
+        current = article;
+        setCurrentInSidebar(article);
+
+        TH$Location.apply(function($location) {
+            $location.path(article.url);
+        });
+
+        var title = article.header ? article.header.title : article.title;
+
+        //infoBarService.setTitle(title);
+        //infoBarService.setArticle(article);
+        setMeta(article);
+        $timeout(function(){
+            if (!article.viewTracked) {
+                TH$Service.action('nodes.trackView', {type: 'node', id: article.id}, {}, true);
+                article.views++;
+                article.viewTracked = true;
+                if (window.ga) {
+                    window.ga('set', 'dimension2', article.articleType ? ('article/' + article.articleType) : 'article');
+                    window.ga('set', 'dimension3', moment(article.articleDate).format('YYYY-MM-DD'));
+                    window.ga('set', 'dimension4', _.indexOf($scope.articles, article));
+                    window.ga('set', 'dimension5', article.zonetop || 'undefined');
+                    window.ga('set', 'dimension6', article.pubPlug || 'undefined');
+                    var lastAuthor = article.authors[article.authors.length - 1].name;
+                    var lastAuthorCompany = article.authors[article.authors.length - 1].company;
+                    window.ga('set', 'dimension8', lastAuthor || 'undefined');
+                    window.ga('set', 'dimension9', article.partner ? article.partner.details.name : 'undefined');
+                    window.ga('set', 'dimension10', lastAuthorCompany || 'undefined');
+                    window.ga('set', 'dimension11', article.authors[0].claimed || 'undefined');
+                }
+                $analytics.pageTrack(article.url);
+            }
+        },0);
+    };
+
+    $scope.toggleComments = function(article) {
+        if(!article.isLocked) {
+            TH$Service.action('articles.lockNode', {type: 'node', id: article.id}).then(function(result) {
+                if(result){
+                    article.isLocked = true;
+                    TH$Dialog.success('You have disabled all comments for this Article');
+                }else{
+                    TH$Dialog.error('error','Your requested was denied')
+                }
+            });
+        }else {
+            TH$Service.action('articles.unlockNode', {type: 'node', id: article.id}).then(function(result) {
+                if(result){
+                    article.isLocked = false;
+                    TH$Dialog.success('You have enabled all comments for this Article');
+                }else{
+                    TH$Dialog.error('error','Your requested was denied')
+                }
+            });
+        }
+    };
+
+    $scope.toggleLimitComments = function (article) {
+        if (!article.isLimited) {
+            TH$Service.action('articles.limitNode', {type: 'node', id: article.id}).then(function (result) {
+                if (result) {
+                    article.isLimited = true;
+                    TH$Dialog.success('You have limited comments for this Article. Now all comments will go through moderation.');
+                } else {
+                    TH$Dialog.error('error', 'Your requested was denied')
+                }
+            });
+        } else {
+            TH$Service.action('articles.unlimitNode', {type: 'node', id: article.id}).then(function (result) {
+                if (result) {
+                    article.isLimited = false;
+                    TH$Dialog.success('You removed the limits for comments on this Article');
+                } else {
+                    TH$Dialog.error('error', 'Your requested was denied')
+                }
+            });
+        }
+    };
+
+    $scope.activateT = function(article) {
+        $scope.activate(article);
+    };
+
+    $scope.activateB = function(article) {
+        $scope.activate(article);
+    };
+
+    SideBarService.fn.onSelected = function(node) {
+        $scope.articles = [];
+
+        loadArticleInList(node.id);
+
+        $scope.activate(node);
+        $($window).scrollTop(0);
+    };
+
+    $scope.upvoteArticle = function () {
+
+// disabled till we decide how the vote system will work
+
+//        if (!$scope.voted) {
+//            $scope.articles[0].upvote_count += 1;
+//            $scope.voted = 1;
+//        }else {
+//            $scope.articles[0].upvote_count -= 1;
+//            $scope.voted = null;
+//        }
+    };
+
+    $scope.addShareCount = function(article){
+//        var socials = ['linkedin', 'reddit', 'twitter'];
+//        var url = $location.protocol()+'://'+$location.host()+':'+$location.port()+article.url;
+//
+//        socials.map( function(item) {
+//
+//            if(article[item] == undefined){
+//
+//                article[item] = shareThis.countThis(item,url, 'content').then(function(result){
+//                    article[item] = result;
+//                })
+//            }
+//        })
+
+
+    };
+
+    $scope.share = function(socialNet, url, title){
+        shareThis.shareThis(socialNet, $location.protocol()+'://'+$location.host()+':'+$location.port()+url, title);
+    };
+
+    Object.size = function(obj) {
+        var size = 0, key;
+        for (key in obj) {
+            if (obj.hasOwnProperty(key)) size++;
+        }
+        return size;
+    };
+
+
+    $scope.share = function(socialNet, url, title){
+        shareThis.shareThis(socialNet, $location.protocol()+'://'+$location.host()+':'+$location.port()+url, title);
+    };
+
+    $scope.mailShareLink = function(article) {
+        var title = article.header ? article.header.title : article.title;
+        var link = article.header ? article.header.link : article.link;
+        return 'mailto:?subject=' + encodeURIComponent(title) +  '&body=Article: ' + encodeURIComponent('https://dzone.com/' + link);
+    };
+
+    $scope.ads = ArticleAdsService($scope.edition, $scope.width);
+
+};
+
+
+            var WMODEL_DATA = {};
+            WMODEL_DATA.authenticated = false;
+        WMODEL_DATA.firstArticleContent = null;
+        WMODEL_DATA.daysOldBody = "Technology moves quickly and this #type was published #time.  Some or all of its contents may be outdated.";
+        WMODEL_DATA.isPreview = false;
+        WMODEL_DATA.partners = {"lastUsed":2,"3":[{"top":{"id":307525,"text":"<p><strong>The&nbsp;<a href=\"http://hpccsystems.com/?utm_campaign=platinum&amp;utm_medium=pre_text_ad&amp;utm_source=dzone&amp;utm_content=advert&amp;source=sponsorship\" rel=\"nofollow\" target=\"_blank\">open source HPCC Systems</a>&nbsp;platform is a proven, easy to use solution for managing data at scale.&nbsp;<a href=\"https://hpccsystems.com/Why-HPCC-Systems?utm_campaign=platinum&amp;utm_medium=pre_text_ad&amp;utm_source=dzone&amp;utm_content=advert&amp;source=sponsorship\" rel=\"nofollow\" target=\"_blank\">Visit our Easy Guide</a>&nbsp;to learn more about this completely free platform, test drive some code in the online Playground, and get started today.</strong></p>"},"bottom":{"id":307527,"text":"<p><strong>Managing data at scale doesn?t have to be hard. Find out how the completely free,&nbsp;<a href=\"http://hpccsystems.com/?utm_campaign=platinum&amp;utm_medium=post_text_ad&amp;utm_source=dzone&amp;utm_content=advert&amp;source=sponsorship\" rel=\"nofollow\" target=\"_blank\">open source HPCC Systems</a>&nbsp;platform makes it easier to update, easier to program, easier to integrate data, and easier to manage clusters.&nbsp;<a href=\"https://hpccsystems.com/download?utm_campaign=platinum&amp;utm_medium=post_text_ad&amp;utm_source=dzone&amp;utm_content=advert&amp;source=sponsorship\" rel=\"nofollow\" target=\"_blank\">Download and get started</a>&nbsp;today.</strong></p>"},"campaign":199934,"details":{"code":"LexisNexis","level":2,"partnerUrl":"http://hpccsystems.com/?utm_campaign=platinum&utm_medium=banner&utm_source=dzone&utm_content=advert&source=sponsorship","name":"HPCC Systems","logo":"//dz2cdn4.dzone.com/storage/partner-logo/10493255-hpcc-logo.png","leveldesc":"Platinum","id":142713}},{"top":{"id":308528,"text":"<p>How to Simplify Apache Kafka. <a href=\"https://go.streamsets.com/dzone-ebook-tame-and-simplify-apache-kafka.html\" target=\"_blank\" rel=\"nofollow\">Get eBook.</a></p>"},"bottom":{"id":308529,"text":"<p>12 Best Practices for Modern Data Ingestion. <a href=\"https://go.streamsets.com/dzone-wp-12-best-practices-modern-data-ingestion.html\" target=\"_blank\" rel=\"nofollow\">Download White Paper.</a></p>"},"campaign":208911,"details":{"code":"streamsets","level":2,"partnerUrl":"https://streamsets.com/?utm_source=dzone&utm_medium=big-data-zone&utm_campaign=logo","name":"StreamSets","logo":"//dz2cdn4.dzone.com/storage/partner-logo/10363015-streamsets-small-logo-1.jpg","leveldesc":"Platinum","id":151711}},{"top":{"id":310530,"text":"<p><strong><a href=\"https://hortonworks.com/products/sandbox/?utm_campaign=dzonepre/postroll&amp;utm_medium=display&amp;apos;&amp;utm_source=dzone&amp;utm_id=2216633\" rel=\"nofollow\" target=\"_blank\" style=\"-webkit-text-stroke-width: 0px; background: rgb(255, 255, 255); box-sizing: border-box; color: rgb(41, 168, 255); font-size: 15px; font-style: normal; font-variant-caps: normal; font-variant-ligatures: normal; letter-spacing: normal; orphans: 2; text-align: left; text-decoration: none; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px;\">Hortonworks Sandbox</a>&nbsp;for HDP and HDF is your chance to get started on learning, developing, testing and trying out new features. Each&nbsp;<a href=\"https://hortonworks.com/products/sandbox/?utm_campaign=dzonepre/postroll&amp;utm_medium=display&amp;apos;&amp;utm_source=dzone&amp;utm_id=2216633\" rel=\"nofollow\" target=\"_blank\" style=\"-webkit-text-stroke-width: 0px; background: rgb(255, 255, 255); box-sizing: border-box; color: rgb(41, 168, 255); font-size: 15px; font-style: normal; font-variant-caps: normal; font-variant-ligatures: normal; letter-spacing: normal; orphans: 2; text-align: left; text-decoration: none; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px;\">download</a>&nbsp;comes preconfigured with interactive tutorials, sample data and developments from the Apache community.</strong></p>"},"bottom":{"id":310531,"text":"<p><strong><a href=\"https://community.hortonworks.com/index.html?utm_campaign=dzonepre/postrollv2&amp;utm_medium=3rd-party-resource&amp;utm_source=dzone&amp;utm_id=2307295\" rel=\"nofollow\" target=\"_blank\" style=\"-webkit-text-stroke-width: 0px; background: rgb(255, 255, 255); box-sizing: border-box; color: rgb(41, 168, 255); font-size: 15px; font-style: normal; font-variant-caps: normal; font-variant-ligatures: normal; letter-spacing: normal; orphans: 2; text-align: left; text-decoration: none; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px;\">Hortonworks Community Connection (HCC)</a>&nbsp;is an online collaboration destination for developers, DevOps, customers and partners to get answers to questions, collaborate on technical articles and share code examples from GitHub. &nbsp;<a href=\"https://community.hortonworks.com/index.html?utm_campaign=dzonepre/postrollv2&amp;utm_medium=3rd-party-resource&amp;utm_source=dzone&amp;utm_id=2307295\" rel=\"nofollow\" target=\"_blank\" style=\"-webkit-text-stroke-width: 0px; background: rgb(255, 255, 255); box-sizing: border-box; color: rgb(41, 168, 255); font-size: 15px; font-style: normal; font-variant-caps: normal; font-variant-ligatures: normal; letter-spacing: normal; orphans: 2; text-align: left; text-decoration: none; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px;\">Join the discussion.</a></strong></p>"},"campaign":209915,"details":{"code":"hortonworks","level":2,"partnerUrl":"https://www.hortonworks.com?utm_campaign=dzonelogo&utm_medium=display&utm_source=dzone&utm_id=2217877","name":"Hortonworks","logo":"//dz2cdn3.dzone.com/storage/partner-logo/10290198-hortonworks-logo.jpg","leveldesc":"Platinum","id":39412}}]};
+        WMODEL_DATA.edition = null;
+        WMODEL_DATA.perms = {"canDecidePick":false,"canPublish":false};
+        WMODEL_DATA.OPTIONS = {};
+        WMODEL_DATA.daysOldTitle = "Heads up...this #type is old!";
+        WMODEL_DATA.articles = [{"pubPlug":null,"modDate":1353545335000,"articleImage":"/themes/dz20/images/ArticleImg_6.jpg","rawType":"article","canEdit":false,"viewTracked":true,"source":"http://www.supermind.org/blog/1081/tokenizing-second-level-and-top-level-domain-for-a-url-in-lucene-and-solr","accessMode":["textual"],"metaDescription":"In my previous post, I described how to&nbsp;extract second- and top-level domains from a URL in Java.Now, I'll build a Lucene Tokenizer out of it, and a Solr...","articleType":"none","draft":false,"portalId":3,"isLocked":false,"relatedRefcard":[{"img":10109444,"id":520274,"title":"Data Warehousing","url":"/refcardz/data-warehousing"}],"readyForAd":true,"canPublish":false,"articleContent":"","articleTypePre":"https://schema.org/Article","canDelete":false,"likeStatus":{"score":0,"canLike":false,"liked":false},"id":485719,"nComments":0,"views":5009,"bodyProp":"articleBody","originalSource":"http://www.supermind.org/blog/1081/tokenizing-second-level-and-top-level-domain-for-a-url-in-lucene-and-solr","isOld":false,"isLimited":false,"image":"/themes/dz20/images/ArticleImg_6.jpg","wordCount":436,"articleTags":[],"canonical":"https://dzone.com/articles/tokenizing-second-and-top","published":true,"url":"/articles/tokenizing-second-and-top","tldr":null,"saveStatus":{"saved":false,"count":0,"canSave":false},"deleted":false,"pdf":null,"partner":{"top":{"id":310530,"text":"<p><strong><a href=\"https://hortonworks.com/products/sandbox/?utm_campaign=dzonepre/postroll&amp;utm_medium=display&amp;apos;&amp;utm_source=dzone&amp;utm_id=2216633\" rel=\"nofollow\" target=\"_blank\" style=\"-webkit-text-stroke-width: 0px; background: rgb(255, 255, 255); box-sizing: border-box; color: rgb(41, 168, 255); font-size: 15px; font-style: normal; font-variant-caps: normal; font-variant-ligatures: normal; letter-spacing: normal; orphans: 2; text-align: left; text-decoration: none; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px;\">Hortonworks Sandbox</a>&nbsp;for HDP and HDF is your chance to get started on learning, developing, testing and trying out new features. Each&nbsp;<a href=\"https://hortonworks.com/products/sandbox/?utm_campaign=dzonepre/postroll&amp;utm_medium=display&amp;apos;&amp;utm_source=dzone&amp;utm_id=2216633\" rel=\"nofollow\" target=\"_blank\" style=\"-webkit-text-stroke-width: 0px; background: rgb(255, 255, 255); box-sizing: border-box; color: rgb(41, 168, 255); font-size: 15px; font-style: normal; font-variant-caps: normal; font-variant-ligatures: normal; letter-spacing: normal; orphans: 2; text-align: left; text-decoration: none; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px;\">download</a>&nbsp;comes preconfigured with interactive tutorials, sample data and developments from the Apache community.</strong></p>"},"bottom":{"id":310531,"text":"<p><strong><a href=\"https://community.hortonworks.com/index.html?utm_campaign=dzonepre/postrollv2&amp;utm_medium=3rd-party-resource&amp;utm_source=dzone&amp;utm_id=2307295\" rel=\"nofollow\" target=\"_blank\" style=\"-webkit-text-stroke-width: 0px; background: rgb(255, 255, 255); box-sizing: border-box; color: rgb(41, 168, 255); font-size: 15px; font-style: normal; font-variant-caps: normal; font-variant-ligatures: normal; letter-spacing: normal; orphans: 2; text-align: left; text-decoration: none; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px;\">Hortonworks Community Connection (HCC)</a>&nbsp;is an online collaboration destination for developers, DevOps, customers and partners to get answers to questions, collaborate on technical articles and share code examples from GitHub. &nbsp;<a href=\"https://community.hortonworks.com/index.html?utm_campaign=dzonepre/postrollv2&amp;utm_medium=3rd-party-resource&amp;utm_source=dzone&amp;utm_id=2307295\" rel=\"nofollow\" target=\"_blank\" style=\"-webkit-text-stroke-width: 0px; background: rgb(255, 255, 255); box-sizing: border-box; color: rgb(41, 168, 255); font-size: 15px; font-style: normal; font-variant-caps: normal; font-variant-ligatures: normal; letter-spacing: normal; orphans: 2; text-align: left; text-decoration: none; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px;\">Join the discussion.</a></strong></p>"},"campaign":209915,"details":{"code":"hortonworks","level":2,"partnerUrl":"https://www.hortonworks.com?utm_campaign=dzonelogo&utm_medium=display&utm_source=dzone&utm_id=2217877","name":"Hortonworks","logo":"//dz2cdn3.dzone.com/storage/partner-logo/10290198-hortonworks-logo.jpg","leveldesc":"Platinum","id":39412}},"relatedArticles":[{"img":10874770,"id":2631483,"title":"Risk-Based Testing [Podcast]","url":"/articles/risk-based-testing"},{"img":10874655,"id":2629894,"title":"Agile in Private Equity","url":"/articles/agile-private-equity"},{"img":10876290,"id":2629750,"title":"Plan for Drupal 9","url":"/articles/plan-for-drupal-9"},{"img":10876285,"id":2625641,"title":"Migrating Spring Boot Applications to the Latest Java Version (Java 11)","url":"/articles/migrating-springboot-applications-to-latest-java-v"}],"zonetop":"","publisher":{"name":"DZone","logo":"https://dzone.com/themes/dz20/images/logo.png"},"header":{"imageLink":"/themes/dz20/images/ArticleImg_6.jpg","titleEll":"Tokenizing Second- and Top-Level Domains for a URL...","imageUrl":"/themes/dz20/images/ArticleImg_7.jpg","link":"/articles/tokenizing-second-and-top","id":485719,"title":"Tokenizing Second- and Top-Level Domains for a URL in Lucene and Solr","type":"article"},"articleDate":1353545335000,"shortDesc":"<p><p>In my previous post, I described how to&nbsp;<a href=\"http://www.supermind.org/blog/1078/extracting-second-level-domains-and-top-level-domains-tld-from-a-url-in-java\" style=\"color: rgb(74, 113, 228); \">extract second- and top-level domains from a URL in Java</a>.</p><p>Now, I'll build a Lucene Tokenizer out of it, and a Solr TokenizerFactory class.</p><p>DomainTokenizer doesn't do anything really fancy. It first returns the hostname as the first token, then the 2nd-level domain as the second token, and the top-level domain as the last token.</p><p>e.g. given the URL&nbsp;<a href=\"http://www.supermind.org/\" style=\"color: rgb(74, 113, 228); \">http://www.supermind.org</a>, it'll return</p><p><a href=\"http://www.supermind.org\">www.supermind.org</a><br>.supermind.org<br>.org</p><p>Doing so allows you to quickly return all documents in the Lucene or Solr index matching the second-level domain or the TLD.</p><p><pre class=\"brush:java\">package org.supermind.solr.analysis;\r\nimport org.apache.lucene.analysis.Tokenizer;\r\nimport org.apache.lucene.analysis.tokenattributes.CharTermAttribute;\r\n\r\nimport java.io.IOException;\r\nimport java.io.Reader;\r\nimport java.net.URL;\r\n\r\npublic class...","authors":[{"realName":"Kelvin Tan","isMVB":false,"isStaff":false,"aboutAuthor":"My passion is building crawlers and search engines.  In particular, I specialize in building vertical search engines like Indeed.com, Homethinking.com, Bright.com and Enormo.com (all companies I've worked with).  I've also worked on products such as Atlassian Jira and Confluence to improve their search capabilities.","claimed":null,"name":"ktan","tagline":null,"company":"Independent","id":863625,"avatar":"https://secure.gravatar.com/avatar/5de8aee78fb84dea44d2e984d9c40893?d=identicon&r=PG","isClaimed":false,"url":"/users/863625/ktan.html"}]}];
+        TH.installWidgetController('article.content', 'articleContent5', WMODEL_DATA, typeof controller == 'function' ? controller : null, [{name: 'partners', data: true},{name: 'DEFAULT', data: true}], ' oUhbblYOaqbcblYOaqbcC', null);
+        })();
+        (function() {
+            function controller($scope, $service, $location, SideBarService, $timeout) {
+
+    if ($scope.edition) {
+        $scope.date = moment($scope.editionDate).utc().format('MMM DD, YYYY');
+    }
+
+    SideBarService.ctx.pageSize = $scope.pageSize;
+    SideBarService.ctx.isPreview = $scope.isPreview;
+    SideBarService.ctx.mode = $scope.mode;
+
+    SideBarService.fn.loader = $service;
+
+    var $window = $(window);
+
+    function checkWidth() {
+        var windowsize = $window.width();
+        $scope.width = windowsize;
+    }
+    // Execute on load
+    checkWidth()
+    // Bind event listener
+    $(window).resize(checkWidth);
+
+
+    if ($scope.edition) {
+        SideBarService.ctx.edition = $scope.edition;
+    }
+
+    SideBarService.fn.scrollCheck = function() {
+        $scope.$emit('thIfScrollCheck');
+    };
+
+    var currentFilter;
+
+    $scope.$on('$locationChangeSuccess', function() {
+
+        if (!$location.search().filter) {
+            $scope.filter = 'latest';
+        } else {
+            $scope.filter = $location.search().filter;
+
+            if ($scope.filter == 'latest') {
+                $location.search('filter', null);
+            }
+        }
+
+        if (currentFilter == $scope.filter) {
+            return;
+        }
+
+        currentFilter = $scope.filter;
+
+        SideBarService.ctx.filter = $scope.filter;
+    });
+
+    $scope.display = SideBarService.getList();
+
+    $scope.$watchCollection(function() {
+        return SideBarService.getList();
+    }, function (n) {
+        $scope.display = n;
+    });
+
+    $scope.isActive = SideBarService.isActive;
+
+    $scope.isExcluded = SideBarService.isExcluded;
+
+    $scope.loadMore = SideBarService.load;
+
+    $scope.loading = function() {
+        return SideBarService.ctx.loading;
+    };
+
+    TH.on('TapBarStatusChange', function(expanded) {
+        if (expanded) {
+            SideBarService.unblock();
+        }
+    })
+
+}
+            var WMODEL_DATA = {};
+            WMODEL_DATA.mode = null;
+        WMODEL_DATA.isPreview = false;
+        WMODEL_DATA.editionName = "";
+        WMODEL_DATA.editionDate = null;
+        WMODEL_DATA.pageSize = 20;
+        WMODEL_DATA.edition = null;
+        WMODEL_DATA.OPTIONS = {};
+        TH.installWidgetController('sidebar.content.list', 'sidebarContentList8', WMODEL_DATA, typeof controller == 'function' ? controller : null, [{name: 'DEFAULT', data: true}], ' oUhbkSMaaqbcdvVkcC', null);
+        })();
+        (function() {
+            function controller($scope) {
+    var $window = $(window);
+
+    function checkWidth() {
+        var windowsize = $window.width();
+        var $element = $('div.sidebar.sidebarTapBar');
+        $scope.width = windowsize;
+        if(windowsize <= 1024 && $scope.edition){
+            $('.fixContentRight').removeClass('fixContentRight');
+            // $element.removeClass('expanded');
+            // $element.addClass('tapNotExpanded');
+            $('.tap').show();
+        }else if($scope.edition){
+            $('.tap').hide();
+            $('.mainContentRow').addClass('fixContentRight');
+            $element.removeClass('tapNotExpanded');
+            $element.addClass('expanded');
+        }
+    }
+    // Execute on load
+    checkWidth();
+    // Bind event listener
+    $(window).resize(checkWidth);
+}
+            var WMODEL_DATA = {};
+            WMODEL_DATA.edition = null;
+        WMODEL_DATA.slot = null;
+        WMODEL_DATA.OPTIONS = {};
+        TH.installWidgetController('sidebar.tapBar', 'sidebar', WMODEL_DATA, typeof controller == 'function' ? controller : null, null, ' oUhbkSMadabfWVcC oUhbkSMadabbWQbVkcC', null);
+        })();
+        (function() {
+            function controller($scope,  shareThis, TH$Dialog, TH$Service, $location) {
+    $scope.getEditUrl = function(id, type) {
+        if (!type || type == 'article') {
+            return '/content/' + id + '/edit.html';
+        } else {
+            return '/dzone/staff/' + type + (type == 'refcard' ? 'z' : 's') + '/' + id + '/edit.html';
+        }
+    };
+
+    $scope.share = function(socialNet, url, title){
+        shareThis.shareThis(socialNet, url, title);
+    };
+
+//    $scope.mailShareLink = function(article) {
+//        return 'mailto:?subject=' + encodeURIComponent(article.header.title) +  '&body=Article: ' + encodeURIComponent('https://dzone.com/' + article.header.link);
+//    };
+
+    $scope.canDelete = function(article) {
+        return article.canDelete;
+    };
+
+    $scope.canPublish = function(article) {
+        return article.canPublish;
+    };
+
+    $scope.canEdit = function(article) {
+        return article.canEdit;
+    };
+
+    $scope.toggleComments = function(article) {
+        if(!article.isLocked) {
+            TH$Service.action('articles.lockNode', {type: 'node', id: article.id}).then(function(result) {
+                if(result){
+                    article.isLocked = true;
+                    TH$Dialog.success('You have disabled all comments for this Article');
+                }else{
+                    TH$Dialog.error('error','Your requested was denied')
+                }
+            });
+        }else {
+            TH$Service.action('articles.unlockNode', {type: 'node', id: article.id}).then(function(result) {
+                if(result){
+                    article.isLocked = false;
+                    TH$Dialog.success('You have enabled all comments for this Article');
+                }else{
+                    TH$Dialog.error('error','Your requested was denied')
+                }
+            });
+        }
+    };
+
+    $scope.toggleLimitComments = function (article) {
+        if (!article.isLimited) {
+            TH$Service.action('articles.limitNode', {type: 'node', id: article.id}).then(function (result) {
+                if (result) {
+                    article.isLimited = true;
+                    TH$Dialog.success('You have limited comments for this Article. Now all comments will go through moderation.');
+                } else {
+                    TH$Dialog.error('error', 'Your requested was denied')
+                }
+            });
+        } else {
+            TH$Service.action('articles.unlimitNode', {type: 'node', id: article.id}).then(function (result) {
+                if (result) {
+                    article.isLimited = false;
+                    TH$Dialog.success('You removed the limits for comments on this Article');
+                } else {
+                    TH$Dialog.error('error', 'Your requested was denied')
+                }
+            });
+        }
+    };
+
+    $scope.shareTwitter = function($event, title, url){
+
+        $event.preventDefault();
+        $event.stopPropagation();
+        var twitter = 'https://twitter.com/intent/tweet';
+        var link = $location.protocol() + '://' + location.host + url;
+        var ref = location.host;
+        var params = '?text='+title+'&url='+link+'&ref=dzone.com&via=DZone';
+        var win = window.open(twitter+params, '_blank');
+        win.focus();
+    };
+
+    $scope.edit = function(link) {
+        TH$Dialog.open({
+            loadWidget: 'links.postPreview',
+            widgetArgs: {
+                edit: link.id
+            },
+            size: 'xbig'
+        }).then(function (result) {
+            $scope.link.title = result.title;
+            $scope.link.linkDescription = result.content;
+            $scope.link.thumb = result.thumb;
+            $scope.link.tags = result.topics;
+        });
+    };
+
+    $scope.deleteLink = function(article) {
+        var title = article.title;
+        var type = 'link';
+        if(article.header){
+            title = (article.header.type == 'article') ? article.header.title : article.title;
+            type = (article.header.type == 'article') ? 'article' : 'link';
+        }
+        TH$Dialog.confirm('Do you want to delete "' + title + '"?').then(function() {
+            return TH$Service.action('delete', {type: type, id: article.id});
+        }).then(function() {
+            article.deleted = true;
+        });
+    };
+}
+
+
+            var WMODEL_DATA = {};
+            WMODEL_DATA.OPTIONS = {};
+        TH.installWidgetController('content.commentsSlider', 'contentCommentsSlider7', WMODEL_DATA, typeof controller == 'function' ? controller : null, null, ' oUhbaqbcaibvnWffWVcC', null);
+        })();
+        (function() {
+            
+            var WMODEL_DATA = {};
+            WMODEL_DATA.name = "commentsSlider";
+        WMODEL_DATA.slot = null;
+        WMODEL_DATA.OPTIONS = {"name":"commentsSlider"};
+        TH.installWidgetController('components.slider', 'componentsSlider6', WMODEL_DATA, typeof controller == 'function' ? controller : null, null, ' oUhballbvbdSaoUhM', null);
+        })();
+        </script>
+    <script type="text/javascript">
+
+        TH.installWidgetDirective('users.profile.mini', 'usersProfileMini', {"service":{"user":"="},"extra":null}, 'widget.html', '/widgets/users/profile/mini/widget.js', [{name: 'DEFAULT', data: true}], ' oUhbwfbqddOeffWVcC', null, ['widget.less']);
+        
+        TH.installWidgetDirective('header.sections', 'headerSections', {"service":null,"extra":null}, 'widget.html', '/widgets/header/sections/widget.js', null, ' oUhbWOfbRllbgfgpM', null, ['sections.less']);
+        
+        TH.installWidgetDirective('links.sources.mini', 'linksSourcesMini', {"service":{"link":"="},"extra":null}, 'widget.html', '', [{name: 'DEFAULT', data: true}], ' oUhbdhbqvRbefWfSC', null, ['mini.less']);
+        
+        TH.installWidgetDirective('emailSubscriptions.subscriptions.nonMemberJoin', 'emailSubscriptionsSubscriptionsNonMemberJoin', {"service":null,"extra":null}, 'widget.html', '', null, ' oUhbaTnfejsgpbfejsgpXlaYfhffWVcC', null, ['widget.less']);
+        
+        TH.installWidgetDirective('assets.mini', 'assetsMini', {"service":{"asset":"="},"extra":null}, 'widget.html', '', [{name: 'DEFAULT', data: true}], ' oUhbcgvWfSoUhM', null, ['widget.less']);
+        
+        TH.installWidgetDirective('links.postPreview', 'linksPostPreview', {"service":{"url":"=","edit":"="},"extra":null}, 'widget.html', '/widgets/links/postPreview/widget.js', [{name: 'topics', data: true},{name: 'DEFAULT', data: true}], ' oUhbdhbnvqjXfoUhM', null, ['widget.less']);
+        
+        TH.installWidgetDirective('emailSubscriptions.subscriptions.unsubscribeHeader', 'emailSubscriptionsSubscriptionsUnsubscribeHeader', {"service":null,"extra":null}, 'widget.html', '', null, ' oUhbaTnfejsgpbfejsgpdpfejQWOffWVcC', null, ['widget.less']);
+        
+        TH.installWidgetDirective('manage.revisions', 'manageRevisions', {"service":{"node":"=","body":"=","masterTemplate":"=","format":"=","mode":"="},"extra":null}, 'widget.html', '/widgets/manage/revisions/widget.js', [{name: 'DEFAULT', data: true},{name: 'revision', data: true}], ' oUhbXYVajkgpfWVcC', null, ['widget.less']);
+        
+        TH.installWidgetDirective('emailSubscriptions.subscriptions.memberManageHeader', 'emailSubscriptionsSubscriptionsMemberManageHeader', {"service":null,"extra":null}, 'widget.html', '', null, ' oUhbaTnfejsgpbfejsgpWaQnYRWPSaoUhM', null, ['widget.less']);
+        
+        TH.installWidgetDirective('emailSubscriptions.footerWidget', 'emailSubscriptionsFooterWidget', {"service":null,"extra":null}, 'widget.html', '/widgets/emailSubscriptions/footerWidget/widget.js', null, ' oUhbaTnfejsgpPmhxWVcoUhM', null, ['widget.less']);
+        
+        TH.installWidgetDirective('leads.addCRM', 'leadsAddCRM', {"service":null,"extra":null}, 'widget.html', '/widgets/leads/addCRM/widget.js', [{name: 'DEFAULT', data: true}], ' oUhb_ObOQnKRMnM oUhbcgvKRcgcONfPC', ['/scripts/utilities/tools.js'], ['add-crm.less','add-ref.less']);
+        
+        TH.installWidgetDirective('links.postV2', 'linksPostV2', {"service":null,"extra":null}, 'widget.html', '/widgets/links/postV2/widget.js', null, ' oUhbdhbnvXZqyBC', null, ['postV2.less']);
+        
+        TH.installWidgetDirective('users.signInForm', 'usersSignInForm', {"service":null,"extra":null}, 'widget.html', '/widgets/users/signInForm/widget.js', null, ' oUhbwfbkdfdnbZfcpWC', null, ['signInForm.less']);
+        
+        TH.installWidgetDirective('emailSubscriptions.subscribeInjection', 'emailSubscriptionsSubscribeInjection', {"service":null,"extra":null}, 'widget.html', '/widgets/emailSubscriptions/subscribeInjection/widget.js', null, ' oUhbaTnfejsgpbfejQfYfgXoUhM', null, ['widget.less']);
+        
+        TH.installWidgetDirective('refcardz.mini', 'refcardzMini', {"service":{"asset":"="},"extra":null}, 'widget.html', '', [{name: 'DEFAULT', data: true}], ' oUhbfSbmWfSoUhM', null, ['widget.less']);
+        
+        TH.installWidgetDirective('links.listV2', 'linksListV2', {"service":null,"extra":null}, 'widget.ftl', '/widgets/links/listV2/widget.js', [{name: 'linkData', data: true},{name: 'parseLink', data: true},{name: 'list', data: true}], ' oUhbdhbdvXVkyBC', ['directives.js','filters.js'], ['listV2.less']);
+        
+        TH.installWidgetDirective('users.uiPrefs', 'usersUiPrefs', {"service":null,"extra":null}, 'widget.html', '/widgets/users/uiPrefs/widget.js', null, '', null, null);
+        
+        TH.installWidgetDirective('users.loginForm', 'usersLoginForm', {"service":null,"extra":null}, 'widget.html', '/widgets/users/loginForm/widget.js', null, ' oUhbwfbjZcpWjZcpWC', null, ['loginForm.less']);
+        
+        TH.installWidgetDirective('users.noMembership', 'usersNoMembership', {"service":null,"extra":null}, 'widget.html', '/widgets/users/noMembership/widget.js', null, ' oUhbwfblaYfjhfWVcC', null, ['widget.less']);
+        
+        TH.installWidgetDirective('manage.customNotifications.preview', 'manageCustomNotificationsPreview', {"service":null,"extra":null}, 'widget.html', '/widgets/manage/customNotifications/preview/widget.js', null, ' oUhbXYVMwrjrYVdgpZfnkZfnkM dLgZWBLPpWkKeXB', null, ['preview.less','/lib/froala-2/css/froala_style.min.css']);
+        
+        TH.installWidgetDirective('users.loginFormV2', 'usersLoginFormV2', {"service":null,"extra":null}, 'widget.html', '/widgets/users/loginFormV2/widget.js', null, ' oUhbwfbjZcprBjZcprBC', null, ['loginFormV2.less']);
+        
+        TH.installWidgetDirective('emailSubscriptions.subscriptions.nonMemberManageHeader', 'emailSubscriptionsSubscriptionsNonMemberManageHeader', {"service":null,"extra":null}, 'widget.html', '', null, ' oUhbaTnfejsgpbfejsgpXlaYfXYVWOffWVcC', null, ['widget.less']);
+        
+        TH.installWidgetDirective('header.zonesDropdown', 'headerZonesDropdown', {"service":{"portal":"="},"extra":{"hover":"="}}, 'widget.html', '/widgets/header/zonesDropdown/widget.js', [{name: 'DEFAULT', data: true}], '', null, null);
+        
+        TH.installWidgetDirective('manage.customNotifications.test', 'manageCustomNotificationsTest', {"service":{"customNotification":"="},"extra":null}, 'widget.html', '/widgets/manage/customNotifications/test/widget.js', [{name: 'searchGroups', data: true},{name: 'DEFAULT', data: true},{name: 'searchUsers', data: true}], ' oUhbXYVMwrjrYVdgpcgcoUhM', null, ['widget.less']);
+        
+        TH.installWidgetDirective('content.commentBox', 'contentCommentBox', {"service":{"parent":"="},"extra":{"count":"=","limited":"="}}, 'widget.html', '/widgets/content/commentBox/widget.js', [{name: 'post', data: false},{name: 'edit', data: false},{name: 'DEFAULT', data: true}], ' oUhbaqbcaibevMkaqbC', null, ['comments.less']);
+        
+        TH.installWidgetDirective('article.listV2', 'articleListV2', {"service":null,"extra":null}, 'widget.html', '/widgets/article/listV2/widget.js', [{name: 'list', data: true},{name: 'sortCount', data: true}], ' oUhbblYOdvXKuV_VkcC', ['directives.js'], ['article-list.less']);
+            </script>
+
+</body>
+
+

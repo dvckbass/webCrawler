@@ -1,0 +1,1171 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<html xmlns:ng="http://angularjs.org" id="ng-app" lang="en" ng-app="TH">
+  <head ng-controller="DZHeadController">
+<!--
+
+##::::: ##: ########::::::: ###:::: ########:: ########:::: ##:::: ##: ####: ########:: ####: ##::: ##:: ######::
+##: ##: ##: ##.....::::::: ## ##::: ##.... ##: ##.....::::: ##:::: ##:. ##:: ##.... ##:. ##:: ###:: ##: ##... ##:
+##: ##: ##: ##::::::::::: ##:. ##:: ##:::: ##: ##:::::::::: ##:::: ##:: ##:: ##:::: ##:: ##:: ####: ##: ##:::..::
+##: ##: ##: ######:::::: ##:::. ##: ########:: ######:::::: #########:: ##:: ########::: ##:: ## ## ##: ##:: ####
+##: ##: ##: ##...::::::: #########: ##.. ##::: ##...::::::: ##.... ##:: ##:: ##.. ##:::: ##:: ##. ####: ##::: ##:
+##: ##: ##: ##:::::::::: ##.... ##: ##::. ##:: ##:::::::::: ##:::: ##:: ##:: ##::. ##::: ##:: ##:. ###: ##::: ##:
+ ###. ###:: ########:::: ##:::: ##: ##:::. ##: ########:::: ##:::: ##: ####: ##:::. ##: ####: ##::. ##:. ######::
+
+Skills wanted: Java, AngularJS, Spring, Hibernate, UX and Responsive Design
+http://dzone.applytojob.com/apply
+
+-->    <meta charset="utf-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no"/>
+    <meta name="description" ng-attr-content="{{ service.description }}" content="In my previous post, I described how to&amp;nbsp;extract second- and top-level domains from a URL in Java.Now, I'll build a Lucene Tokenizer out of it, and a Solr..."/>
+    <meta name="keywords" ng-attr-content="{{ service.keywords }}" content="programming, software development, devops, java, agile, web, iot, database, mobile, big data, cloud,article"/>
+    <meta property="og:description" ng-attr-content="{{ service.description }}" content="In my previous post, I described how to&amp;nbsp;extract second- and top-level domains from a URL in Java.Now, I'll build a Lucene Tokenizer out of it, and a Solr..."/>
+    <meta ng-attr-content="{{ service.noIndex ? 'noindex' : '' }}" ng-attr-name="{{ service.noIndex ? 'robots' : '' }}" name="" content=""/>
+    <meta property="og:site_name" ng-attr-content="{{ service.siteName }}" content="dzone.com"/>
+    <meta property="og:title" ng-attr-content="{{ service.title }}" content="Tokenizing Second- and Top-Level Domains for a URL in Lucene and Solr - DZone Big Data"/>
+    <meta property="og:url" ng-attr-content="{{ service.canonical }}" content="https://dzone.com/articles/tokenizing-second-and-top"/>
+    <meta ng-if="service.img" ng-attr-content="{{ service.img }}" property="og:image" content="https://dzone.com/themes/dz20/images/ArticleImg_8.jpg"/>
+    <meta ng-if="service.type" ng-attr-content="{{ service.type }}" property="og:type" content="article"/>
+    <meta name="twitter:site" content="@dzone"/>
+    <meta ng-if="service.twitterImage" ng-attr-content="{{ service.twitterImage }}" name="twitter:image" content="https://dzone.com/themes/dz20/images/ArticleImg_8.jpg"/>
+    <meta name="twitter:card" content="summary_large_image"/>
+    <meta name="twitter:description" ng-attr-content="{{ service.description }}" content="In my previous post, I described how to&amp;nbsp;extract second- and top-level domains from a URL in Java.Now, I'll build a Lucene Tokenizer out of it, and a Solr..."/>
+    <meta name="twitter:title" ng-attr-content="{{ service.title }}" content="Tokenizing Second- and Top-Level Domains for a URL in Lucene and Solr - DZone Big Data"/>
+    <meta ng-if="service.wordCount" property="article:wordcount" ng-attr-content="{{service.wordCount}}" content="395"/>
+    <meta name="referrer" content="origin"/>
+    <meta name="parsely-title" content="Tokenizing Second- and Top-Level Domains for a URL in Lucene and Solr - DZone Big Data"/>
+    <meta name="parsely-link" content="https://dzone.com/articles/tokenizing-second-and-top"/>
+    <meta name="parsely-type" content="article"/>
+    <meta name="parsely-image-url" content="https://dzone.com/themes/dz20/images/ArticleImg_8.jpg"/>
+    <meta name="parsely-pub-date" content="2012-11-22 00:48:55.0"/>
+    <meta name="parsely-section" content="Big Data"/>
+    <meta name="parsely-author" content="Kelvin Tan"/>
+    <meta name="parsely-tags" content="programming, software development, devops, java, agile, web, iot, database, mobile, big data, cloud,article"/>
+    <meta name="?parsely-post-id?" content="485719"/>
+    <link rel="dns-prefetch" href="httpsdzone.comarticlestokenizing-second-and-top/www.googletagservices.com.css"/>
+    <link rel="dns-prefetch" href="httpsdzone.comarticlestokenizing-second-and-top/pixel-geo.prfct.co.css"/>
+    <link rel="dns-prefetch" href="httpsdzone.comarticlestokenizing-second-and-top/secure.adnxs.com.css"/>
+    <link rel="dns-prefetch" href="httpsdzone.comarticlestokenizing-second-and-top/hn.inspectlet.com.css"/>
+    <link rel="dns-prefetch" href="httpsdzone.comarticlestokenizing-second-and-top/inspectletws.herokuapp.com.css"/>
+    <link rel="dns-prefetch" href="httpsdzone.comarticlestokenizing-second-and-top/tag.perfectaudience.com.css"/>
+    <link rel="dns-prefetch" href="httpsdzone.comarticlestokenizing-second-and-top/www.google-analytics.com.css"/>
+    <link rel="image_src" href="httpsdzone.comarticlestokenizing-second-and-top/ArticleImg_8.jpg.css" ng-href="{{ service.img }}"/>
+<!--formatted-->    <link rel="canonical" href="httpsdzone.comarticlestokenizing-second-and-top/tokenizing-second-and-top.css" ng-href="{{service.canonical}}"/>
+    <link rel="prev" href="" ng-if="service.prevPage" ng-href="{{ service.prevPage }}"/>
+    <link rel="next" href="" ng-if="service.nextPage" ng-href="{{ service.nextPage }}"/>
+    <link rel="icon" href="httpsdzone.comarticlestokenizing-second-and-top/favicon.png.css" type="image/x-icon"/>
+    <title ng-bind="service.title">
+Tokenizing Second- and Top-Level Domains for a URL in Lucene and Solr - DZone Big Data    </title>
+    <meta name="df-verify" content="df0d76632b4543"/>
+    <link rel="stylesheet" charset="utf-8" href="httpsdzone.comarticlestokenizing-second-and-top/10886541-combined.css" type="text/css"/>
+    <link rel="stylesheet" charset="utf-8" href="httpsdzone.comarticlestokenizing-second-and-top/10886564-combined.css" type="text/css"/>
+  </head>
+  <body>
+    <div class="container-fluid header" th-element="header" th-element-groups="[]" ng-hide="$root.isHidden('header')" data-th-element-name="header">
+      <div class="row mainHeaderRow" th-element="mainHeaderRow" th-element-groups="['header']" ng-hide="$root.isHidden('mainHeaderRow')" data-th-element-name="mainHeaderRow">
+        <div class="col-md-12 mainHeader headerHeaderV2 oUhbWOfRPSwBoUhM" th-element="mainHeader" th-element-groups="['header','mainHeaderRow']" ng-hide="$root.isHidden('mainHeader')" data-th-element-name="mainHeader" data-th-widget="header.headerV2" data-widget-header-header-v2="" ng-controller="mainHeader">
+          <div class="header-top">
+            <div class="header-container">
+              <div class="pull-left">
+                <div class="logo">
+                  <a class="inner" href="/">
+                    <img alt="DZone" src="httpsdzone.comarticlestokenizing-second-and-top/DZLogo.png"/>
+                  </a>
+                </div>
+                <div class="active-portal">
+/                  <a href="/big-data-analytics-tutorials-tools-news">
+Big Data Zone                  </a>
+                </div>
+              </div>
+              <div class="pull-right">
+                <div class="dz-intro">
+Over a million developers have joined DZone.                </div>
+                <div class="mobile-invisible sign-in-join" ng-if="!$root.user.authenticated">
+                  <a href="#" ng-click="loginForm(0)">
+Log In                  </a>
+                  <span class="dz-intro-span">
+/                  </span>
+                  <a href="#" ng-click="loginForm(1)">
+Sign Up                  </a>
+                </div>
+                <div class="join-icon mobile-invisible">
+                  <i class="icon-user" ng-if="!$root.user.authenticated" ng-click="loginForm(1)">
+                  </i>
+                </div>
+                <div class="join-icon mobile-visible" ng-cloak="">
+                  <img ng-if="!$root.user.authenticated" src="httpsdzone.comarticlestokenizing-second-and-top/DZone_MobileLogin2.png" class="mobile-visible" ng-click="loginForm(0)"/>
+                </div>
+                <div class="headerSearch">
+                  <span class="icon-search dropdown-toggle" ng-click="focusSearch()" id="dropdownMenu2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                  </span>
+                  <ul class="dropdown-menu" aria-labelledby="dropdownMenu2">
+                    <li>
+                      <form class="form-wrapper">
+                        <input id="search" ng-model="searchT" type="text" placeholder="Search" required=""/>
+                        <input type="button" value="Search" class="btn btn-action" ng-click="allResults()" ng-disabled="searchT.length &lt; 3"/>
+                      </form>
+                    </li>
+                    <div class="results-area" ng-cloak="">
+                      <div class="col-md-12">
+                        <th-loader flag="loading">
+                        </th-loader>
+                      </div>
+                      <li ng-repeat="node in nodes">
+                        <div class="results-container">
+                          <img dz-image-fid="{{ node.thumb }}" dz-image-fid-width="80"/>
+                          <a class="title" target="{{ node.type=='link'? '_blank' : '_self'}}" ng-href="{{node.urlOrigin}}">
+                          </a>
+                          <p class="source">
+                            <span class="type">
+                            </span>
+                            <span class="source-bullet">
+                            </span>
+                            <span ng-if="node.type=='link'" class="link-source">
+                            </span>
+                            <span ng-if="node.type=='link'" class="source-bullet">
+                            </span>
+                            <span class="source-date" am-time-ago="node.articleDate">
+                            </span>
+                            <span ng-if="node.type != 'guide'">
+                              <a href="{{ node.authors[0].url }}" target="_blank" class="author-name" th-popup="users.profile.mini" popup-data="{user: node.authors[0].id}">
+                              </a>
+                            </span>
+                          </p>
+                          <div class="hover-buttons" ng-if="node.type=='refcard'">
+                            <a type="button" class="btn download" href="{{node.pdf}}">
+                              <i class="icon-download">
+                              </i>
+                            </a>
+                            <dz-save template="refcard-save.html" node="node" class="save-btn">
+                            </dz-save>
+                            <span class="download-count">
+                              <i class="icon-download">
+                              </i>
+                            </span>
+                          </div>
+                          <div class="clear">
+                          </div>
+                        </div>
+                      </li>
+                    </div>
+                    <div class="totalResults" ng-if="totalResults">
+                      <span>
+                      </span>
+                    </div>
+                    <li class="btn-vall" ng-if="haveResults">
+                      <input type="button" value="View All Results" ng-click="allResults()" class="btn btn-action" ng-disabled="searchT.length &lt; 3"/>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="header-bottom">
+            <ul class="portals header-container">
+              <li>
+                <a href="/refcardz" id="header-refcardz">
+                  <em>
+Refcardz                  </em>
+                </a>
+              </li>
+              <li>
+                <a href="/guides" id="header-guides">
+                  <em>
+Guides                  </em>
+                </a>
+              </li>
+              <li>
+                <a href="/portals" id="header-portals">
+                  <em>
+Zones                  </em>
+                </a>
+              </li>
+              <li>
+                <a href="https://jobs.dzone.com?ref=nav" id="header-jobs">
+                  <em>
+Jobs                  </em>
+                </a>
+              </li>
+              <li style="color: #d9dcdd">
+|              </li>
+              <li>
+                <a ng-class="{'active-state': isActivePortal(2)}" href="/agile-methodology-training-tools-news" id="header-2">
+Agile                </a>
+              </li>
+              <li>
+                <a ng-class="{'active-state': isActivePortal(4001)}" href="/artificial-intelligence-tutorials-tools-news" id="header-4001">
+AI                </a>
+              </li>
+              <li>
+                <a class="active-state" ng-class="{'active-state': isActivePortal(3)}" href="/big-data-analytics-tutorials-tools-news" id="header-3">
+Big Data                </a>
+              </li>
+              <li>
+                <a ng-class="{'active-state': isActivePortal(4)}" href="/cloud-computing-tutorials-tools-news" id="header-4">
+Cloud                </a>
+              </li>
+              <li>
+                <a ng-class="{'active-state': isActivePortal(5)}" href="/database-sql-nosql-tutorials-tools-news" id="header-5">
+Database                </a>
+              </li>
+              <li>
+                <a ng-class="{'active-state': isActivePortal(6)}" href="/devops-tutorials-tools-news" id="header-6">
+DevOps                </a>
+              </li>
+              <li>
+                <a ng-class="{'active-state': isActivePortal(7)}" href="/enterprise-integration-training-tools-news" id="header-7">
+Integration                </a>
+              </li>
+              <li>
+                <a ng-class="{'active-state': isActivePortal(8)}" href="/iot-developer-tutorials-tools-news-reviews" id="header-8">
+IoT                </a>
+              </li>
+              <li>
+                <a ng-class="{'active-state': isActivePortal(1)}" href="/java-jdk-development-tutorials-tools-news" id="header-1">
+Java                </a>
+              </li>
+              <li>
+                <a ng-class="{'active-state': isActivePortal(6001)}" href="/microservices-news-tutorials-tools" id="header-6001">
+Microservices                </a>
+              </li>
+              <li>
+                <a ng-class="{'active-state': isActivePortal(7001)}" href="/open-source-news-tutorials-tools" id="header-7001">
+Open Source                </a>
+              </li>
+              <li>
+                <a ng-class="{'active-state': isActivePortal(10)}" href="/apm-tools-performance-monitoring-optimization" id="header-10">
+Performance                </a>
+              </li>
+              <li>
+                <a ng-class="{'active-state': isActivePortal(2001)}" href="/application-web-network-security" id="header-2001">
+Security                </a>
+              </li>
+              <li>
+                <a ng-class="{'active-state': isActivePortal(11)}" href="/web-development-programming-tutorials-tools-news" id="header-11">
+Web Dev                </a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="container-fluid body withSlider" th-element="body" th-element-groups="[]" ng-hide="$root.isHidden('body')" data-th-element-name="body">
+      <div class="row mainContentRow" th-element="mainContentRow" th-element-groups="['body']" ng-hide="$root.isHidden('mainContentRow')" data-th-element-name="mainContentRow">
+        <div class="col-md-12 announcementBar1 announcementBar oUhbYlrRaqMaoUhM" th-element="announcementBar1" th-element-groups="['body','mainContentRow']" ng-hide="$root.isHidden('announcementBar1')" data-th-element-name="announcementBar1" data-th-widget="announcementBar" data-widget-announcement-bar="" ng-controller="announcementBar1">
+          <div ng-if="announcement &amp;&amp; toShow" back-img="" hasimage="{{announcement.hasImage}}" img="{{announcement.img}}" imgbackup="{{announcement.img2}}" id="acontainer" class="ann-container" ng-cloak="">
+            <div class="ann-body">
+            </div>
+            <a ng-if="announcement.link" class="ann-link" ng-click="track(announcement.id)" ng-ref="{{announcement.link}}">
+              <span class="icon-right-dir">
+              </span>
+            </a>
+          </div>
+        </div>
+        <div class="col-md-12 articleContent5 articleContent oUhbblYOaqbcblYOaqbcC" th-element="articleContent5" th-element-groups="['body','mainContentRow']" ng-hide="$root.isHidden('articleContent5')" data-th-element-name="articleContent5" data-th-widget="article.content" data-widget-article-content="" header-change-trigger="" ng-controller="articleContent5">
+          <div class="articles-wrap" ng-if="articles[0].id == 485719">
+            <div ng-if="ads.top.show() &amp;&amp; articles[0].readyForAd" class="ad-container">
+              <div dc-slot="ads.top.slot()" tags="ads.top.tags(articles[0])" size="ads.top.size()">
+              </div>
+            </div>
+            <div>
+              <th-if-scroll relative-to="top" from="0" to="50" callback="activateT(articles[0])">
+              </th-if-scroll>
+            </div>
+            <div class="article-stream widget-top-border" ng-class="{'widget-top-border': articles[0].published }" itemscope="" itemtype="https://schema.org/Article" ng-if="articles[0].id == 485719">
+              <div class="social-media-icons mobile-only" follow-dzone="">
+                <div class="top-social">
+                  <p>
+                  </p>
+                  <ul class="icons-only" ng-class="{open: isOpen}" click-outside="outside()">
+                    <li class="rss-icon" id="rss-spotlight-1">
+                      <a href="/pages/feeds">
+                        <i class="icon-rss-1">
+                        </i>
+                      </a>
+                    </li>
+                    <li class="twitter-icon">
+                      <a href="https://twitter.com/DZone" target="_blank">
+                        <i class="icon-twitter">
+                        </i>
+                      </a>
+                    </li>
+                    <li class="facebook-icon">
+                      <a href="https://www.facebook.com/DZone-259639764711" target="_blank">
+                        <i class="icon-facebook-1">
+                        </i>
+                      </a>
+                    </li>
+                    <li class="google-icon">
+                      <a href="https://plus.google.com/+dzone/posts" target="_blank">
+                        <i class="icon-gplus">
+                        </i>
+                      </a>
+                    </li>
+                    <li class="linkedin-icon">
+                      <a href="https://www.linkedin.com/company/dzone" target="_blank">
+                        <i class="icon-linkedin-1">
+                        </i>
+                      </a>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+              <div ng-if="!edition || (width > 1024 &amp;&amp; edition)" class="content-right-images" header-affix-element="div.content">
+                <div class="article-adsponsor" ng-if="(articles[0].partner &amp;&amp; articles[0].showLogo) || articles[0].partner.isSponsoringArticle" itemtype="http://schema.org/Organization">
+                  <div class="adsponsor">
+                    <a href="https://www.hortonworks.com?utm_campaign=dzonelogo&amp;utm_medium=display&amp;utm_source=dzone&amp;utm_id=2217877" itemprop="url">
+                      <img src="httpsdzone.comarticlestokenizing-second-and-top/10290198-hortonworks-logo.jpg" itemprop="logo"/>
+                    </a>
+                  </div>
+                </div>
+                <div class="sidebar-ad" ng-if="articles[0].readyForAd" dc-slot="ads.sb1.slot(articles[0], 0)" tags="ads.sb1.tags(articles[0], 0)" size="ads.sb1.size(articles[0], 0)">
+                </div>
+                <div ng-if="articles[0].readyForAd &amp;&amp; 0 > 1 &amp;&amp; !articles[0].partner.isSponsoringArticle" dc-slot="ads.sb2.slot(articles[0], 0)" tags="ads.sb2.tags(articles[0], 0)" size="ads.sb2.size(articles[0], 0)">
+                </div>
+              </div>
+              <article itemscope="" itemtype="http://schema.org/Blog">
+                <div itemprop="publisher" itemscope="" itemtype="https://schema.org/Organization">
+                  <div itemprop="logo" itemscope="" itemtype="https://schema.org/ImageObject">
+                    <meta itemprop="url" content="https://dzone.com/themes/dz20/images/logo.png"/>
+                  </div>
+                  <meta itemprop="name" content="DZone"/>
+                </div>
+                <div class="content" ng-class="{'content-full': (width &lt;= 1024 &amp;&amp; edition)}">
+                  <meta itemprop="thumbnailUrl" content="/themes/dz20/images/ArticleImg_5.jpg"/>
+                  <meta itemprop="url" content="/articles/tokenizing-second-and-top"/>
+                  <meta itemprop="dateCreated" content="2012-11-22T00:48:55Z"/>
+                  <meta itemprop="keywords" content=""/>
+                  <meta itemprop="accessMode" content="textual"/>
+                  <meta itemprop="datePublished" content="2012-11-22T00:48:55Z"/>
+                  <meta itemprop="author" content="Kelvin Tan"/>
+                  <meta itemprop="dateModified" content="2012-11-22T00:48:55Z"/>
+                  <meta itemprop="mainEntityOfPage" content="https://dzone.com/articles/tokenizing-second-and-top"/>
+                  <div itemprop="image" itemscope="" itemtype="https://schema.org/ImageObject">
+                    <meta itemprop="image" content="/themes/dz20/images/ArticleImg_6.jpg"/>
+                    <meta itemprop="url" content="/themes/dz20/images/ArticleImg_6.jpg"/>
+                    <meta itemprop="width" content="370"/>
+                    <meta itemprop="height" content="230"/>
+                  </div>
+                  <div class="header">
+                    <div class="header-title">
+                      <div class="title" ng-if="articles[0].rawType != 'guide'">
+                        <h1 class="article-title" itemprop="headline">
+Tokenizing Second- and Top-Level Domains for a URL in Lucene and Solr                        </h1>
+                      </div>
+                      <div class="guide-title" ng-if="articles[0].rawType == 'guide'" ng-cloak="">
+                        <div class="guide-intro">
+                        </div>
+                        <h1 class="article-title" itemprop="headline">
+                        </h1>
+                      </div>
+                      <div class="subhead">
+                        <h3 itemprop="alternativeHeadline">
+                        </h3>
+                      </div>
+                      <div class="publish-meta" ng-if="articles[0].rawType != 'guide' &amp;&amp; articles[0].rawType != 'whitepaper'">
+                        <div class="article-author-meta">
+                          <a href="/users/863625/ktan.html">
+                            <img width="40" src="httpsdzone.comarticlestokenizing-second-and-top/5de8aee78fb84dea44d2e984d9c408.png" class="avatar"/>
+                          </a>
+by                          <div class="author-info">
+                            <span class="author-name">
+                              <a th-popup="users.profile.mini" itemprop="author" popup-data="{user: 863625}" href="/users/863625/ktan.html">
+Kelvin Tan                              </a>
+                            </span>
+                          </div>
+�                        </div>
+                        <span class="author-date">
+Nov. 22, 12                        </span>
+�                        <a href="/big-data-analytics-tutorials-tools-news" id="portal-name">
+                          <span class="portal-name">
+Big Data Zone                          </span>
+                        </a>
+�                        <article-type type="'none'">
+                        </article-type>
+                      </div>
+                      <div class="publish-meta" ng-if="articles[0].rawType == 'whitepaper'" ng-cloak="">
+                      </div>
+                    </div>
+                  </div>
+                  <div class="obsolete-warning" ng-if="article.isOld" ng-cloak="">
+                    <old-warning-message time="article.articleDate" body="daysOldBody" type="article.rawType" title="daysOldTitle">
+                    </old-warning-message>
+                  </div>
+                  <div class="author-n-useraction">
+                    <div class="like action">
+                      <dz-like template="like-article.html" node="articles[0]">
+                        <div class="dz-like">
+                          <a href="#">
+                            <i ng-class="{'icon-thumbs-up-alt': status.liked, 'icon-thumbs-up liked': !status.liked}">
+                            </i>
+                            <span>
+Like (0)                            </span>
+                          </a>
+                        </div>
+                      </dz-like>
+                    </div>
+                    <div class="comment action">
+                      <p ng-show="!articles[0].isLocked" slider-toggle="commentsSlider" slider-data="{parent: articles[0]}" activate-with-url-params="{showComments: articles[0].id}">
+                        <span>
+                          <i class="icon-comment" tooltip-html-unsafe="{{ commentTooltip(articles[0]) }}">
+                          </i>
+                        </span>
+Comment (                        <span class="comment-after number-of-comments" itemprop="commentCount" ng-bind="articles[0].nComments">
+0                        </span>
+)                      </p>
+                      <p ng-show="articles[0].isLocked">
+                        <span ng-cloak="">
+                          <i class="icon-icon-comment comment-disabled" tooltip-html-unsafe="Comments have been disabled for this article">
+                          </i>
+                        </span>
+                      </p>
+                    </div>
+                    <div class="save action">
+                      <dz-save template="link-article-save.html" node="articles[0]" class="save">
+                        <div class="save icon-star-empty">
+                          <span class="action-label">
+Save                          </span>
+                        </div>
+                      </dz-save>
+                    </div>
+                    <div class="tweet action">
+                      <a ng-href="#" ng-click="shareTwitter($event, articles[0].header.title, articles[0].url)" class="title" target="_blank">
+                        <span>
+                          <i class="icon-twitter">
+                          </i>
+                        </span>
+                        <span class="action-label">
+Tweet                        </span>
+                      </a>
+                    </div>
+                    <div class="pull-right">
+                      <div class="article-views action" ng-cloak="">
+                        <i class="icon-eye">
+                        </i>
+                        <span class="action-label">
+                        </span>
+                      </div>
+                      <div class="user-n-admin-action action" ng-if="canEdit(articles[0]) || canDelete(articles[0])">
+                        <div class="mod-tools" dropdown="" is-open="dropdown.open" ng-cloak="">
+                          <span dropdown-toggle="">
+                            <i class="icon-cog">
+                            </i>
+                          </span>
+                          <ul class="dropdown-menu">
+                            <li>
+                              <a ng-if="canEdit(articles[0])" ng-href="/content/{{ articles[0].id }}/edit.html">
+                              </a>
+                            </li>
+                            <li>
+                              <a href="#" ng-if="canDelete(articles[0])" ng-click="delete(articles[0])">
+                              </a>
+                            </li>
+                            <li>
+                              <a href="#" ng-if="perms.canPublish" ng-click="toggleComments(articles[0])">
+                              </a>
+                            </li>
+                            <li>
+                              <a href="#" ng-if="perms.canPublish &amp;&amp; !articles[0].isLocked" ng-click="toggleLimitComments(articles[0])">
+                              </a>
+                            </li>
+                          </ul>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="signin-prompt">
+                    <p>
+Join the DZone community and get the full member experience.                    </p>
+                    <a id="article-signin-prompt" href="#" ng-click="loginForm()">
+Join For Free                    </a>
+                  </div>
+                  <div class="arrow-down">
+                  </div>
+                  <div class="article-bumper article-bumper-top" ng-if="articles[0].rawType == 'article' &amp;&amp; articles[0].showLogo &amp;&amp; articles[0].partner.top.text | partnerBumperLinks:articles[0].partner.top.id" ng-bind-html="articles[0].partner.top.text | partnerBumperLinks:articles[0].partner.top.id">
+                    <p>
+                      <strong>
+                        <a href="https://hortonworks.com/products/sandbox/?utm_campaign=dzonepre/postroll&amp;utm_medium=display&amp;apos;&amp;utm_source=dzone&amp;utm_id=2216633" rel="nofollow" target="_blank" style="-webkit-text-stroke-width: 0px; background: rgb(255, 255, 255); box-sizing: border-box; color: rgb(41, 168, 255); font-size: 15px; font-style: normal; font-variant-caps: normal; font-variant-ligatures: normal; letter-spacing: normal; orphans: 2; text-align: left; text-decoration: none; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px;">
+Hortonworks Sandbox                        </a>
+ for HDP and HDF is your chance to get started on learning, developing, testing and trying out new features. Each                         <a href="https://hortonworks.com/products/sandbox/?utm_campaign=dzonepre/postroll&amp;utm_medium=display&amp;apos;&amp;utm_source=dzone&amp;utm_id=2216633" rel="nofollow" target="_blank" style="-webkit-text-stroke-width: 0px; background: rgb(255, 255, 255); box-sizing: border-box; color: rgb(41, 168, 255); font-size: 15px; font-style: normal; font-variant-caps: normal; font-variant-ligatures: normal; letter-spacing: normal; orphans: 2; text-align: left; text-decoration: none; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px;">
+download                        </a>
+ comes preconfigured with interactive tutorials, sample data and developments from the Apache community.                      </strong>
+                    </p>
+                  </div>
+                  <div ng-if="!edition || (articles[0].rawType != 'refcard' &amp;&amp; articles[0].rawType != 'guide')">
+                    <div class="content-html" dz-code-container="" ng-non-bindable="" itemprop="text">
+                      <p>
+                      </p>
+                      <p>
+In my previous post, I described how to                         <a href="http://www.supermind.org/blog/1078/extracting-second-level-domains-and-top-level-domains-tld-from-a-url-in-java" style="color: rgb(74, 113, 228); " rel="nofollow">
+extract second- and top-level domains from a URL in Java                        </a>
+.                      </p>
+                      <p>
+Now, I'll build a Lucene Tokenizer out of it, and a Solr TokenizerFactory class.                      </p>
+                      <p>
+DomainTokenizer doesn't do anything really fancy. It first returns the hostname as the first token, then the 2nd-level domain as the second token, and the top-level domain as the last token.                      </p>
+                      <p>
+e.g. given the URL                         <a href="http://www.supermind.org/" style="color: rgb(74, 113, 228); " rel="nofollow">
+http://www.supermind.org                        </a>
+, it'll return                      </p>
+                      <p>
+                        <a href="http://www.supermind.org" rel="nofollow">
+www.supermind.org                        </a>
+                        <br/>
+.supermind.org                        <br/>
+.org                      </p>
+                      <p>
+Doing so allows you to quickly return all documents in the Lucene or Solr index matching the second-level domain or the TLD.                      </p>
+                      <p>
+                      </p>
+                      <pre class="brush:java">
+package org.supermind.solr.analysis; import org.apache.lucene.analysis.Tokenizer; import org.apache.lucene.analysis.tokenattributes.CharTermAttribute; import java.io.IOException; import java.io.Reader; import java.net.URL; public class DomainTokenizer extends Tokenizer { private final CharTermAttribute termAtt = addAttribute(CharTermAttribute.class); public static final int STATE_UNINITIALIZED = -1; public static final int STATE_INITIALIZED = 0; public static final int STATE_2LD = 1; public static final int STATE_TLD = 2; public static final int STATE_DONE = 3; private int state = STATE_UNINITIALIZED; private URL url = null; private SecondLDExtractor extractor; private boolean index2LD; private boolean indexTLD; public DomainTokenizer(Reader input, SecondLDExtractor extractor, boolean index2LD, boolean indexTLD) { super(input); this.extractor = extractor; this.index2LD = index2LD; this.indexTLD = indexTLD; } @Override public boolean incrementToken() throws IOException { if (state == STATE_DONE) return false; clearAttributes(); if (this.url == null) { state = STATE_INITIALIZED; StringBuilder sb = new StringBuilder(); int upto = 0; char[] buffer = new char[512]; while (true) { final int length = input.read(buffer, upto, buffer.length - upto); if (length == -1) break; upto += length; sb.append(buffer); } this.url = new URL(sb.toString()); if (!index2LD && !indexTLD) state = STATE_DONE; termAtt.append(url.getHost()); return true; } else if (index2LD && state < STATE_2LD) { state = STATE_2LD; String twold = extractor.extract2LD(url.getHost()); termAtt.append("."+twold); return true; } else if (indexTLD && state < STATE_TLD) { state = STATE_TLD; String tld = extractor.extractTLD(url.getHost()); termAtt.append(tld); return true; } state = STATE_DONE; return false; } }                      </pre>
+                      <p>
+                      </p>
+                      <p>
+and here's the corresponding Solr TokenizerFactory.                        <br/>
+                      </p>
+                      <p>
+                      </p>
+                      <pre class="brush:java">
+package org.supermind.solr.analysis; import org.apache.lucene.analysis.Tokenizer; import org.apache.solr.analysis.BaseTokenizerFactory; import java.io.Reader; import java.util.Map; public class DomainTokenizerFactory extends BaseTokenizerFactory { private SecondLDExtractor extractor; private boolean index2LD; private boolean indexTLD; @Override public void init(Map<String, String> args) { super.init(args); assureMatchVersion(); index2LD = getBoolean("index2LD", true); indexTLD = getBoolean("indexTLD", true); if (index2LD || indexTLD) { initTLDExtractor(); } } private void initTLDExtractor() { extractor = new SecondLDExtractor(); extractor.init(); } public Tokenizer create(Reader input) { DomainTokenizer tokenizer = new DomainTokenizer(input, extractor, index2LD, indexTLD); return tokenizer; } }                      </pre>
+                      <p>
+                      </p>
+                      <p>
+Here's a sample fieldType definition.                        <br/>
+                      </p>
+                      <p>
+                      </p>
+                      <pre class="brush:xml">
+<fieldType name="domain" class="solr.TextField" positionIncrementGap="100"> <analyzer> <tokenizer class="org.supermind.solr.analysis.DomainTokenizerFactory"/> </analyzer> </fieldType>                      </pre>
+                      <p>
+                      </p>
+                      <p>
+                      </p>
+                    </div>
+                  </div>
+                  <div ng-if="(articles[0].rawType == 'refcard' || articles[0].rawType == 'guide') &amp;&amp; edition" ng-cloak="">
+                    <div class="content-html" dz-code-container="" itemprop="text" ng-cloak="">
+                      <a ng-href="{{articles[0].pdf}}">
+                        <img width="420" dz-image-fid="{{ articles[0].articleImage }}" itemprop="image" dz-image-fid-width="740" class="pub-image"/>
+                      </a>
+                      <div class="pub-content content-html" ng-bind-html="article.shortDesc">
+                      </div>
+                    </div>
+                  </div>
+                  <div class="article-bumper article-bumper-bottom" ng-if="articles[0].showLogo &amp;&amp; articles[0].rawType == 'article' &amp;&amp; articles[0].partner.bottom.text | partnerBumperLinks:articles[0].partner.bottom.id" ng-bind-html="articles[0].partner.bottom.text | partnerBumperLinks:articles[0].partner.bottom.id">
+                    <p>
+                      <strong>
+                        <a href="https://community.hortonworks.com/index.html?utm_campaign=dzonepre/postrollv2&amp;utm_medium=3rd-party-resource&amp;utm_source=dzone&amp;utm_id=2307295" rel="nofollow" target="_blank" style="-webkit-text-stroke-width: 0px; background: rgb(255, 255, 255); box-sizing: border-box; color: rgb(41, 168, 255); font-size: 15px; font-style: normal; font-variant-caps: normal; font-variant-ligatures: normal; letter-spacing: normal; orphans: 2; text-align: left; text-decoration: none; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px;">
+Hortonworks Community Connection (HCC)                        </a>
+ is an online collaboration destination for developers, DevOps, customers and partners to get answers to questions, collaborate on technical articles and share code examples from GitHub.                          <a href="https://community.hortonworks.com/index.html?utm_campaign=dzonepre/postrollv2&amp;utm_medium=3rd-party-resource&amp;utm_source=dzone&amp;utm_id=2307295" rel="nofollow" target="_blank" style="-webkit-text-stroke-width: 0px; background: rgb(255, 255, 255); box-sizing: border-box; color: rgb(41, 168, 255); font-size: 15px; font-style: normal; font-variant-caps: normal; font-variant-ligatures: normal; letter-spacing: normal; orphans: 2; text-align: left; text-decoration: none; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px;">
+Join the discussion.                        </a>
+                      </strong>
+                    </p>
+                  </div>
+                  <div class="article-bumper article-bumper-bottom" ng-if="articles[0].rawType != 'article'" ng-cloak="">
+                  </div>
+                  <div ng-if="!edition" class="related">
+                    <h3>
+Like This Article? Read More From DZone                    </h3>
+                    <div class="row">
+                      <div class="relateddiv col-xs-6 col-md-6">
+                        <a href="/articles/risk-based-testing?fromrel=true">
+                          <img width="60" class="relatedimg col-xs-3 col-md-3" src="httpsdzone.comarticlestokenizing-second-and-top/thumbnail.jpeg"/>
+                        </a>
+                        <a href="/articles/risk-based-testing?fromrel=true" class="col-xs-9 col-md-9">
+Risk-Based Testing [Podcast]                        </a>
+                      </div>
+                      <div class="relateddiv col-xs-6 col-md-6">
+                        <a href="/articles/agile-private-equity?fromrel=true">
+                          <img width="60" class="relatedimg col-xs-3 col-md-3" src="httpsdzone.comarticlestokenizing-second-and-top/thumbnail_1.jpeg"/>
+                        </a>
+                        <a href="/articles/agile-private-equity?fromrel=true" class="col-xs-9 col-md-9">
+Agile in Private Equity                        </a>
+                      </div>
+                    </div>
+                    <div class="row">
+                      <div class="relateddiv col-xs-6 col-md-6">
+                        <a href="/articles/plan-for-drupal-9?fromrel=true">
+                          <img class="relatedimg col-xs-3 col-md-3" src="httpsdzone.comarticlestokenizing-second-and-top/thumbnail_2.jpeg"/>
+                        </a>
+                        <a href="/articles/plan-for-drupal-9?fromrel=true" class="col-xs-9 col-md-9">
+Plan for Drupal 9                        </a>
+                      </div>
+                      <div class="relateddiv col-xs-6 col-md-6">
+                        <a href="/refcardz/data-warehousing?fromrel=true">
+                          <img width="60" class="relatedimg col-xs-3 col-md-3" src="httpsdzone.comarticlestokenizing-second-and-top/thumbnail_3.jpeg"/>
+                        </a>
+                        <a href="/refcardz/data-warehousing?fromrel=true" class="col-xs-9 col-md-9">
+                          <p class="relatedres">
+Free DZone Refcard                          </p>
+Data Warehousing                        </a>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="assetdiv" ng-if="articles[0].rawType != 'article' &amp;&amp; articles[0].pdf">
+                    <a class="btn-asset" ng-href="#" ng-click="loginForm()">
+DOWNLOAD                    </a>
+                  </div>
+                  <div class="article-topics">
+                    <div class="topic-label">
+Topics:                    </div>
+                    <div class="topics">
+                    </div>
+                  </div>
+                  <div class="author-n-useraction">
+                    <div class="like action">
+                      <dz-like template="like-article.html" node="articles[0]">
+                        <div class="dz-like">
+                          <a href="#">
+                            <i ng-class="{'icon-thumbs-up-alt': status.liked, 'icon-thumbs-up liked': !status.liked}">
+                            </i>
+                            <span>
+Like (0)                            </span>
+                          </a>
+                        </div>
+                      </dz-like>
+                    </div>
+                    <div class="comment action">
+                      <p ng-show="!articles[0].isLocked" slider-toggle="commentsSlider" slider-data="{parent: articles[0]}" activate-with-url-params="{showComments: articles[0].id}">
+                        <span>
+                          <i class="icon-comment" tooltip-html-unsafe="{{ commentTooltip(articles[0]) }}">
+                          </i>
+                        </span>
+Comment (                        <span class="comment-after number-of-comments" itemprop="commentCount" ng-bind="articles[0].nComments">
+0                        </span>
+)                      </p>
+                      <p ng-show="articles[0].isLocked">
+                        <span ng-cloak="">
+                          <i class="icon-icon-comment comment-disabled" tooltip-html-unsafe="Comments have been disabled for this article">
+                          </i>
+                        </span>
+                      </p>
+                    </div>
+                    <div class="save action">
+                      <dz-save template="link-article-save.html" node="articles[0]" class="save">
+                        <div class="save icon-star-empty">
+                          <span class="action-label">
+Save                          </span>
+                        </div>
+                      </dz-save>
+                    </div>
+                    <div class="tweet action">
+                      <a ng-href="#" ng-click="shareTwitter($event, articles[0].header.title, articles[0].url)" class="title" target="_blank">
+                        <span>
+                          <i class="icon-twitter">
+                          </i>
+                        </span>
+                        <span class="action-label">
+Tweet                        </span>
+                      </a>
+                    </div>
+                    <div class="pull-right">
+                      <div class="article-views action" ng-cloak="">
+                        <i class="icon-eye">
+                        </i>
+                        <span class="action-label">
+                        </span>
+                      </div>
+                      <div class="user-n-admin-action action" ng-if="!edition &amp;&amp; (canEdit(articles[0]) || canDelete(articles[0]))">
+                        <div class="mod-tools" dropdown="" is-open="dropdown.open" ng-cloak="">
+                          <span dropdown-toggle="">
+                            <i class="icon-cog">
+                            </i>
+                          </span>
+                          <ul class="dropdown-menu">
+                            <li>
+                              <a ng-if="canEdit(articles[0])" ng-href="/content/{{ articles[0].id }}/edit.html">
+                              </a>
+                            </li>
+                            <li>
+                              <a href="#" ng-if="canDelete(articles[0])" ng-click="delete(articles[0])">
+                              </a>
+                            </li>
+                            <li>
+                              <a href="#" ng-if="perms.canPublish" ng-click="toggleComments(articles[0])">
+                              </a>
+                            </li>
+                            <li>
+                              <a href="#" ng-if="perms.canPublish &amp;&amp; !articles[0].isLocked" ng-click="toggleLimitComments(articles[0])">
+                              </a>
+                            </li>
+                          </ul>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="attribution">
+                    <p>
+Published at DZone with permission of                      <span itemprop="author">
+Kelvin Tan .                        <span ng-if="articles[0].source">
+                          <a href="http://www.supermind.org/blog/1081/tokenizing-second-level-and-top-level-domain-for-a-url-in-lucene-and-solr" target="_blank">
+See the original article here.                            <i class="icon-link-ext-alt">
+                            </i>
+                          </a>
+                        </span>
+                      </span>
+                    </p>
+                    <p>
+Opinions expressed by DZone contributors are their own.                    </p>
+                  </div>
+                  <load-article node="article || articles[0]">
+                  </load-article>
+                </div>
+              </article>
+              <div class="col-md-12 col-sm-12 col-xs-12">
+                <th-if-scroll relative-to="bottom" from="-20" to="0" callback="activateB(articles[0])">
+                </th-if-scroll>
+              </div>
+            </div>
+            <div class="layout-card widget-top-border partner-resources-block">
+              <div class="main-container">
+                <div class="row">
+                  <div class="featured-header">
+                    <h2>
+Big Data                      <span>
+Partner Resources                      </span>
+                    </h2>
+                  </div>
+                </div>
+                <div class="row column">
+                  <div class="s-asset asset-title">
+                    <div class="margin-rule">
+                      <div class="title-content">
+                        <div class="title">
+                          <a href="https://hortonworks.com/info/industry-solution-guide-using-apache-nifi-attunity-replicate/?utm_campaign=dzonenififordummies&amp;utm_medium=3rd-party-resource&amp;utm_source=dzone&amp;utm_id=2292641" ng-click="$root.linkGo($event, '/sponsor/go?l=2501742&amp;i=310529')" target="_blank">
+Industry Solution Guide for Using Apache NiFi and Attunity Replicate                          </a>
+                        </div>
+                        <div class="sponsor-name">
+Hortonworks                        </div>
+                      </div>
+                      <div class="icon">
+                        <a href="https://hortonworks.com/info/industry-solution-guide-using-apache-nifi-attunity-replicate/?utm_campaign=dzonenififordummies&amp;utm_medium=3rd-party-resource&amp;utm_source=dzone&amp;utm_id=2292641">
+                          <i class="icon-icon-comment ext icon-link-ext-alt">
+                          </i>
+                        </a>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="s-asset asset-title">
+                    <div class="margin-rule">
+                      <div class="title-content">
+                        <div class="title">
+                          <a href="https://go.streamsets.com/dzone-ebook-tame-and-simplify-apache-kafka.html" ng-click="$root.linkGo($event, '/sponsor/go?l=2482351&amp;i=308525')" target="_blank">
+eBook: Simplify Apache Kafka                          </a>
+                        </div>
+                        <div class="sponsor-name">
+StreamSets                        </div>
+                      </div>
+                      <div class="icon">
+                        <a href="https://go.streamsets.com/dzone-ebook-tame-and-simplify-apache-kafka.html">
+                          <i class="icon-icon-comment ext icon-link-ext-alt">
+                          </i>
+                        </a>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="s-asset asset-title">
+                    <div class="margin-rule">
+                      <div class="title-content">
+                        <div class="title">
+                          <a href="https://hpccsystems.com/mastering-data-lakes-with-hpcc-systems?utm_campaign=dzone&amp;utm_medium=banner&amp;utm_source=sponsorship&amp;utm_content=landingpage" ng-click="$root.linkGo($event, '/sponsor/go?l=2582319&amp;i=322530')" target="_blank">
+Mastering Data Lakes with HPCC Systems                          </a>
+                        </div>
+                        <div class="sponsor-name">
+HPCC Systems                        </div>
+                      </div>
+                      <div class="icon">
+                        <a href="https://hpccsystems.com/mastering-data-lakes-with-hpcc-systems?utm_campaign=dzone&amp;utm_medium=banner&amp;utm_source=sponsorship&amp;utm_content=landingpage">
+                          <i class="icon-icon-comment ext icon-link-ext-alt">
+                          </i>
+                        </a>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="s-asset asset-title">
+                    <div class="margin-rule">
+                      <div class="title-content">
+                        <div class="title">
+                          <a href="https://hortonworks.com/info/data-lake-vs-data-warehouse/?utm_campaign=dzonedatalakes&amp;utm_medium=3rd-party-resource&amp;utm_source=dzone&amp;utm_id=2222872" ng-click="$root.linkGo($event, '/sponsor/go?l=2501741&amp;i=310528')" target="_blank">
+Data Lake vs. Data Warehouse                          </a>
+                        </div>
+                        <div class="sponsor-name">
+Hortonworks                        </div>
+                      </div>
+                      <div class="icon">
+                        <a href="https://hortonworks.com/info/data-lake-vs-data-warehouse/?utm_campaign=dzonedatalakes&amp;utm_medium=3rd-party-resource&amp;utm_source=dzone&amp;utm_id=2222872">
+                          <i class="icon-icon-comment ext icon-link-ext-alt">
+                          </i>
+                        </a>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="s-asset asset-title">
+                    <div class="margin-rule">
+                      <div class="title-content">
+                        <div class="title">
+                          <a href="https://go.streamsets.com/dzone-wp-12-best-practices-modern-data-ingestion.html" ng-click="$root.linkGo($event, '/sponsor/go?l=2482353&amp;i=308527')" target="_blank">
+White Paper: 12 Best Practices for Modern Data Ingestion                          </a>
+                        </div>
+                        <div class="sponsor-name">
+StreamSets                        </div>
+                      </div>
+                      <div class="icon">
+                        <a href="https://go.streamsets.com/dzone-wp-12-best-practices-modern-data-ingestion.html">
+                          <i class="icon-icon-comment ext icon-link-ext-alt">
+                          </i>
+                        </a>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="s-asset asset-title">
+                    <div class="margin-rule">
+                      <div class="title-content">
+                        <div class="title">
+                          <a href="https://hpccsystems.com/clearfunnel-whitepaper-2018?utm_campaign=&amp;utm_medium=text&amp;utm_source=dzone&amp;utm_content=partner_resource" ng-click="$root.linkGo($event, '/sponsor/go?l=2465020&amp;i=307549')" target="_blank">
+Whitepaper: Scaling Capabilities to Build a Homogeneous Big Data Ecosystem                          </a>
+                        </div>
+                        <div class="sponsor-name">
+HPCC Systems                        </div>
+                      </div>
+                      <div class="icon">
+                        <a href="https://hpccsystems.com/clearfunnel-whitepaper-2018?utm_campaign=&amp;utm_medium=text&amp;utm_source=dzone&amp;utm_content=partner_resource">
+                          <i class="icon-icon-comment ext icon-link-ext-alt">
+                          </i>
+                        </a>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="s-asset asset-title">
+                    <div class="margin-rule">
+                      <div class="title-content">
+                        <div class="title">
+                          <a href="https://hpccsystems.com/data-lakes-a-serious-consideration-for-serious-data-science?utm_campaign=dzone&amp;utm_medium=banner&amp;utm_source=sponsorship&amp;utm_content=landingpage" ng-click="$root.linkGo($event, '/sponsor/go?l=2582320&amp;i=322531')" target="_blank">
+Data Lakes: A Serious Consideration for Serious Data Science                          </a>
+                        </div>
+                        <div class="sponsor-name">
+HPCC Systems                        </div>
+                      </div>
+                      <div class="icon">
+                        <a href="https://hpccsystems.com/data-lakes-a-serious-consideration-for-serious-data-science?utm_campaign=dzone&amp;utm_medium=banner&amp;utm_source=sponsorship&amp;utm_content=landingpage">
+                          <i class="icon-icon-comment ext icon-link-ext-alt">
+                          </i>
+                        </a>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="s-asset asset-title">
+                    <div class="margin-rule">
+                      <div class="title-content">
+                        <div class="title">
+                          <a href="https://go.streamsets.com/dzone-wp-6-simple-steps-replatforming.html" ng-click="$root.linkGo($event, '/sponsor/go?l=2482352&amp;i=308526')" target="_blank">
+White Paper: 6 Simple Steps for Replatforming in the Age of the Data Lake                          </a>
+                        </div>
+                        <div class="sponsor-name">
+StreamSets                        </div>
+                      </div>
+                      <div class="icon">
+                        <a href="https://go.streamsets.com/dzone-wp-6-simple-steps-replatforming.html">
+                          <i class="icon-icon-comment ext icon-link-ext-alt">
+                          </i>
+                        </a>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="layout-card widget-top-border mobile-partner-resources-block">
+              <div class="main-container">
+                <div class="row">
+                  <div class="featured-header">
+                    <h2>
+                      <span>
+                      </span>
+                    </h2>
+                  </div>
+                </div>
+                <div class="row column">
+                  <div class="s-asset asset-title">
+                    <div class="margin-rule">
+                      <div class="title-content">
+                        <div class="title">
+                          <a href="https://hortonworks.com/info/industry-solution-guide-using-apache-nifi-attunity-replicate/?utm_campaign=dzonenififordummies&amp;utm_medium=3rd-party-resource&amp;utm_source=dzone&amp;utm_id=2292641" ng-click="$root.linkGo($event, '/sponsor/go?l=2501742&amp;i=310529')" target="_blank">
+                          </a>
+                        </div>
+                        <div class="sponsor-name">
+                        </div>
+                      </div>
+                      <div class="icon">
+                        <a href="https://hortonworks.com/info/industry-solution-guide-using-apache-nifi-attunity-replicate/?utm_campaign=dzonenififordummies&amp;utm_medium=3rd-party-resource&amp;utm_source=dzone&amp;utm_id=2292641">
+                          <i class="icon-icon-comment ext icon-link-ext-alt">
+                          </i>
+                        </a>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="s-asset asset-title">
+                    <div class="margin-rule">
+                      <div class="title-content">
+                        <div class="title">
+                          <a href="https://go.streamsets.com/dzone-ebook-tame-and-simplify-apache-kafka.html" ng-click="$root.linkGo($event, '/sponsor/go?l=2482351&amp;i=308525')" target="_blank">
+                          </a>
+                        </div>
+                        <div class="sponsor-name">
+                        </div>
+                      </div>
+                      <div class="icon">
+                        <a href="https://go.streamsets.com/dzone-ebook-tame-and-simplify-apache-kafka.html">
+                          <i class="icon-icon-comment ext icon-link-ext-alt">
+                          </i>
+                        </a>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="s-asset asset-title">
+                    <div class="margin-rule">
+                      <div class="title-content">
+                        <div class="title">
+                          <a href="https://hpccsystems.com/mastering-data-lakes-with-hpcc-systems?utm_campaign=dzone&amp;utm_medium=banner&amp;utm_source=sponsorship&amp;utm_content=landingpage" ng-click="$root.linkGo($event, '/sponsor/go?l=2582319&amp;i=322530')" target="_blank">
+                          </a>
+                        </div>
+                        <div class="sponsor-name">
+                        </div>
+                      </div>
+                      <div class="icon">
+                        <a href="https://hpccsystems.com/mastering-data-lakes-with-hpcc-systems?utm_campaign=dzone&amp;utm_medium=banner&amp;utm_source=sponsorship&amp;utm_content=landingpage">
+                          <i class="icon-icon-comment ext icon-link-ext-alt">
+                          </i>
+                        </a>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="s-asset asset-title">
+                    <div class="margin-rule">
+                      <div class="title-content">
+                        <div class="title">
+                          <a href="https://hortonworks.com/info/data-lake-vs-data-warehouse/?utm_campaign=dzonedatalakes&amp;utm_medium=3rd-party-resource&amp;utm_source=dzone&amp;utm_id=2222872" ng-click="$root.linkGo($event, '/sponsor/go?l=2501741&amp;i=310528')" target="_blank">
+                          </a>
+                        </div>
+                        <div class="sponsor-name">
+                        </div>
+                      </div>
+                      <div class="icon">
+                        <a href="https://hortonworks.com/info/data-lake-vs-data-warehouse/?utm_campaign=dzonedatalakes&amp;utm_medium=3rd-party-resource&amp;utm_source=dzone&amp;utm_id=2222872">
+                          <i class="icon-icon-comment ext icon-link-ext-alt">
+                          </i>
+                        </a>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="ad-silver row" ng-if="articles[1] &amp;&amp; !articles[1].partner.isSponsoringArticle &amp;&amp; width >= 768">
+            </div>
+            <div class="ad-gold row" ng-if="articles[1] &amp;&amp; !articles[1].partner.isSponsoringArticle &amp;&amp; width &lt; 768">
+              <div class="col-md-12">
+                <div ng-if="ads.gold1.show()" dc-slot="ads.gold1.slot()" tags="ads.gold1.tags(articles[0])" class="leaderboard-ad" size="ads.gold1.size()">
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="articles-wrap" ng-repeat="article in articles" ng-if="$index > 0 || article.id != 485719" ng-include="'/static/article/article.html'">
+          </div>
+          <div style="clear: both;">
+          </div>
+          <th-if-scroll ng-if="!isPreview" relative-to="bottom" from="-50" to="50" callback="loadMore()">
+          </th-if-scroll>
+        </div>
+      </div>
+    </div>
+    <div class="container-fluid footerOuter" th-element="footerOuter" th-element-groups="[]" ng-hide="$root.isHidden('footerOuter')" data-th-element-name="footerOuter">
+      <div class="row row2" th-element="row2" th-element-groups="['footerOuter']" ng-hide="$root.isHidden('row2')" data-th-element-name="row2">
+        <div class="col-md-12 container3" th-element="container3" th-element-groups="['footerOuter','row2']" ng-hide="$root.isHidden('container3')" data-th-element-name="container3">
+          <div class="container container3" th-element="container3" th-element-groups="['footerOuter','row2','container3']" ng-hide="$root.isHidden('container3')" data-th-element-name="container3">
+            <div class="row footer" th-element="footer" th-element-groups="['footerOuter','row2','container3','container3']" ng-hide="$root.isHidden('footer')" data-th-element-name="footer">
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class=" sidebar sidebarTapBar oUhbkSMadabbWQbVkcC oUhbkSMadabfWVcC" th-element="sidebar" th-element-groups="[]" ng-hide="$root.isHidden('sidebar')" data-th-element-name="sidebar" data-th-widget="sidebar.tapBar" data-widget-sidebar-tap-bar="" ng-controller="sidebar">
+      <div class="content" ng-if="!$root.botInfo.isRenderBot" sidebar-list="">
+        <div class=" sidebar.content" th-element="sidebar.content" th-element-groups="['sidebar']" ng-hide="$root.isHidden('sidebar.content')" data-th-element-name="sidebar.content">
+          <div class="col-md-12 sidebarContentList8 sidebarContentList oUhbkSMaaqbcdvVkcC" th-element="sidebarContentList8" th-element-groups="['sidebar','sidebar.content']" ng-hide="$root.isHidden('sidebarContentList8')" data-th-element-name="sidebarContentList8" data-th-widget="sidebar.content.list" data-widget-sidebar-content-list="" ng-controller="sidebarContentList8">
+            <ul class="nodes-list" dnd-list="display">
+              <div class="header" ng-if="edition">
+                <h3>
+                  <strong>
+{{ editionName }}                  </strong>
+                </h3>
+              </div>
+              <li ng-repeat="node in display" id="{{::node.id}}-{{edition}}-{{$index}}" class="list-entry" ng-class="{active: isActive(node)}" sidebar-item="node">
+                <div ng-if="node.type != 'article' &amp;&amp; node.type != 'ad'" class="resource {{ node.type }}">
+                  <div class="sidebar-content">
+{{ node.blurb }}                  </div>
+                </div>
+                <div class="sidebar-content ">
+                  <a ng-class="{badge1: edition}" data-badge="{{$index + 1}}" ng-if="node.type != 'ad'" ng-href="{{ ::node.url }}" ng-click="tap()" sidebar-click="node">
+                    <div class="sidebar-node-image" ng-if="edition">
+                      <img dz-image-fid="{{ ::node.imageUrl }}" dz-image-fid-width="80" class="imageList"/>
+                    </div>
+                    <div ng-class="{'sidebar-node-title' : edition}">
+                      <div ng-if="node.type == 'whitepaper' || node.type == 'refcard' || node.type == 'guide'" class="sidebar-resource">
+Free {{node.type}}                      </div>
+                      <p>
+{{ ::node.title }}                      </p>
+                    </div>
+                  </a>
+                </div>
+              </li>
+              <th-if-scroll relative-to="bottom" from="-100" to="50" callback="loadMore()">
+              </th-if-scroll>
+              <th-loader flag="loading()">
+              </th-loader>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <span class="tap" ng-class="{tapEdition: edition}" ng-click="tap()" ng-if="!$root.botInfo.isRenderBot">
+        <i class="icon-angle-double-left left">
+        </i>
+        <i class="icon-angle-double-right right">
+        </i>
+      </span>
+    </div>
+    <div class=" componentsSlider6 componentsSlider oUhballbvbdSaoUhM" th-element="componentsSlider6" th-element-groups="[]" ng-hide="$root.isHidden('componentsSlider6')" data-th-element-name="componentsSlider6" data-th-widget="components.slider" data-widget-components-slider="" ng-controller="componentsSlider6">
+<!--<i class="icon-cancel" ng-click="close()"></i>-->      <div class="background" ng-class="{open: _sliderOpen}" ng-if="_ready" ng-click="close()">
+      </div>
+      <div class="slider-outer-wrapper" ng-class="{open: _sliderOpen}">
+        <div class="row slider-inner-wrapper" ng-if="_ready">
+          <div class=" componentsSlider6.widgets" th-element="componentsSlider6.widgets" th-element-groups="['componentsSlider6']" ng-hide="$root.isHidden('componentsSlider6.widgets')" data-th-element-name="componentsSlider6.widgets">
+            <div class="col-md-12 contentCommentsSlider7 contentCommentsSlider oUhbaqbcaibvnWffWVcC" th-element="contentCommentsSlider7" th-element-groups="['componentsSlider6','componentsSlider6.widgets']" ng-hide="$root.isHidden('contentCommentsSlider7')" data-th-element-name="contentCommentsSlider7" data-th-widget="content.commentsSlider" data-widget-content-comments-slider="" ng-controller="contentCommentsSlider7">
+              <div class="comment-slider-content">
+                <div class="node-info">
+                  <div class="comment-title">
+                    <h1 class="parent-title">
+{{ parent.title || parent.header.title}}                    </h1>
+<!--<a ng-if="parent.title" ng-href="{{ parent.linkSource }}">--><!--<i class="icon-link-2" tooltip-html-unsafe="Permalink"></i>--><!--</a>  -->                    <h3 ng-if="parent.tldr" class="tldr">
+{{ parent.tldr }}                    </h3>
+                    <h3 ng-if="parent.title" class="link-description">
+{{ parent.linkDescription }}                    </h3>
+                    <a ng-if="parent.title" ng-href="{{parent.url}}" class="link-source">
+{{ parent.urlSource.name }}                    </a>
+                  </div>
+                </div>
+                <div class="author-n-article-info">
+                  <div class="author-avatar">
+                    <a ng-href="{{ parent.authors[0].url || parent.authorUrl }}">
+                      <img width="40" dz-image-fid="{{ parent.authors[0].avatar || parent.authorAvatar }}" dz-image-fid-width="80" class="avatar"/>
+                    </a>
+                  </div>
+                  <div class="author-name">
+by                    <a th-popup="users.profile.mini" popup-data="{user: parent.authors[0].id || parent.authorId }" ng-href="{{ parent.authors[0].url || parent.authorUrl }}">
+{{ parent.authors[0].realName || parent.author}}                    </a>
+                    <div ng-if="parent.authors[0].isStaff || parent.isStaff" class="mbv-award staff-area">
+                      <i tooltip="Staff of DZone" class="icon-staff">
+                      </i>
+                    </div>
+                    <div ng-if="parent.authors[0].isMVB || parent.isMVB" class="mbv-award">
+                      <i tooltip="Most Valuable Blogger" class="icon-mvb-1">
+                      </i>
+                    </div>
+                    <div class="mvb-partner">
+                      <user-is-partner user="parent.authors[0].id">
+                      </user-is-partner>
+                    </div>
+                    <div class="zone-leader">
+                      <user-is-zone-leader user="parent.authors[0].id">
+                      </user-is-zone-leader>
+                    </div>
+                  </div>
+                  <div class="publish-date">
+�                    <span class="author-date">
+{{ parent.articleDate | date:'MMM. dd, yyyy' }} {{ parent.linkDate | date:'MMM. dd, yyyy' }}                    </span>
+                  </div>
+                  <div class="portal-link">
+�                    <a href="{{ parent.portal.url }}" id="portal-name" ng-cloak="">
+                      <span class="portal-name">
+                      </span>
+                    </a>
+                  </div>
+                </div>
+                <div class="user-actions">
+                  <div class="like action" ng-if="parent.title">
+                    <dz-like template="like-article.html" callback="addVoter()" node="parent" ng-if="parent.articleDate">
+                    </dz-like>
+                    <dz-like callback="addVoter()" node="parent" ng-if="parent.linkDate">
+                    </dz-like>
+                  </div>
+                  <div class="like action" ng-if="!parent.title">
+                    <dz-like template="like-article.html" callback="addVoter()" node="parent">
+                    </dz-like>
+                  </div>
+                  <div class="save-article action">
+                    <dz-save template="link-article-save.html" node="parent" class="save">
+                    </dz-save>
+                  </div>
+                  <div class="tweet action">
+                    <a ng-href="#" ng-click="shareTwitter($event, parent.title || parent.header.title,parent.linkSource || parent.url)" class="title" target="_blank">
+                      <i class="icon-twitter">
+                      </i>
+Tweet                    </a>
+                  </div>
+                  <div class="pull-right">
+                    <div class="view-count action">
+                      <i class="icon-eye">
+                      </i>
+{{ parent.views }}                      <span ng-if="!parent.title">
+Views                      </span>
+                      <span ng-if="parent.title" class="action-label">
+Clicks                      </span>
+                    </div>
+                    <div class="user-n-admin-action action" ng-if="canEdit(parent) || canDelete(parent)">
+                      <div class="mod-tools" dropdown="" is-open="dropdown.open">
+                        <span dropdown-toggle="">
+                          <i class="icon-cog">
+                          </i>
+                        </span>
+                        <ul class="dropdown-menu">
+                          <li>
+                            <a ng-href="/content/{{ parent.id }}/edit.html">
+                            </a>
+                          </li>
+                          <li>
+                            <a href="#" ng-if="canDelete(parent)" ng-click="deleteLink(parent)">
+                            </a>
+                          </li>
+                          <li>
+                            <a href="#" ng-if="canPublish &amp;&amp; !parent.title" ng-click="toggleComments(parent)">
+                            </a>
+                          </li>
+                          <li>
+                            <a href="#" ng-if="canPublish &amp;&amp; !parent.isLocked &amp;&amp; !parent.title" ng-click="toggleLimitComments(parent)">
+                            </a>
+                          </li>
+                        </ul>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div th-defer-until="_sliderOpen">
+<!--<div content-comment-box parent="parent.id" count="parent.nComments" limited="parent.isLimited" class="comment-box"></div>-->                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <a href="#" class="back-to-top">
+        <i class="icon-up-big">
+        </i>
+      </a>
+    </div>
+<!-- Begin Inspectlet Embed Code --><!-- End Inspectlet Embed Code --><!-- Google Tag Manager -->    <noscript>
+      <iframe width="0" style="display:none;visibility:hidden" src="httpsdzone.comarticlestokenizing-second-and-top/ns.html" height="0">
+      </iframe>
+    </noscript>
+<!-- End Google Tag Manager --><!-- START Parse.ly Include: DOM-Free --><!-- END Parse.ly Include: DOM-Free -->  </body>
+</html>

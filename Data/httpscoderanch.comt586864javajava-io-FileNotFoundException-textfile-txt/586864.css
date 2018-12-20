@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0">
+	<channel>
+		<title><![CDATA[JavaRanch: Latest posts for the topic "java.io.FileNotFoundException: C:\textfile.txt (Access is denied)"]]></title>
+		<link>https://coderanch.com/forums/t/33/java/java-io-FileNotFoundException-textfile-txt</link>
+		<description><![CDATA[Latest messages posted in the topic "java.io.FileNotFoundException: C:\textfile.txt (Access is denied)"]]></description>
+		<generator>JForum - http://www.jforum.net</generator>
+			<item>
+				<title>java.io.FileNotFoundException: C:\textfile.txt (Access is denied)</title>
+				<description><![CDATA[Why is access denied ??? I suspect this is a Windows 7 security related problem.  How do i solve this problem ?<br /> <br /> java.io.IOException: Access is denied<br /> Caught exception - Cannot create your file !!!<br /> java.io.FileNotFoundException: C:\textfile.txt (Access is denied)<br /> 	at java.io.FileOutputStream.open(Native Method)<br /> 	at java.io.FileOutputStream.&lt;init&gt;(FileOutputStream.java:180)<br /> 	at java.io.FileOutputStream.&lt;init&gt;(FileOutputStream.java:122)<br /> 	at java.io.FileWriter.&lt;init&gt;(FileWriter.java:62)<br /> <br /> ]]></description>
+				<guid isPermaLink="true">https://coderanch.com/forums/posts/preList/586864/2671733</guid>
+				<link>https://coderanch.com/forums/posts/preList/586864/2671733</link>
+				<pubDate><![CDATA[Thu, Jul 12 2012 18:50:17 MDT]]></pubDate>
+				<author><![CDATA[justin smythhe]]></author>
+			</item>
+			<item>
+				<title>java.io.FileNotFoundException: C:\textfile.txt (Access is denied)</title>
+				<description><![CDATA[I think I found the problem.  I checked by trying to save a text file right to that location manually and got a "you don't have permission error".<br /> <br /> You can't save directly to the C drive like that I think.  <br /> <br /> Normally, since most Computers have a Users directory underneath the C drive, yours might not but the chances are high that it does, <br /> <br /> then you would make a new Directory under the users directory, you might be able to just create it programmatically.<br /> <br /> <br /> Anyway, <br /> <br /> try creating it as C:/Users/SomeDirectory/textfile.txt<br /> <br /> <br /> At the very least, you need a subdirectory underneath C.  You can't just save something as a file itself to the C drive itself.<br /> <br /> Sorry, scratch that, normally under the Users directory, you have a directoy that is your computer name.  I wouldn't know what yours is.  <br /> <br /> so it's<br /> <br /> C:/Users/YourComputerName/textfile.txt<br /> <br /> that will work.<br /> <br /> <br /> <br /> ]]></description>
+				<guid isPermaLink="true">https://coderanch.com/forums/posts/preList/586864/2671743</guid>
+				<link>https://coderanch.com/forums/posts/preList/586864/2671743</link>
+				<pubDate><![CDATA[Thu, Jul 12 2012 19:27:39 MDT]]></pubDate>
+				<author><![CDATA[Paul Adcock]]></author>
+			</item>
+			<item>
+				<title>java.io.FileNotFoundException: C:\textfile.txt (Access is denied)</title>
+				<description><![CDATA[Yes, I did that and it works. Is there a way of making our code "create new files/folders as an administrator" ?<br /> <br /> Thanks <img src="https://www.coderanch.com/images/smilies/3b63d1616c5dfcf29f8a7a031aaa7cad.gif" />]]></description>
+				<guid isPermaLink="true">https://coderanch.com/forums/posts/preList/586864/2671804</guid>
+				<link>https://coderanch.com/forums/posts/preList/586864/2671804</link>
+				<pubDate><![CDATA[Fri, Jul 13 2012 00:04:42 MDT]]></pubDate>
+				<author><![CDATA[justin smythhe]]></author>
+			</item>
+			<item>
+				<title>java.io.FileNotFoundException: C:\textfile.txt (Access is denied)</title>
+				<description><![CDATA[Do you actually want code running on your computer in administrator mode? It is all right if you write it yourself, but what if somebody else wrote it . . .]]></description>
+				<guid isPermaLink="true">https://coderanch.com/forums/posts/preList/586864/2671850</guid>
+				<link>https://coderanch.com/forums/posts/preList/586864/2671850</link>
+				<pubDate><![CDATA[Fri, Jul 13 2012 02:07:20 MDT]]></pubDate>
+				<author><![CDATA[Campbell Ritchie]]></author>
+			</item>
+			<item>
+				<title>java.io.FileNotFoundException: C:\textfile.txt (Access is denied)</title>
+				<description><![CDATA[<blockquote>
+			<p>
+				<cite>Campbell Ritchie wrote:</cite>Do you actually want code running on your computer in administrator mode? It is all right if you write it yourself, but what if somebody else wrote it . . .</p>
+		</blockquote><br /> Oh ! yes. <img src="https://www.coderanch.com/images/smilies/3b63d1616c5dfcf29f8a7a031aaa7cad.gif" />]]></description>
+				<guid isPermaLink="true">https://coderanch.com/forums/posts/preList/586864/2672024</guid>
+				<link>https://coderanch.com/forums/posts/preList/586864/2672024</link>
+				<pubDate><![CDATA[Fri, Jul 13 2012 08:38:38 MDT]]></pubDate>
+				<author><![CDATA[justin smythhe]]></author>
+			</item>
+			<item>
+				<title>java.io.FileNotFoundException: C:\textfile.txt (Access is denied)</title>
+				<description><![CDATA[When you have worked out how to do it, please tell <a class="snap_shots" href="http://www.coderanch.com/t/586065/java/java/add-application-exception-list-windows" target="_new" >this chap</a> how to get accepted by a firewall, too <img src="https://www.coderanch.com/images/smilies/8a80c6485cd926be453217d59a84a888.gif" />]]></description>
+				<guid isPermaLink="true">https://coderanch.com/forums/posts/preList/586864/2672057</guid>
+				<link>https://coderanch.com/forums/posts/preList/586864/2672057</link>
+				<pubDate><![CDATA[Fri, Jul 13 2012 09:41:30 MDT]]></pubDate>
+				<author><![CDATA[Campbell Ritchie]]></author>
+			</item>
+	</channel>
+</rss>

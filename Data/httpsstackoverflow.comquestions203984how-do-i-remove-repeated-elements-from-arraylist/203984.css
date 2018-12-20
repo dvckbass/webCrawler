@@ -1,0 +1,1062 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<feed xmlns="http://www.w3.org/2005/Atom" xmlns:creativeCommons="http://backend.userland.com/creativeCommonsRssModule" xmlns:re="http://purl.org/atompub/rank/1.0">
+    <title type="text">How do I remove repeated elements from ArrayList? - Stack Overflow</title>
+    <link rel="self" href="https://stackoverflow.com/feeds/question/203984" type="application/atom+xml" />
+    <link rel="alternate" href="https://stackoverflow.com/q/203984" type="text/html" />
+    <subtitle>most recent 30 from stackoverflow.com</subtitle>
+    <updated>2018-12-14T13:58:11Z</updated>
+    <id>https://stackoverflow.com/feeds/question/203984</id>
+    <creativeCommons:license>http://www.creativecommons.org/licenses/by-sa/3.0/rdf</creativeCommons:license> 
+    <entry>
+        <id>https://stackoverflow.com/q/203984</id>
+        <re:rank scheme="https://stackoverflow.com">434</re:rank>
+        <title type="text">How do I remove repeated elements from ArrayList?</title>
+            <category scheme="https://stackoverflow.com/tags" term="java" />
+            <category scheme="https://stackoverflow.com/tags" term="list" />
+            <category scheme="https://stackoverflow.com/tags" term="collections" />
+            <category scheme="https://stackoverflow.com/tags" term="arraylist" />
+            <category scheme="https://stackoverflow.com/tags" term="duplicates" />
+        <author>
+            <name>user25778</name>
+            <uri>https://stackoverflow.com/users/25778</uri>
+        </author>
+        <link rel="alternate" href="https://stackoverflow.com/questions/203984/how-do-i-remove-repeated-elements-from-arraylist" />
+        <published>2008-10-15T08:05:26Z</published>
+        <updated>2018-12-14T13:19:07Z</updated>
+        <summary type="html">
+            
+
+            &lt;p&gt;I have an &lt;code&gt;ArrayList&amp;lt;String&amp;gt;&lt;/code&gt;, and I want to remove repeated strings from it. How can I do this?&lt;/p&gt;
+
+        </summary>
+    </entry>
+    <entry>
+        <id>https://stackoverflow.com/questions/203984/-/203992#203992</id>
+        <re:rank scheme="https://stackoverflow.com">896</re:rank>
+        <title type="text">Answer by jonathan-stafford for How do I remove repeated elements from ArrayList?</title>
+        <author>
+            <name>jonathan-stafford</name>
+            <uri>https://stackoverflow.com/users/27587</uri>
+        </author>
+        <link rel="alternate" href="https://stackoverflow.com/questions/203984/how-do-i-remove-repeated-elements-from-arraylist/203992#203992" />
+        <published>2008-10-15T08:11:27Z</published>
+        <updated>2018-12-14T13:19:07Z</updated>
+        <summary type="html">&lt;p&gt;If you don&#39;t want duplicates in a &lt;code&gt;Collection&lt;/code&gt;, you should consider why you&#39;re using a &lt;code&gt;Collection&lt;/code&gt; that allows duplicates. The easiest way to remove repeated elements is to add the contents to a &lt;code&gt;Set&lt;/code&gt; (which will not allow duplicates) and then add the &lt;code&gt;Set&lt;/code&gt; back to the &lt;code&gt;ArrayList&lt;/code&gt;:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;Set&amp;lt;String&amp;gt; set = new HashSet&amp;lt;&amp;gt;(yourList);
+yourList.clear();
+yourList.addAll(set);
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Of course, this destroys the ordering of the elements in the &lt;code&gt;ArrayList&lt;/code&gt;.&lt;/p&gt;
+</summary>
+    </entry>    <entry>
+        <id>https://stackoverflow.com/questions/203984/-/203997#203997</id>
+        <re:rank scheme="https://stackoverflow.com">51</re:rank>
+        <title type="text">Answer by Benno Richters for How do I remove repeated elements from ArrayList?</title>
+        <author>
+            <name>Benno Richters</name>
+            <uri>https://stackoverflow.com/users/3565</uri>
+        </author>
+        <link rel="alternate" href="https://stackoverflow.com/questions/203984/how-do-i-remove-repeated-elements-from-arraylist/203997#203997" />
+        <published>2008-10-15T08:13:48Z</published>
+        <updated>2008-10-15T08:13:48Z</updated>
+        <summary type="html">&lt;p&gt;If you don&#39;t want duplicates, use a &lt;a href=&quot;http://java.sun.com/javase/6/docs/api/java/util/Set.html&quot; rel=&quot;noreferrer&quot;&gt;Set&lt;/a&gt; instead of a &lt;code&gt;List&lt;/code&gt;. To convert a &lt;code&gt;List&lt;/code&gt; to a &lt;code&gt;Set&lt;/code&gt; you can use the following code:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;// list is some List of Strings
+Set&amp;lt;String&amp;gt; s = new HashSet&amp;lt;String&amp;gt;(list);
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;If really necessary you can use the same construction to convert a &lt;code&gt;Set&lt;/code&gt; back into a &lt;code&gt;List&lt;/code&gt;.&lt;/p&gt;
+</summary>
+    </entry>    <entry>
+        <id>https://stackoverflow.com/questions/203984/-/204004#204004</id>
+        <re:rank scheme="https://stackoverflow.com">275</re:rank>
+        <title type="text">Answer by abahgat for How do I remove repeated elements from ArrayList?</title>
+        <author>
+            <name>abahgat</name>
+            <uri>https://stackoverflow.com/users/27565</uri>
+        </author>
+        <link rel="alternate" href="https://stackoverflow.com/questions/203984/how-do-i-remove-repeated-elements-from-arraylist/204004#204004" />
+        <published>2008-10-15T08:18:19Z</published>
+        <updated>2015-09-08T22:47:40Z</updated>
+        <summary type="html">&lt;p&gt;Although converting the &lt;code&gt;ArrayList&lt;/code&gt; to a &lt;code&gt;HashSet&lt;/code&gt; effectively removes duplicates, if you need to preserve insertion order, I&#39;d rather suggest you to use this variant&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;// list is some List of Strings
+Set&amp;lt;String&amp;gt; s = new LinkedHashSet&amp;lt;&amp;gt;(list);
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Then, if you need to get back a &lt;code&gt;List&lt;/code&gt; reference, you can use again the conversion constructor.&lt;/p&gt;
+</summary>
+    </entry>    <entry>
+        <id>https://stackoverflow.com/questions/203984/-/204766#204766</id>
+        <re:rank scheme="https://stackoverflow.com">1</re:rank>
+        <title type="text">Answer by Vinze for How do I remove repeated elements from ArrayList?</title>
+        <author>
+            <name>Vinze</name>
+            <uri>https://stackoverflow.com/users/26859</uri>
+        </author>
+        <link rel="alternate" href="https://stackoverflow.com/questions/203984/how-do-i-remove-repeated-elements-from-arraylist/204766#204766" />
+        <published>2008-10-15T13:48:30Z</published>
+        <updated>2018-07-30T20:21:55Z</updated>
+        <summary type="html">&lt;p&gt;As said before, you should use a class implementing the Set interface instead of List to be sure of the unicity of elements. If you have to keep the order of elements, the SortedSet interface can then be used; the TreeSet class implements that interface.&lt;/p&gt;
+</summary>
+    </entry>    <entry>
+        <id>https://stackoverflow.com/questions/203984/-/215212#215212</id>
+        <re:rank scheme="https://stackoverflow.com">12</re:rank>
+        <title type="text">Answer by volley for How do I remove repeated elements from ArrayList?</title>
+        <author>
+            <name>volley</name>
+            <uri>https://stackoverflow.com/users/13905</uri>
+        </author>
+        <link rel="alternate" href="https://stackoverflow.com/questions/203984/how-do-i-remove-repeated-elements-from-arraylist/215212#215212" />
+        <published>2008-10-18T16:11:35Z</published>
+        <updated>2008-10-18T16:16:35Z</updated>
+        <summary type="html">&lt;p&gt;Probably a bit overkill, but I enjoy this kind of isolated problem. :)&lt;/p&gt;
+
+&lt;p&gt;This code uses a temporary Set (for the uniqueness check) but removes elements directly inside the original list. Since element removal inside an ArrayList can induce a huge amount of array copying, the remove(int)-method is avoided.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;public static &amp;lt;T&amp;gt; void removeDuplicates(ArrayList&amp;lt;T&amp;gt; list) {
+    int size = list.size();
+    int out = 0;
+    {
+        final Set&amp;lt;T&amp;gt; encountered = new HashSet&amp;lt;T&amp;gt;();
+        for (int in = 0; in &amp;lt; size; in++) {
+            final T t = list.get(in);
+            final boolean first = encountered.add(t);
+            if (first) {
+                list.set(out++, t);
+            }
+        }
+    }
+    while (out &amp;lt; size) {
+        list.remove(--size);
+    }
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;While we&#39;re at it, here&#39;s a version for LinkedList (a lot nicer!):&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;public static &amp;lt;T&amp;gt; void removeDuplicates(LinkedList&amp;lt;T&amp;gt; list) {
+    final Set&amp;lt;T&amp;gt; encountered = new HashSet&amp;lt;T&amp;gt;();
+    for (Iterator&amp;lt;T&amp;gt; iter = list.iterator(); iter.hasNext(); ) {
+        final T t = iter.next();
+        final boolean first = encountered.add(t);
+        if (!first) {
+            iter.remove();
+        }
+    }
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Use the marker interface to present a unified solution for List:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;public static &amp;lt;T&amp;gt; void removeDuplicates(List&amp;lt;T&amp;gt; list) {
+    if (list instanceof RandomAccess) {
+        // use first version here
+    } else {
+        // use other version here
+    }
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;EDIT: I guess the generics-stuff doesn&#39;t really add any value here.. Oh well. :)&lt;/p&gt;
+</summary>
+    </entry>    <entry>
+        <id>https://stackoverflow.com/questions/203984/-/4547382#4547382</id>
+        <re:rank scheme="https://stackoverflow.com">27</re:rank>
+        <title type="text">Answer by stbn for How do I remove repeated elements from ArrayList?</title>
+        <author>
+            <name>stbn</name>
+            <uri>https://stackoverflow.com/users/554467</uri>
+        </author>
+        <link rel="alternate" href="https://stackoverflow.com/questions/203984/how-do-i-remove-repeated-elements-from-arraylist/4547382#4547382" />
+        <published>2010-12-28T16:07:10Z</published>
+        <updated>2016-09-21T04:51:27Z</updated>
+        <summary type="html">&lt;p&gt;Here&#39;s a way that doesn&#39;t affect your list ordering:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;ArrayList l1 = new ArrayList();
+ArrayList l2 = new ArrayList();
+
+Iterator iterator = l1.iterator();
+
+        while (iterator.hasNext())
+        {
+            YourClass o = (YourClass) iterator.next();
+            if(!l2.contains(o)) l2.add(o);
+        }
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;l1 is the original list, and l2 is the list whithout repeated items
+(Make sure YourClass has the equals method acording to what you want to stand for equality)&lt;/p&gt;
+</summary>
+    </entry>    <entry>
+        <id>https://stackoverflow.com/questions/203984/-/5618571#5618571</id>
+        <re:rank scheme="https://stackoverflow.com">2</re:rank>
+        <title type="text">Answer by HarpyWar for How do I remove repeated elements from ArrayList?</title>
+        <author>
+            <name>HarpyWar</name>
+            <uri>https://stackoverflow.com/users/701779</uri>
+        </author>
+        <link rel="alternate" href="https://stackoverflow.com/questions/203984/how-do-i-remove-repeated-elements-from-arraylist/5618571#5618571" />
+        <published>2011-04-11T08:17:38Z</published>
+        <updated>2012-07-25T17:47:08Z</updated>
+        <summary type="html">&lt;p&gt;When you are filling the ArrayList, use a condition for each element. For example:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;    ArrayList&amp;lt; Integer &amp;gt; al = new ArrayList&amp;lt; Integer &amp;gt;(); 
+
+    // fill 1 
+    for ( int i = 0; i &amp;lt;= 5; i++ ) 
+        if ( !al.contains( i ) ) 
+            al.add( i ); 
+
+    // fill 2 
+    for (int i = 0; i &amp;lt;= 10; i++ ) 
+        if ( !al.contains( i ) ) 
+            al.add( i ); 
+
+    for( Integer i: al )
+    {
+        System.out.print( i + &quot; &quot;);     
+    }
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;We will get an array {0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10}&lt;/p&gt;
+</summary>
+    </entry>    <entry>
+        <id>https://stackoverflow.com/questions/203984/-/8452741#8452741</id>
+        <re:rank scheme="https://stackoverflow.com">22</re:rank>
+        <title type="text">Answer by Timofey Gorshkov for How do I remove repeated elements from ArrayList?</title>
+        <author>
+            <name>Timofey Gorshkov</name>
+            <uri>https://stackoverflow.com/users/274205</uri>
+        </author>
+        <link rel="alternate" href="https://stackoverflow.com/questions/203984/how-do-i-remove-repeated-elements-from-arraylist/8452741#8452741" />
+        <published>2011-12-09T22:55:49Z</published>
+        <updated>2015-12-07T17:40:03Z</updated>
+        <summary type="html">&lt;p&gt;There is also &lt;a href=&quot;https://google.github.io/guava/releases/snapshot/api/docs/com/google/common/collect/ImmutableSet.html&quot; rel=&quot;noreferrer&quot;&gt;&lt;code&gt;ImmutableSet&lt;/code&gt;&lt;/a&gt; from &lt;a href=&quot;https://github.com/google/guava&quot; rel=&quot;noreferrer&quot;&gt;Guava&lt;/a&gt; as an option (&lt;a href=&quot;https://github.com/google/guava/wiki/ImmutableCollectionsExplained&quot; rel=&quot;noreferrer&quot;&gt;here&lt;/a&gt; is the documentation):&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;ImmutableSet.copyOf(list);
+&lt;/code&gt;&lt;/pre&gt;
+</summary>
+    </entry>    <entry>
+        <id>https://stackoverflow.com/questions/203984/-/8962127#8962127</id>
+        <re:rank scheme="https://stackoverflow.com">0</re:rank>
+        <title type="text">Answer by Ghyour for How do I remove repeated elements from ArrayList?</title>
+        <author>
+            <name>Ghyour</name>
+            <uri>https://stackoverflow.com/users/1163576</uri>
+        </author>
+        <link rel="alternate" href="https://stackoverflow.com/questions/203984/how-do-i-remove-repeated-elements-from-arraylist/8962127#8962127" />
+        <published>2012-01-22T15:23:18Z</published>
+        <updated>2012-01-22T15:23:18Z</updated>
+        <summary type="html">&lt;pre&gt;&lt;code&gt;for(int a=0;a&amp;lt;myArray.size();a++){
+        for(int b=a+1;b&amp;lt;myArray.size();b++){
+            if(myArray.get(a).equalsIgnoreCase(myArray.get(b))){
+                myArray.remove(b); 
+                dups++;
+                b--;
+            }
+        }
+}
+&lt;/code&gt;&lt;/pre&gt;
+</summary>
+    </entry>    <entry>
+        <id>https://stackoverflow.com/questions/203984/-/12665409#12665409</id>
+        <re:rank scheme="https://stackoverflow.com">0</re:rank>
+        <title type="text">Answer by reddy for How do I remove repeated elements from ArrayList?</title>
+        <author>
+            <name>reddy</name>
+            <uri>https://stackoverflow.com/users/1710433</uri>
+        </author>
+        <link rel="alternate" href="https://stackoverflow.com/questions/203984/how-do-i-remove-repeated-elements-from-arraylist/12665409#12665409" />
+        <published>2012-09-30T21:45:41Z</published>
+        <updated>2012-09-30T22:35:41Z</updated>
+        <summary type="html">&lt;pre&gt;&lt;code&gt;import java.util.*;
+class RemoveDupFrmString
+{
+    public static void main(String[] args)
+    {
+
+        String s=&quot;appsc&quot;;
+
+        Set&amp;lt;Character&amp;gt; unique = new LinkedHashSet&amp;lt;Character&amp;gt; ();
+
+        for(char c : s.toCharArray()) {
+
+            System.out.println(unique.add(c));
+        }
+        for(char dis:unique){
+            System.out.println(dis);
+        }
+
+
+    }
+}
+&lt;/code&gt;&lt;/pre&gt;
+</summary>
+    </entry>    <entry>
+        <id>https://stackoverflow.com/questions/203984/-/14126093#14126093</id>
+        <re:rank scheme="https://stackoverflow.com">1</re:rank>
+        <title type="text">Answer by user1912383 for How do I remove repeated elements from ArrayList?</title>
+        <author>
+            <name>user1912383</name>
+            <uri>https://stackoverflow.com/users/1912383</uri>
+        </author>
+        <link rel="alternate" href="https://stackoverflow.com/questions/203984/how-do-i-remove-repeated-elements-from-arraylist/14126093#14126093" />
+        <published>2013-01-02T17:06:41Z</published>
+        <updated>2013-01-02T17:06:41Z</updated>
+        <summary type="html">&lt;p&gt;LinkedHashSet will do the trick.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;String[] arr2 = {&quot;5&quot;,&quot;1&quot;,&quot;2&quot;,&quot;3&quot;,&quot;3&quot;,&quot;4&quot;,&quot;1&quot;,&quot;2&quot;};
+Set&amp;lt;String&amp;gt; set = new LinkedHashSet&amp;lt;String&amp;gt;(Arrays.asList(arr2));
+for(String s1 : set)
+    System.out.println(s1);
+
+System.out.println( &quot;------------------------&quot; );
+String[] arr3 = set.toArray(new String[0]);
+for(int i = 0; i &amp;lt; arr3.length; i++)
+     System.out.println(arr3[i].toString());
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;//output: 5,1,2,3,4&lt;/p&gt;
+</summary>
+    </entry>    <entry>
+        <id>https://stackoverflow.com/questions/203984/-/18504616#18504616</id>
+        <re:rank scheme="https://stackoverflow.com">0</re:rank>
+        <title type="text">Answer by Harsha for How do I remove repeated elements from ArrayList?</title>
+        <author>
+            <name>Harsha</name>
+            <uri>https://stackoverflow.com/users/2706817</uri>
+        </author>
+        <link rel="alternate" href="https://stackoverflow.com/questions/203984/how-do-i-remove-repeated-elements-from-arraylist/18504616#18504616" />
+        <published>2013-08-29T07:21:09Z</published>
+        <updated>2013-08-29T07:21:09Z</updated>
+        <summary type="html">&lt;pre&gt;&lt;code&gt;public Set&amp;lt;Object&amp;gt; findDuplicates(List&amp;lt;Object&amp;gt; list) {
+        Set&amp;lt;Object&amp;gt; items = new HashSet&amp;lt;Object&amp;gt;();
+        Set&amp;lt;Object&amp;gt; duplicates = new HashSet&amp;lt;Object&amp;gt;();
+        for (Object item : list) {
+            if (items.contains(item)) {
+                duplicates.add(item);
+                } else { 
+                    items.add(item);
+                    } 
+            } 
+        return duplicates;
+        }
+&lt;/code&gt;&lt;/pre&gt;
+</summary>
+    </entry>    <entry>
+        <id>https://stackoverflow.com/questions/203984/-/19305534#19305534</id>
+        <re:rank scheme="https://stackoverflow.com">10</re:rank>
+        <title type="text">Answer by user2868724 for How do I remove repeated elements from ArrayList?</title>
+        <author>
+            <name>user2868724</name>
+            <uri>https://stackoverflow.com/users/2868724</uri>
+        </author>
+        <link rel="alternate" href="https://stackoverflow.com/questions/203984/how-do-i-remove-repeated-elements-from-arraylist/19305534#19305534" />
+        <published>2013-10-10T20:24:46Z</published>
+        <updated>2013-10-10T20:24:46Z</updated>
+        <summary type="html">&lt;p&gt;this can solve the problem:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;private List&amp;lt;SomeClass&amp;gt; clearListFromDuplicateFirstName(List&amp;lt;SomeClass&amp;gt; list1) {
+
+Map&amp;lt;String, SomeClass&amp;gt; cleanMap = new LinkedHashMap&amp;lt;String, SomeClass&amp;gt;();
+for (int i = 0; i &amp;lt; list1.size(); i++) {
+     cleanMap.put(list1.get(i).getFirstName(), list1.get(i));
+}
+List&amp;lt;SomeClass&amp;gt; list = new ArrayList&amp;lt;SomeClass&amp;gt;(cleanMap.values());
+return list;
+}
+&lt;/code&gt;&lt;/pre&gt;
+</summary>
+    </entry>    <entry>
+        <id>https://stackoverflow.com/questions/203984/-/19334383#19334383</id>
+        <re:rank scheme="https://stackoverflow.com">2</re:rank>
+        <title type="text">Answer by ramakrishnan for How do I remove repeated elements from ArrayList?</title>
+        <author>
+            <name>ramakrishnan</name>
+            <uri>https://stackoverflow.com/users/2071911</uri>
+        </author>
+        <link rel="alternate" href="https://stackoverflow.com/questions/203984/how-do-i-remove-repeated-elements-from-arraylist/19334383#19334383" />
+        <published>2013-10-12T12:51:01Z</published>
+        <updated>2013-10-12T13:14:50Z</updated>
+        <summary type="html">&lt;p&gt;If you want to preserve your Order then it is best to use &lt;strong&gt;LinkedHashSet&lt;/strong&gt;.
+Because if you want to pass this List to an Insert Query by Iterating it, the order would be preserved.&lt;/p&gt;
+
+&lt;p&gt;Try this&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;LinkedHashSet link=new LinkedHashSet();
+List listOfValues=new ArrayList();
+listOfValues.add(link);
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;This conversion will be very helpful when you want to return a List but not a Set.&lt;/p&gt;
+</summary>
+    </entry>    <entry>
+        <id>https://stackoverflow.com/questions/203984/-/19434592#19434592</id>
+        <re:rank scheme="https://stackoverflow.com">20</re:rank>
+        <title type="text">Answer by CarlJohn for How do I remove repeated elements from ArrayList?</title>
+        <author>
+            <name>CarlJohn</name>
+            <uri>https://stackoverflow.com/users/369035</uri>
+        </author>
+        <link rel="alternate" href="https://stackoverflow.com/questions/203984/how-do-i-remove-repeated-elements-from-arraylist/19434592#19434592" />
+        <published>2013-10-17T18:38:14Z</published>
+        <updated>2013-10-17T18:38:14Z</updated>
+        <summary type="html">&lt;p&gt;It is possible to remove duplicates from arraylist without using &lt;strong&gt;HashSet&lt;/strong&gt; or &lt;strong&gt;one more arraylist&lt;/strong&gt;. &lt;/p&gt;
+
+&lt;p&gt;Try this code..&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;    ArrayList&amp;lt;String&amp;gt; lst = new ArrayList&amp;lt;String&amp;gt;();
+    lst.add(&quot;ABC&quot;);
+    lst.add(&quot;ABC&quot;);
+    lst.add(&quot;ABCD&quot;);
+    lst.add(&quot;ABCD&quot;);
+    lst.add(&quot;ABCE&quot;);
+
+    System.out.println(&quot;Duplicates List &quot;+lst);
+
+    Object[] st = lst.toArray();
+      for (Object s : st) {
+        if (lst.indexOf(s) != lst.lastIndexOf(s)) {
+            lst.remove(lst.lastIndexOf(s));
+         }
+      }
+
+    System.out.println(&quot;Distinct List &quot;+lst);
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Output is&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;Duplicates List [ABC, ABC, ABCD, ABCD, ABCE]
+Distinct List [ABC, ABCD, ABCE]
+&lt;/code&gt;&lt;/pre&gt;
+</summary>
+    </entry>    <entry>
+        <id>https://stackoverflow.com/questions/203984/-/23177411#23177411</id>
+        <re:rank scheme="https://stackoverflow.com">108</re:rank>
+        <title type="text">Answer by Vitalii Fedorenko for How do I remove repeated elements from ArrayList?</title>
+        <author>
+            <name>Vitalii Fedorenko</name>
+            <uri>https://stackoverflow.com/users/288671</uri>
+        </author>
+        <link rel="alternate" href="https://stackoverflow.com/questions/203984/how-do-i-remove-repeated-elements-from-arraylist/23177411#23177411" />
+        <published>2014-04-20T01:23:18Z</published>
+        <updated>2014-04-20T01:23:18Z</updated>
+        <summary type="html">&lt;p&gt;In Java 8:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;List&amp;lt;String&amp;gt; deduped = list.stream().distinct().collect(Collectors.toList());
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Please note that the &lt;a href=&quot;https://stackoverflow.com/questions/2265503/why-do-i-need-to-override-the-equals-and-hashcode-methods-in-java&quot;&gt;hashCode-equals&lt;/a&gt; contract for list members should be respected for the filtering to work properly.&lt;/p&gt;
+</summary>
+    </entry>    <entry>
+        <id>https://stackoverflow.com/questions/203984/-/24205781#24205781</id>
+        <re:rank scheme="https://stackoverflow.com">0</re:rank>
+        <title type="text">Answer by SparkOn for How do I remove repeated elements from ArrayList?</title>
+        <author>
+            <name>SparkOn</name>
+            <uri>https://stackoverflow.com/users/3282808</uri>
+        </author>
+        <link rel="alternate" href="https://stackoverflow.com/questions/203984/how-do-i-remove-repeated-elements-from-arraylist/24205781#24205781" />
+        <published>2014-06-13T12:51:39Z</published>
+        <updated>2014-06-13T12:51:39Z</updated>
+        <summary type="html">&lt;pre&gt;&lt;code&gt;    ArrayList&amp;lt;String&amp;gt; list = new ArrayList&amp;lt;String&amp;gt;();
+    HashSet&amp;lt;String&amp;gt; unique = new LinkedHashSet&amp;lt;String&amp;gt;();
+    HashSet&amp;lt;String&amp;gt; dup = new LinkedHashSet&amp;lt;String&amp;gt;();
+    boolean b = false;
+    list.add(&quot;Hello&quot;);
+    list.add(&quot;Hello&quot;);
+    list.add(&quot;how&quot;);
+    list.add(&quot;are&quot;);
+    list.add(&quot;u&quot;);
+    list.add(&quot;u&quot;);
+
+    for(Iterator iterator= list.iterator();iterator.hasNext();)
+    {
+        String value = (String)iterator.next();
+        System.out.println(value);
+
+        if(b==unique.add(value))
+            dup.add(value);
+        else
+            unique.add(value);
+
+
+    }
+    System.out.println(unique);
+    System.out.println(dup);
+&lt;/code&gt;&lt;/pre&gt;
+</summary>
+    </entry>    <entry>
+        <id>https://stackoverflow.com/questions/203984/-/25780946#25780946</id>
+        <re:rank scheme="https://stackoverflow.com">0</re:rank>
+        <title type="text">Answer by Thananjayan N for How do I remove repeated elements from ArrayList?</title>
+        <author>
+            <name>Thananjayan N</name>
+            <uri>https://stackoverflow.com/users/4029759</uri>
+        </author>
+        <link rel="alternate" href="https://stackoverflow.com/questions/203984/how-do-i-remove-repeated-elements-from-arraylist/25780946#25780946" />
+        <published>2014-09-11T06:52:56Z</published>
+        <updated>2014-09-12T10:33:58Z</updated>
+        <summary type="html">&lt;p&gt;If you want to remove duplicates from ArrayList means find the below logic,&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;public static Object[] removeDuplicate(Object[] inputArray)
+{
+    long startTime = System.nanoTime();
+    int totalSize = inputArray.length;
+    Object[] resultArray = new Object[totalSize];
+    int newSize = 0;
+    for(int i=0; i&amp;lt;totalSize; i++)
+    {
+        Object value = inputArray[i];
+        if(value == null)
+        {
+            continue;
+        }
+
+        for(int j=i+1; j&amp;lt;totalSize; j++)
+        {
+            if(value.equals(inputArray[j]))
+            {
+                inputArray[j] = null;
+            }
+        }
+        resultArray[newSize++] = value;
+    }
+
+    long endTime = System.nanoTime()-startTime;
+    System.out.println(&quot;Total Time-B:&quot;+endTime);
+    return resultArray;
+}
+&lt;/code&gt;&lt;/pre&gt;
+</summary>
+    </entry>    <entry>
+        <id>https://stackoverflow.com/questions/203984/-/27356461#27356461</id>
+        <re:rank scheme="https://stackoverflow.com">3</re:rank>
+        <title type="text">Answer by M Kaweepatt Churcharoen for How do I remove repeated elements from ArrayList?</title>
+        <author>
+            <name>M Kaweepatt Churcharoen</name>
+            <uri>https://stackoverflow.com/users/1516571</uri>
+        </author>
+        <link rel="alternate" href="https://stackoverflow.com/questions/203984/how-do-i-remove-repeated-elements-from-arraylist/27356461#27356461" />
+        <published>2014-12-08T10:57:39Z</published>
+        <updated>2014-12-08T10:57:39Z</updated>
+        <summary type="html">&lt;p&gt;This three lines of code can remove the duplicated element from ArrayList or any collection.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;List&amp;lt;Entity&amp;gt; entities = repository.findByUserId(userId);
+
+Set&amp;lt;Entity&amp;gt; s = new LinkedHashSet&amp;lt;Entity&amp;gt;(entities);
+entities.clear();
+entities.addAll(s);
+&lt;/code&gt;&lt;/pre&gt;
+</summary>
+    </entry>    <entry>
+        <id>https://stackoverflow.com/questions/203984/-/28987005#28987005</id>
+        <re:rank scheme="https://stackoverflow.com">2</re:rank>
+        <title type="text">Answer by sambhu for How do I remove repeated elements from ArrayList?</title>
+        <author>
+            <name>sambhu</name>
+            <uri>https://stackoverflow.com/users/4435902</uri>
+        </author>
+        <link rel="alternate" href="https://stackoverflow.com/questions/203984/how-do-i-remove-repeated-elements-from-arraylist/28987005#28987005" />
+        <published>2015-03-11T12:47:31Z</published>
+        <updated>2015-06-10T01:32:55Z</updated>
+        <summary type="html">&lt;p&gt;&lt;strong&gt;Code:&lt;/strong&gt;&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;List&amp;lt;String&amp;gt; duplicatList = new ArrayList&amp;lt;String&amp;gt;();
+duplicatList = Arrays.asList(&quot;AA&quot;,&quot;BB&quot;,&quot;CC&quot;,&quot;DD&quot;,&quot;DD&quot;,&quot;EE&quot;,&quot;AA&quot;,&quot;FF&quot;);
+//above AA and DD are duplicate
+Set&amp;lt;String&amp;gt; uniqueList = new HashSet&amp;lt;String&amp;gt;(duplicatList);
+duplicatList = new ArrayList&amp;lt;String&amp;gt;(uniqueList); //let GC will doing free memory
+System.out.println(&quot;Removed Duplicate : &quot;+duplicatList);
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;&lt;strong&gt;Note:&lt;/strong&gt; Definitely, there will be memory overhead.&lt;/p&gt;
+</summary>
+    </entry>    <entry>
+        <id>https://stackoverflow.com/questions/203984/-/31160570#31160570</id>
+        <re:rank scheme="https://stackoverflow.com">0</re:rank>
+        <title type="text">Answer by sharkbait for How do I remove repeated elements from ArrayList?</title>
+        <author>
+            <name>sharkbait</name>
+            <uri>https://stackoverflow.com/users/1353274</uri>
+        </author>
+        <link rel="alternate" href="https://stackoverflow.com/questions/203984/how-do-i-remove-repeated-elements-from-arraylist/31160570#31160570" />
+        <published>2015-07-01T11:54:45Z</published>
+        <updated>2015-07-01T11:54:45Z</updated>
+        <summary type="html">&lt;p&gt;The @jonathan-stafford solution is OK. But this don&#39;t preserve the list order.&lt;/p&gt;
+
+&lt;p&gt;If you want preserve the list order you have to use this:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;public static &amp;lt;T&amp;gt; void removeDuplicate(List &amp;lt;T&amp;gt; list) {
+Set &amp;lt;T&amp;gt; set = new HashSet &amp;lt;T&amp;gt;();
+List &amp;lt;T&amp;gt; newList = new ArrayList &amp;lt;T&amp;gt;();
+for (Iterator &amp;lt;T&amp;gt;iter = list.iterator();    iter.hasNext(); ) {
+   Object element = iter.next();
+   if (set.add((T) element))
+      newList.add((T) element);
+   }
+   list.clear();
+   list.addAll(newList);
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;It&#39;s only to complete the answer. Very good!&lt;/p&gt;
+</summary>
+    </entry>    <entry>
+        <id>https://stackoverflow.com/questions/203984/-/31770675#31770675</id>
+        <re:rank scheme="https://stackoverflow.com">1</re:rank>
+        <title type="text">Answer by siva for How do I remove repeated elements from ArrayList?</title>
+        <author>
+            <name>siva</name>
+            <uri>https://stackoverflow.com/users/5182491</uri>
+        </author>
+        <link rel="alternate" href="https://stackoverflow.com/questions/203984/how-do-i-remove-repeated-elements-from-arraylist/31770675#31770675" />
+        <published>2015-08-02T09:54:03Z</published>
+        <updated>2015-08-02T09:54:03Z</updated>
+        <summary type="html">&lt;pre&gt;&lt;code&gt;        List&amp;lt;String&amp;gt; result = new ArrayList&amp;lt;String&amp;gt;();
+        Set&amp;lt;String&amp;gt; set = new LinkedHashSet&amp;lt;String&amp;gt;();
+        String s = &quot;ravi is a good!boy. But ravi is very nasty fellow.&quot;;
+        StringTokenizer st = new StringTokenizer(s, &quot; ,. ,!&quot;);
+        while (st.hasMoreTokens()) {
+            result.add(st.nextToken());
+        }
+         System.out.println(result);
+         set.addAll(result);
+        result.clear();
+        result.addAll(set);
+        System.out.println(result);
+
+output:
+[ravi, is, a, good, boy, But, ravi, is, very, nasty, fellow]
+[ravi, is, a, good, boy, But, very, nasty, fellow]
+&lt;/code&gt;&lt;/pre&gt;
+</summary>
+    </entry>    <entry>
+        <id>https://stackoverflow.com/questions/203984/-/31971798#31971798</id>
+        <re:rank scheme="https://stackoverflow.com">22</re:rank>
+        <title type="text">Answer by infoj for How do I remove repeated elements from ArrayList?</title>
+        <author>
+            <name>infoj</name>
+            <uri>https://stackoverflow.com/users/4851359</uri>
+        </author>
+        <link rel="alternate" href="https://stackoverflow.com/questions/203984/how-do-i-remove-repeated-elements-from-arraylist/31971798#31971798" />
+        <published>2015-08-12T17:30:38Z</published>
+        <updated>2015-08-12T17:30:38Z</updated>
+        <summary type="html">&lt;p&gt;Java 8 streams provide a very simple way to remove duplicate elements from a list. Using the distinct method.
+If we have a list of cities and we want to remove duplicates from that list it can be done in a single line - &lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt; List&amp;lt;String&amp;gt; cityList = new ArrayList&amp;lt;&amp;gt;();
+ cityList.add(&quot;Delhi&quot;);
+ cityList.add(&quot;Mumbai&quot;);
+ cityList.add(&quot;Bangalore&quot;);
+ cityList.add(&quot;Chennai&quot;);
+ cityList.add(&quot;Kolkata&quot;);
+ cityList.add(&quot;Mumbai&quot;);
+
+ cityList = cityList.stream().distinct().collect(Collectors.toList());
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;&lt;a href=&quot;http://netjs.blogspot.com/2015/08/how-to-remove-duplicate-elements-from-arraylist-java.html&quot; rel=&quot;noreferrer&quot;&gt;How to remove duplicate elements from an arraylist&lt;/a&gt;&lt;/p&gt;
+</summary>
+    </entry>    <entry>
+        <id>https://stackoverflow.com/questions/203984/-/32680600#32680600</id>
+        <re:rank scheme="https://stackoverflow.com">9</re:rank>
+        <title type="text">Answer by Manash Ranjan Dakua for How do I remove repeated elements from ArrayList?</title>
+        <author>
+            <name>Manash Ranjan Dakua</name>
+            <uri>https://stackoverflow.com/users/4879651</uri>
+        </author>
+        <link rel="alternate" href="https://stackoverflow.com/questions/203984/how-do-i-remove-repeated-elements-from-arraylist/32680600#32680600" />
+        <published>2015-09-20T14:41:56Z</published>
+        <updated>2015-09-20T14:41:56Z</updated>
+        <summary type="html">&lt;pre&gt;&lt;code&gt;public static void main(String[] args){
+    ArrayList&amp;lt;Object&amp;gt; al = new ArrayList&amp;lt;Object&amp;gt;();
+    al.add(&quot;abc&quot;);
+    al.add(&#39;a&#39;);
+    al.add(&#39;b&#39;);
+    al.add(&#39;a&#39;);
+    al.add(&quot;abc&quot;);
+    al.add(10.3);
+    al.add(&#39;c&#39;);
+    al.add(10);
+    al.add(&quot;abc&quot;);
+    al.add(10);
+    System.out.println(&quot;Before Duplicate Remove:&quot;+al);
+    for(int i=0;i&amp;lt;al.size();i++){
+        for(int j=i+1;j&amp;lt;al.size();j++){
+            if(al.get(i).equals(al.get(j))){
+                al.remove(j);
+                j--;
+            }
+        }
+    }
+    System.out.println(&quot;After Removing duplicate:&quot;+al);
+}
+&lt;/code&gt;&lt;/pre&gt;
+</summary>
+    </entry>    <entry>
+        <id>https://stackoverflow.com/questions/203984/-/32735976#32735976</id>
+        <re:rank scheme="https://stackoverflow.com">0</re:rank>
+        <title type="text">Answer by neo7 for How do I remove repeated elements from ArrayList?</title>
+        <author>
+            <name>neo7</name>
+            <uri>https://stackoverflow.com/users/1982580</uri>
+        </author>
+        <link rel="alternate" href="https://stackoverflow.com/questions/203984/how-do-i-remove-repeated-elements-from-arraylist/32735976#32735976" />
+        <published>2015-09-23T09:36:02Z</published>
+        <updated>2015-09-23T09:36:02Z</updated>
+        <summary type="html">&lt;p&gt;Here is my answer without using any other data structure like set or hashmap etc.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;public static &amp;lt;T&amp;gt; ArrayList&amp;lt;T&amp;gt; uniquefy(ArrayList&amp;lt;T&amp;gt; myList) {
+
+    ArrayList &amp;lt;T&amp;gt; uniqueArrayList = new ArrayList&amp;lt;T&amp;gt;();
+    for (int i = 0; i &amp;lt; myList.size(); i++){
+        if (!uniqueArrayList.contains(myList.get(i))){
+            uniqueArrayList.add(myList.get(i));
+        }
+    }
+
+    return uniqueArrayList;
+}
+&lt;/code&gt;&lt;/pre&gt;
+</summary>
+    </entry>    <entry>
+        <id>https://stackoverflow.com/questions/203984/-/33751322#33751322</id>
+        <re:rank scheme="https://stackoverflow.com">-1</re:rank>
+        <title type="text">Answer by satish for How do I remove repeated elements from ArrayList?</title>
+        <author>
+            <name>satish</name>
+            <uri>https://stackoverflow.com/users/5281441</uri>
+        </author>
+        <link rel="alternate" href="https://stackoverflow.com/questions/203984/how-do-i-remove-repeated-elements-from-arraylist/33751322#33751322" />
+        <published>2015-11-17T07:26:39Z</published>
+        <updated>2015-11-17T07:26:39Z</updated>
+        <summary type="html">&lt;p&gt;In Java, List permits ordered access of their elements. They can have duplicates because their lookup key is the position not some hash code, every element can be modified while they remain in the list where as Set represents a collection of unique elements and while elements are in set, they must not be modified.While there is no restriction preventing you from modifying elements in a set, if an element is modified, then it could become forever lost in the set.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;public static void main(String[] args) {  
+           List&amp;lt;String&amp;gt; l = new ArrayList&amp;lt;String&amp;gt;();  
+           l.add(&quot;A&quot;);  
+           l.add(&quot;B&quot;);  
+           l.add(&quot;C&quot;);  
+           l.add(&quot;A&quot;);  
+           System.out.println(&quot;Before removing duplicates: &quot;);  
+           for (String s : l) {  
+                System.out.println(s);  
+           }  
+           Set&amp;lt;String&amp;gt; set = new HashSet&amp;lt;String&amp;gt;(l);  
+           List&amp;lt;String&amp;gt; newlist = new ArrayList&amp;lt;String&amp;gt;(set);  
+           System.out.println(&quot;after removing duplicates: &quot;);  
+           for (String s : newlist) {  
+                System.out.println(s);  
+           }  
+      }  
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;for reference , refer this link &lt;a href=&quot;http://techno-terminal.blogspot.in/2015/11/how-to-remove-duplicates-from-arraylist.html&quot; rel=&quot;nofollow&quot;&gt;How to remove duplicates from ArrayList&lt;/a&gt; &lt;/p&gt;
+</summary>
+    </entry>    <entry>
+        <id>https://stackoverflow.com/questions/203984/-/34033817#34033817</id>
+        <re:rank scheme="https://stackoverflow.com">0</re:rank>
+        <title type="text">Answer by Ravi Vital for How do I remove repeated elements from ArrayList?</title>
+        <author>
+            <name>Ravi Vital</name>
+            <uri>https://stackoverflow.com/users/5628310</uri>
+        </author>
+        <link rel="alternate" href="https://stackoverflow.com/questions/203984/how-do-i-remove-repeated-elements-from-arraylist/34033817#34033817" />
+        <published>2015-12-02T02:23:21Z</published>
+        <updated>2015-12-03T15:06:23Z</updated>
+        <summary type="html">&lt;p&gt;Would something like this work better ? &lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;public static void removeDuplicates(ArrayList&amp;lt;String&amp;gt; list) {
+Arraylist&amp;lt;Object&amp;gt; ar     = new Arraylist&amp;lt;Object&amp;gt;();
+Arraylist&amp;lt;Object&amp;gt; tempAR = new Arraylist&amp;lt;Object&amp;gt;();
+while (list.size()&amp;gt;0){
+    ar.add(list(0));
+    list.removeall(Collections.singleton(list(0)));
+}
+list.addAll(ar);
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;}&lt;/p&gt;
+
+&lt;p&gt;That should maintain the order and also not be quadratic in run time.&lt;/p&gt;
+</summary>
+    </entry>    <entry>
+        <id>https://stackoverflow.com/questions/203984/-/34204842#34204842</id>
+        <re:rank scheme="https://stackoverflow.com">5</re:rank>
+        <title type="text">Answer by Craig P. Motlin for How do I remove repeated elements from ArrayList?</title>
+        <author>
+            <name>Craig P. Motlin</name>
+            <uri>https://stackoverflow.com/users/23572</uri>
+        </author>
+        <link rel="alternate" href="https://stackoverflow.com/questions/203984/how-do-i-remove-repeated-elements-from-arraylist/34204842#34204842" />
+        <published>2015-12-10T14:46:58Z</published>
+        <updated>2016-09-28T22:45:42Z</updated>
+        <summary type="html">&lt;p&gt;If you&#39;re willing to use a third-party library, you can use the method &lt;code&gt;distinct()&lt;/code&gt; in &lt;a href=&quot;http://www.eclipse.org/collections/&quot; rel=&quot;nofollow&quot;&gt;Eclipse Collections&lt;/a&gt; (formerly GS Collections).&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;ListIterable&amp;lt;Integer&amp;gt; integers = FastList.newListWith(1, 3, 1, 2, 2, 1);
+Assert.assertEquals(
+    FastList.newListWith(1, 3, 2),
+    integers.distinct());
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;The advantage of using &lt;code&gt;distinct()&lt;/code&gt; instead of converting to a Set and then back to a List is that &lt;code&gt;distinct()&lt;/code&gt; preserves the order of the original List, retaining the first occurrence of each element. It&#39;s implemented by using both a Set and a List.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;MutableSet&amp;lt;T&amp;gt; seenSoFar = UnifiedSet.newSet();
+int size = list.size();
+for (int i = 0; i &amp;lt; size; i++)
+{
+    T item = list.get(i);
+    if (seenSoFar.add(item))
+    {
+        targetCollection.add(item);
+    }
+}
+return targetCollection;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;If you cannot convert your original List into an Eclipse Collections type, you can use ListAdapter to get the same API.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;MutableList&amp;lt;Integer&amp;gt; distinct = ListAdapter.adapt(integers).distinct();
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;&lt;strong&gt;Note:&lt;/strong&gt; I am a committer for Eclipse Collections.&lt;/p&gt;
+</summary>
+    </entry>    <entry>
+        <id>https://stackoverflow.com/questions/203984/-/36234085#36234085</id>
+        <re:rank scheme="https://stackoverflow.com">2</re:rank>
+        <title type="text">Answer by hardip for How do I remove repeated elements from ArrayList?</title>
+        <author>
+            <name>hardip</name>
+            <uri>https://stackoverflow.com/users/5018911</uri>
+        </author>
+        <link rel="alternate" href="https://stackoverflow.com/questions/203984/how-do-i-remove-repeated-elements-from-arraylist/36234085#36234085" />
+        <published>2016-03-26T10:13:30Z</published>
+        <updated>2016-03-26T10:51:24Z</updated>
+        <summary type="html">&lt;pre&gt;&lt;code&gt;ArrayList&amp;lt;String&amp;gt; city=new ArrayList&amp;lt;String&amp;gt;();
+city.add(&quot;rajkot&quot;);
+city.add(&quot;gondal&quot;);
+city.add(&quot;rajkot&quot;);
+city.add(&quot;gova&quot;);
+city.add(&quot;baroda&quot;);
+city.add(&quot;morbi&quot;);
+city.add(&quot;gova&quot;);
+
+HashSet&amp;lt;String&amp;gt; hashSet = new HashSet&amp;lt;String&amp;gt;();
+hashSet.addAll(city);
+city.clear();
+city.addAll(hashSet);
+Toast.makeText(getActivity(),&quot;&quot; + city.toString(),Toast.LENGTH_SHORT).show();
+&lt;/code&gt;&lt;/pre&gt;
+</summary>
+    </entry>    <entry>
+        <id>https://stackoverflow.com/questions/203984/-/37405769#37405769</id>
+        <re:rank scheme="https://stackoverflow.com">39</re:rank>
+        <title type="text">Answer by i_am_zero for How do I remove repeated elements from ArrayList?</title>
+        <author>
+            <name>i_am_zero</name>
+            <uri>https://stackoverflow.com/users/1216775</uri>
+        </author>
+        <link rel="alternate" href="https://stackoverflow.com/questions/203984/how-do-i-remove-repeated-elements-from-arraylist/37405769#37405769" />
+        <published>2016-05-24T06:17:57Z</published>
+        <updated>2018-12-06T09:00:19Z</updated>
+        <summary type="html">&lt;p&gt;Suppose we have a list of &lt;code&gt;String&lt;/code&gt; like:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;List&amp;lt;String&amp;gt; strList = new ArrayList&amp;lt;&amp;gt;(5);
+// insert up to five items to list.        
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Then we can remove duplicate elements in multiple ways.&lt;/p&gt;
+
+&lt;h2&gt;Prior to Java 8&lt;/h2&gt;
+
+&lt;pre&gt;&lt;code&gt;List&amp;lt;String&amp;gt; deDupStringList = new ArrayList&amp;lt;&amp;gt;(new HashSet&amp;lt;&amp;gt;(strList));
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;&lt;strong&gt;Note:&lt;/strong&gt; If we want to maintain the insertion order then we need to use &lt;code&gt;LinkedHashSet&lt;/code&gt; in place of &lt;code&gt;HashSet&lt;/code&gt;&lt;/p&gt;
+
+&lt;h2&gt;Using Guava&lt;/h2&gt;
+
+&lt;pre&gt;&lt;code&gt;List&amp;lt;String&amp;gt; deDupStringList2 = Lists.newArrayList(Sets.newHashSet(strList));
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h2&gt;Using Java 8&lt;/h2&gt;
+
+&lt;pre&gt;&lt;code&gt;List&amp;lt;String&amp;gt; deDupStringList3 = strList.stream().distinct().collect(Collectors.toList());
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;&lt;strong&gt;Note:&lt;/strong&gt;  In case we want to collect the result in a &lt;strong&gt;specific list implementation&lt;/strong&gt; e.g. &lt;code&gt;LinkedList&lt;/code&gt; then we can modify the above example as:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;List&amp;lt;String&amp;gt; deDupStringList3 = strList.stream().distinct()
+                 .collect(Collectors.toCollection(LinkedList::new));
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;We can use &lt;code&gt;parallelStream&lt;/code&gt; also in the above code but it may not give expected performace benefits. Check this &lt;a href=&quot;https://stackoverflow.com/questions/53645037/will-parallel-stream-work-fine-with-distinct-operation&quot;&gt;question&lt;/a&gt; for more.&lt;/p&gt;
+</summary>
+    </entry>    <entry>
+        <id>https://stackoverflow.com/questions/203984/-/40419515#40419515</id>
+        <re:rank scheme="https://stackoverflow.com">24</re:rank>
+        <title type="text">Answer by Nenad Bulatovic for How do I remove repeated elements from ArrayList?</title>
+        <author>
+            <name>Nenad Bulatovic</name>
+            <uri>https://stackoverflow.com/users/1159404</uri>
+        </author>
+        <link rel="alternate" href="https://stackoverflow.com/questions/203984/how-do-i-remove-repeated-elements-from-arraylist/40419515#40419515" />
+        <published>2016-11-04T09:47:10Z</published>
+        <updated>2016-12-09T17:34:43Z</updated>
+        <summary type="html">&lt;p&gt;You can also do it this way, and preserve order:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;// delete duplicates (if any) from &#39;myArrayList&#39;
+myArrayList = new ArrayList&amp;lt;String&amp;gt;(new LinkedHashSet&amp;lt;String&amp;gt;(myArrayList));
+&lt;/code&gt;&lt;/pre&gt;
+</summary>
+    </entry>    <entry>
+        <id>https://stackoverflow.com/questions/203984/-/43025730#43025730</id>
+        <re:rank scheme="https://stackoverflow.com">1</re:rank>
+        <title type="text">Answer by Gujjula Ramesh Reddy for How do I remove repeated elements from ArrayList?</title>
+        <author>
+            <name>Gujjula Ramesh Reddy</name>
+            <uri>https://stackoverflow.com/users/6128908</uri>
+        </author>
+        <link rel="alternate" href="https://stackoverflow.com/questions/203984/how-do-i-remove-repeated-elements-from-arraylist/43025730#43025730" />
+        <published>2017-03-26T06:19:13Z</published>
+        <updated>2017-03-26T06:19:13Z</updated>
+        <summary type="html">&lt;p&gt;This is used for your Custom Objects list &lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;   public List&amp;lt;Contact&amp;gt; removeDuplicates(List&amp;lt;Contact&amp;gt; list) {
+    // Set set1 = new LinkedHashSet(list);
+    Set set = new TreeSet(new Comparator() {
+
+        @Override
+        public int compare(Object o1, Object o2) {
+            if (((Contact) o1).getId().equalsIgnoreCase(((Contact) o2).getId()) /*&amp;amp;&amp;amp;
+                    ((Contact)o1).getName().equalsIgnoreCase(((Contact)o2).getName())*/) {
+                return 0;
+            }
+            return 1;
+        }
+    });
+    set.addAll(list);
+
+    final List newList = new ArrayList(set);
+    return newList;
+}
+&lt;/code&gt;&lt;/pre&gt;
+</summary>
+    </entry>    <entry>
+        <id>https://stackoverflow.com/questions/203984/-/47580485#47580485</id>
+        <re:rank scheme="https://stackoverflow.com">1</re:rank>
+        <title type="text">Answer by HamidReza for How do I remove repeated elements from ArrayList?</title>
+        <author>
+            <name>HamidReza</name>
+            <uri>https://stackoverflow.com/users/767555</uri>
+        </author>
+        <link rel="alternate" href="https://stackoverflow.com/questions/203984/how-do-i-remove-repeated-elements-from-arraylist/47580485#47580485" />
+        <published>2017-11-30T18:40:58Z</published>
+        <updated>2017-11-30T18:40:58Z</updated>
+        <summary type="html">&lt;p&gt;you can use nested loop in follow :&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;ArrayList&amp;lt;Class1&amp;gt; l1 = new ArrayList&amp;lt;Class1&amp;gt;();
+ArrayList&amp;lt;Class1&amp;gt; l2 = new ArrayList&amp;lt;Class1&amp;gt;();
+
+        Iterator iterator1 = l1.iterator();
+        boolean repeated = false;
+
+        while (iterator1.hasNext())
+        {
+            Class1 c1 = (Class1) iterator1.next();
+            for (Class1 _c: l2) {
+                if(_c.getId() == c1.getId())
+                    repeated = true;
+            }
+            if(!repeated)
+                l2.add(c1);
+        }
+&lt;/code&gt;&lt;/pre&gt;
+</summary>
+    </entry>    <entry>
+        <id>https://stackoverflow.com/questions/203984/-/50253949#50253949</id>
+        <re:rank scheme="https://stackoverflow.com">1</re:rank>
+        <title type="text">Answer by Saurabh Gaddelpalliwar for How do I remove repeated elements from ArrayList?</title>
+        <author>
+            <name>Saurabh Gaddelpalliwar</name>
+            <uri>https://stackoverflow.com/users/4019233</uri>
+        </author>
+        <link rel="alternate" href="https://stackoverflow.com/questions/203984/how-do-i-remove-repeated-elements-from-arraylist/50253949#50253949" />
+        <published>2018-05-09T12:54:46Z</published>
+        <updated>2018-05-09T13:36:44Z</updated>
+        <summary type="html">&lt;h2&gt;If you are using model type List&amp;lt; T&gt;/ArrayList&amp;lt; T&gt; . Hope,it&#39;s help you.&lt;/h2&gt;
+
+&lt;hr&gt;
+
+&lt;p&gt;Here is my code without using any other data structure like set or hashmap&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;for(int i = 0; i &amp;lt; Models.size(); i++) {
+     for(int j = i + 1; j &amp;lt; Models.size(); j++) {                                
+       if(Models.get(i).getName().equals(Models.get(j).getName())){    
+                                Models.remove(j);
+
+                                j--;
+                            }
+                        }
+                    }
+&lt;/code&gt;&lt;/pre&gt;
+</summary>
+    </entry>    <entry>
+        <id>https://stackoverflow.com/questions/203984/-/50382676#50382676</id>
+        <re:rank scheme="https://stackoverflow.com">0</re:rank>
+        <title type="text">Answer by Sameer Shrestha for How do I remove repeated elements from ArrayList?</title>
+        <author>
+            <name>Sameer Shrestha</name>
+            <uri>https://stackoverflow.com/users/7044810</uri>
+        </author>
+        <link rel="alternate" href="https://stackoverflow.com/questions/203984/how-do-i-remove-repeated-elements-from-arraylist/50382676#50382676" />
+        <published>2018-05-17T02:53:05Z</published>
+        <updated>2018-06-20T02:21:11Z</updated>
+        <summary type="html">&lt;p&gt;Time Complexity : O(n) : Without Set&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;private static void removeDup(ArrayList&amp;lt;String&amp;gt; listWithDuplicateElements) {
+    System.out.println(&quot; Original Duplicate List :&quot; + listWithDuplicateElements);
+    List&amp;lt;String&amp;gt; listWithoutDuplicateElements = new ArrayList&amp;lt;&amp;gt;(listWithDuplicateElements.size());
+
+    listWithDuplicateElements.stream().forEach(str -&amp;gt; {
+        if (listWithoutDuplicateElements.indexOf(str) == -1) {
+            listWithoutDuplicateElements.add(str);
+        }
+    });     
+
+    System.out.println(&quot; Without Duplicate List :&quot; + listWithoutDuplicateElements);
+}
+&lt;/code&gt;&lt;/pre&gt;
+</summary>
+    </entry>    <entry>
+        <id>https://stackoverflow.com/questions/203984/-/51181971#51181971</id>
+        <re:rank scheme="https://stackoverflow.com">0</re:rank>
+        <title type="text">Answer by seekingStillness for How do I remove repeated elements from ArrayList?</title>
+        <author>
+            <name>seekingStillness</name>
+            <uri>https://stackoverflow.com/users/6592058</uri>
+        </author>
+        <link rel="alternate" href="https://stackoverflow.com/questions/203984/how-do-i-remove-repeated-elements-from-arraylist/51181971#51181971" />
+        <published>2018-07-05T00:14:17Z</published>
+        <updated>2018-07-06T00:27:44Z</updated>
+        <summary type="html">&lt;p&gt;This is the right one (if you are concerned about the overhead of HashSet.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt; public static ArrayList&amp;lt;String&amp;gt; removeDuplicates (ArrayList&amp;lt;String&amp;gt; arrayList){
+    if (arrayList.isEmpty()) return null;  //return what makes sense for your app
+    Collections.sort(arrayList, String.CASE_INSENSITIVE_ORDER);
+    //remove duplicates
+    ArrayList &amp;lt;String&amp;gt; arrayList_mod = new ArrayList&amp;lt;&amp;gt;();
+    arrayList_mod.add(arrayList.get(0));
+    for (int i=1; i&amp;lt;arrayList.size(); i++){
+        if (!arrayList.get(i).equals(arrayList.get(i-1))) arrayList_mod.add(arrayList.get(i));
+    }
+    return arrayList_mod;
+}
+&lt;/code&gt;&lt;/pre&gt;
+</summary>
+    </entry></feed>

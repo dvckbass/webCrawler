@@ -1,0 +1,656 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<meta http-equiv="Pragma" content="no-cache" />
+<meta http-equiv="Expires" content="-1" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<link rel="alternate" type="application/rss+xml" title="JavaRanch: java.io.FileNotFoundException: C:\textfile.txt (Access is denied)"
+href="/forums/rss/topicPosts/586864" />
+<meta name="description" content="Why is access denied ??? I suspect this is a Windows 7 security related problem. How do i solve this problem ? java.io.IOException: Access is denied " />
+<meta name="keywords" content="exception,file,filenotfoundexception,text,fileoutputstream,filewriter,ioexception,method,native,outputstream" />
+<title>java.io.FileNotFoundException: C:\textfile.txt (Access is denied) (Beginning Java forum at Coderanch)</title>
+<style type="text/css">@import url(https://www.coderanch.com/templates/default/betaview/styles/reset.css?1543092693653 );</style>
+<style type="text/css">@import url(https://www.coderanch.com/templates/default/betaview/styles/style.css?1543092693653 );</style>
+<!--[if lt IE 9]>
+<script src="https://www.coderanch.com/templates/default/betaview/scripts/IE/html5shiv.js"></script>
+<style type="text/css">@import url(https://www.coderanch.com/templates/default/betaview/styles/ie-version-less-than-9.css?1543092693653);</style>
+<![endif]-->
+<link href='https://fonts.googleapis.com/css?family=Droid+Sans:400,700' rel='stylesheet' type='text/css'/>
+<link rel="canonical" href="https://coderanch.com/t/586864/java/java-io-FileNotFoundException-textfile-txt" />
+<link rel="alternate" media="only screen and (max-width: 640px)" href="https://coderanch.com/mobile/t/586864/java/java-io-FileNotFoundException-textfile-txt" />
+<link rel="search" type="application/opensearchdescription+xml" href="https://coderanch.com/forum-search.xml" title="JavaRanch forums" />
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+<link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8/themes/base/jquery-ui.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.3/jquery-ui.min.js"></script>
+<script> var JS_CONTEXT_PATH = ""; var JS_CSRF_TOKEN = "Z0V1-8UXH-SKP2-Z2UA-K0IX-98V6-YV1G-K2E4"; </script>
+<script src="https://www.coderanch.com/templates/default/betaview/scripts/guest.js?1543092693653"></script>
+</head>
+<body class="container borderBoxed ">
+<header >
+<div class="tmenu fixed">
+<ul>
+<li>
+<a id="faq" href="https://coderanch.com/f/153/Wiki">FAQs</a>
+<li>
+<a href="/forums/search/filters/33">Search</a>
+<li>
+<a href="/forums/recentTopics/list">Recent&nbsp;Topics</a>
+<li>
+<a href="/forums/posts/flagged">Flagged&nbsp;Topics</a>
+<li>
+<a href="/forums/hottestTopics/list">Hot&nbsp;Topics</a>
+<li>
+<a href="/forums/bestTopics/list">Best Topics</a>
+<li class="lastItem">
+<a id="loginLink" href="/forums/user/login" data-login-path="/t/586864/java/java-io-FileNotFoundException-textfile-txt">Register / Login</a>
+</ul>
+</div>
+<div class="mooseandads">
+<div class="clear headerWrpr">
+<span class="moose fl">
+<img class="site-header-logo" src="https://www.coderanch.com/mooseImages/betaview/moosefly.gif"
+onerror="if (this.src!='https://www.coderanch.com/mooseImages/moosefly.gif') {this.src = 'https://www.coderanch.com/mooseImages/moosefly.gif'}"
+alt="Logo" title=""
+/>
+</span>
+<div class="forum-top-banner fl">
+<div class="bnwrpr">
+<table class="multbntab">
+<tr>
+<td class="bi">
+<a href="/forums/banner/redirect/114" target="_blank">
+<img src="https://i.imgur.com/JlkkEgt.png" border="0" alt="jQuery in Action, 3rd edition"
+style="max-width: 1024px;"
+/></a>
+</td>
+<td class="str">
+<a style="text-decoration:none" href="/forums/banner/list" title="Click on this asterisk to learn more about advertising like this on CodeRanch!"><img src="https://www.coderanch.com/templates/default/images/20x20_orange_asterisk.gif"></a>
+</td>
+</tr>
+</table>
+</div>
+</div>
+</div>
+</div>
+<div class="siteInfoMessage announcementSeparator fl">
+Win a copy of <a href="https://www.amazon.com/Spring-Action-Craig-Walls/dp/1617294942/?tag=crfa12-20">Spring in Action (5th edition)</a> this week in the <a href="https://coderanch.com/f/96/Spring">Spring</a> forum!
+</div>
+<div class="clear"></div>
+</header>
+<div class="middle fl ">
+<script>var TOPIC_ID = 586864;</script>
+<script src="https://www.coderanch.com/templates/default/betaview/scripts/userLocalTime.js?1543092693653"></script>
+<style type="text/css">@import url(https://www.coderanch.com/templates/default/betaview/styles/topic-show.css?1543092693653 );</style>
+<div class="topicActionPanel fl" xmlns="http://www.w3.org/1999/html">
+<div class="homeLinks fl">
+<ul>
+</ul>
+</div> <div class="topicActionButtons fl">
+<ul>
+<li>
+<span class="opaque topActBtn fl-button" title="You must log in or register to be able to reply">Post Reply</span>
+<span class="opaque topActBtn fl-button" title="You must login or register to be able to bookmark this topic">Bookmark Topic</span>
+<span class="opaque topActBtn fl-button" title="You must login or register to be notified when this topic is updated">Watch Topic</span>
+<li>
+<span class="opaque topActBtn fr-button" title="You must log in or register to be able to create a new topic">New Topic</span>
+</ul>
+<div class="clear"></div>
+</div>
+</div>
+<div class="topicRightArea">
+<style> .forumActionButtons { margin-left: 17% } #homeSearch { margin-left: 19% } </style>
+<div id="categorySidebar" class="leftPanel fl ">
+<div>
+<a class="catLstBtn catLstBtn-l4 pointer"
+href="/forums" title="forums home">programming forums</a>
+<a class="catLstBtn catLstBtn-l1 pointer"
+href="/c/java"
+title="Java">Java</a>
+<a class="catLstBtn catLstBtn-l1 pointer"
+href="/c/mobile"
+title="Mobile">Mobile</a>
+<a class="catLstBtn catLstBtn-l1 pointer"
+href="/c/certification"
+title="Certification">Certification</a>
+<a class="catLstBtn catLstBtn-l1 pointer"
+href="/c/databases"
+title="Databases">Databases</a>
+<a class="catLstBtn catLstBtn-l1 pointer"
+href="/c/caching"
+title="Caching">Caching</a>
+<a class="catLstBtn catLstBtn-l1 pointer"
+href="/c/books"
+title="Books">Books</a>
+<a class="catLstBtn catLstBtn-l1 pointer"
+href="/c/engineering"
+title="Engineering">Engineering</a>
+<a class="catLstBtn catLstBtn-l1 pointer"
+href="/c/micro-controllers"
+title="Micro Controllers">Micro Controllers</a>
+<a class="catLstBtn catLstBtn-l1 pointer"
+href="/c/os"
+title="OS">OS</a>
+<a class="catLstBtn catLstBtn-l1 pointer"
+href="/c/languages"
+title="Languages">Languages</a>
+<a class="catLstBtn catLstBtn-l1 pointer"
+href="/c/paradigms"
+title="Paradigms">Paradigms</a>
+<a class="catLstBtn catLstBtn-l1 pointer"
+href="/c/ide"
+title="IDEs">IDEs</a>
+<a class="catLstBtn catLstBtn-l1 pointer"
+href="/c/build-tools"
+title="Build Tools">Build Tools</a>
+<a class="catLstBtn catLstBtn-l1 pointer"
+href="/c/frameworks"
+title="Frameworks">Frameworks</a>
+<a class="catLstBtn catLstBtn-l1 pointer"
+href="/c/application-servers"
+title="Application Servers">Application Servers</a>
+<a class="catLstBtn catLstBtn-l1 pointer"
+href="/c/open-source"
+title="Open Source">Open Source</a>
+<a class="catLstBtn catLstBtn-l1 pointer"
+href="/c/4"
+title="This Site">This Site</a>
+<a class="catLstBtn catLstBtn-l1 pointer"
+href="/c/careers"
+title="Careers">Careers</a>
+<a class="catLstBtn catLstBtn-l1 pointer"
+href="/c/6"
+title="Other">Other</a>
+<a class="catLstBtn catLstBtn-l1 pointer"
+href="/forums/forums/allForums" title="list of all forums">all forums</a>
+<div class="leftEdgeStaff">
+<div class="descr">this forum made possible by our volunteer staff, including ...</div>
+<div class="rankName">Marshals:</div>
+<ul>
+<li><span class="stf">Campbell Ritchie</span>
+<li><span class="stf">Bear Bibeault</span>
+<li><span class="stf">Devaka Cooray</span>
+<li><span class="stf">Liutauras Vilda</span>
+<li><span class="stf">Jeanne Boyarsky</span>
+</ul>
+<div class="rankName">Sheriffs:</div>
+<ul>
+<li><span class="stf">Knute Snortum</span>
+<li><span class="stf">Junilu Lacar</span>
+<li><span class="stf">paul wheaton</span>
+</ul>
+<div class="rankName">Saloon Keepers:</div>
+<ul>
+<li><span class="stf">Ganesh Patekar</span>
+<li><span class="stf">Frits Walraven</span>
+<li><span class="stf">Tim Moores</span>
+<li><span class="stf">Ron McLeod</span>
+<li><span class="stf">Carey Brown</span>
+</ul>
+<div class="rankName">Bartenders:</div>
+<ul>
+<li><span class="stf">Stephan van Hulst</span>
+<li><span class="stf">salvin francis</span>
+<li><span class="stf">Tim Holloway</span>
+</ul>
+</div>
+</div>
+</div> <div id="rightPanel" class="rightPanel fl">
+<div class="content ">
+<div class="topicForums">
+<label title="This thread resides in one forum">Forum:</label>
+<ul>
+<li class="finalItem" >
+<a href="/f/33/java" title="Beginning Java forum">Beginning Java</a>
+</ul>
+</div> <div class="topicSubject">
+<h1 class="fl">
+<span id="topicFlags" class="flag"></span>
+<span id="topicSubject">java.io.FileNotFoundException: C:\textfile.txt (Access is denied)</span>
+&nbsp;<a href="/forums/rss/topicPosts/586864"><img src="https://www.coderanch.com/templates/default/images/rss.png" border="0" alt="RSS feed" title="RSS feed"/></a>
+</h1>
+<div class="clear"></div>
+</div>
+<div class="section topicBodyAndFooter"><div class="contentBackground1 postItem " data-pid="2671733">
+<div class="lcontent fl ">
+<div class="wp1">&nbsp;</div>
+<div class="wp2">
+<div class="name">
+<a href="/u/269361/justin-smythhe" title="You must login or register" class="">justin smythhe</a>
+</div>
+<div class="status userRankStatus">
+Ranch Hand
+</div>
+<div class="posts">Posts: 107</div>
+<div class="cowPieSec">
+</div>
+</div>
+</div>
+<div class="rcontent fr">
+<div class="rcwrapper ">
+<span class="postdate">
+<span title="Jul 12, 2012 18:50:17" id="2671733">posted 6 years ago</span>
+</span>
+<span class="postButtonsToolbar">
+<ul class="fr">
+<li>
+<img id="likeImage_2671733" class="opaque pointer" src="https://www.coderanch.com/templates/default/betaview/images/plus-1-thumb.gif"
+alt="Mark post as helpful" title="You must log in or register to be able to give a thumbs up for this post" />
+<li>
+<span class="post-pie-section">
+<span class="pieoffer">
+<img class="piesender opaque" alt="send pies" title="You must log in to give justin pie on this post"
+src="https://www.coderanch.com/templates/default/images/pie/give-pie-button.png" width="42px" height="18px" />
+</span>
+</span>
+<li>
+<span class="opaque"><img src="https://www.coderanch.com/templates/default/betaview/images/quote_button.gif" alt="Quote" title="You must log in or register to be able to quote this post" class="pointer"/></span>
+<li>
+<img class="pointer opaque" alt="Report post to moderator" title="You must login or register to report this post" src="https://www.coderanch.com/templates/default/betaview/images/report_post.png" />
+</ul>
+<div class="clear"></div>
+</span>
+<div class="clear"></div><div class="postText ">Why is access denied ??? I suspect this is a Windows 7 security related problem.  How do i solve this problem ?<br /> <br /> java.io.IOException: Access is denied<br /> Caught exception - Cannot create your file !!!<br /> java.io.FileNotFoundException: C:\textfile.txt (Access is denied)<br /> 	at java.io.FileOutputStream.open(Native Method)<br /> 	at java.io.FileOutputStream.&lt;init&gt;(FileOutputStream.java:180)<br /> 	at java.io.FileOutputStream.&lt;init&gt;(FileOutputStream.java:122)<br /> 	at java.io.FileWriter.&lt;init&gt;(FileWriter.java:62)<br /> <br /> </div><div class="clear"></div>
+</div>
+</div>
+<div class="clear"></div>
+</div><div class="contentBackground2 postItem " data-pid="2671743">
+<div class="lcontent fl ">
+<div class="wp1">&nbsp;</div>
+<div class="wp2">
+<div class="name">
+<a href="/u/239008/Paul-Adcock" title="You must login or register" class="">Paul Adcock</a>
+</div>
+<div class="status userRankStatus">
+Ranch Hand
+</div>
+<div class="posts">Posts: 48</div>
+<div class="cowPieSec">
+</div>
+<div class="icon">
+<a class="nonForumLink" href="https://coderanch.com/t/660301/Wiki/Bumper-Stickers" target="_blank">I like...</a>
+</div>
+<div class="stickers-section">
+<a href="http://www.coderanch.com/how-to/java/BumperStickers" target="_blank" ><img class="bumper-sticker s" src="/images/bumperStickers/16_firefox.gif" alt="Firefox Browser" title="Firefox Browser" border="0" /></a>
+<img class="bumper-sticker s" src="/images/bumperStickers/16_java.gif" alt="Java" title="Java" border="0" />
+<img class="bumper-sticker s" src="/images/bumperStickers/16_notepad.gif" alt="Notepad" title="Notepad" border="0" />
+</div>
+</div>
+</div>
+<div class="rcontent fr">
+<div class="rcwrapper ">
+<span class="postdate">
+<span title="Jul 12, 2012 19:27:39" id="2671743">posted 6 years ago</span>
+</span>
+<span class="postButtonsToolbar">
+<ul class="fr">
+<li>
+<span id="like_message_2671743"
+>
+<img src="https://www.coderanch.com/templates/default/betaview/images/thumbs-up.gif" title="This post has earned 1 up vote" alt="Likes"/> 1
+</span>
+<li>
+<img id="likeImage_2671743" class="opaque pointer" src="https://www.coderanch.com/templates/default/betaview/images/plus-1-thumb.gif"
+alt="Mark post as helpful" title="You must log in or register to be able to give a thumbs up for this post" />
+<li>
+<span class="post-pie-section">
+<span class="pieoffer">
+<img class="piesender opaque" alt="send pies" title="You must log in to give Paul pie on this post"
+src="https://www.coderanch.com/templates/default/images/pie/give-pie-button.png" width="42px" height="18px" />
+</span>
+</span>
+<li>
+<span class="opaque"><img src="https://www.coderanch.com/templates/default/betaview/images/quote_button.gif" alt="Quote" title="You must log in or register to be able to quote this post" class="pointer"/></span>
+<li>
+<img class="pointer opaque" alt="Report post to moderator" title="You must login or register to report this post" src="https://www.coderanch.com/templates/default/betaview/images/report_post.png" />
+</ul>
+<div class="clear"></div>
+</span>
+<div class="clear"></div><div class="postText ">I think I found the problem.  I checked by trying to save a text file right to that location manually and got a "you don't have permission error".<br /> <br /> You can't save directly to the C drive like that I think.  <br /> <br /> Normally, since most Computers have a Users directory underneath the C drive, yours might not but the chances are high that it does, <br /> <br /> then you would make a new Directory under the users directory, you might be able to just create it programmatically.<br /> <br /> <br /> Anyway, <br /> <br /> try creating it as C:/Users/SomeDirectory/textfile.txt<br /> <br /> <br /> At the very least, you need a subdirectory underneath C.  You can't just save something as a file itself to the C drive itself.<br /> <br /> Sorry, scratch that, normally under the Users directory, you have a directoy that is your computer name.  I wouldn't know what yours is.  <br /> <br /> so it's<br /> <br /> C:/Users/YourComputerName/textfile.txt<br /> <br /> that will work.<br /> <br /> <br /> <br /> </div><div class="clinks">
+<p>Repeal Obamacare.<br />http://www.dontfundobamacare.com/<br />http://liberty-amendments.freeforums.net/</p>
+</div>
+<div class="clear"></div>
+</div>
+</div>
+<div class="clear"></div>
+</div><div class="contentBackground1 postItem " data-pid="2671804">
+<div class="lcontent fl ">
+<div class="wp1">&nbsp;</div>
+<div class="wp2">
+<div class="name">
+<span class="" title="You must login or register" title="Joined: Jul 06, 2012">justin smythhe</span>
+</div>
+<div class="status userRankStatus">
+Ranch Hand
+</div>
+<div class="posts">Posts: 107</div>
+<div class="cowPieSec">
+</div>
+</div>
+</div>
+<div class="rcontent fr">
+<div class="rcwrapper ">
+<span class="postdate">
+<span title="Jul 13, 2012 00:04:42" id="2671804">posted 6 years ago</span>
+</span>
+<span class="postButtonsToolbar">
+<ul class="fr">
+<li>
+<img id="likeImage_2671804" class="opaque pointer" src="https://www.coderanch.com/templates/default/betaview/images/plus-1-thumb.gif"
+alt="Mark post as helpful" title="You must log in or register to be able to give a thumbs up for this post" />
+<li>
+<span class="post-pie-section">
+<span class="pieoffer">
+<img class="piesender opaque" alt="send pies" title="You must log in to give justin pie on this post"
+src="https://www.coderanch.com/templates/default/images/pie/give-pie-button.png" width="42px" height="18px" />
+</span>
+</span>
+<li>
+<span class="opaque"><img src="https://www.coderanch.com/templates/default/betaview/images/quote_button.gif" alt="Quote" title="You must log in or register to be able to quote this post" class="pointer"/></span>
+<li>
+<img class="pointer opaque" alt="Report post to moderator" title="You must login or register to report this post" src="https://www.coderanch.com/templates/default/betaview/images/report_post.png" />
+</ul>
+<div class="clear"></div>
+</span>
+<div class="clear"></div><div class="postText ">Yes, I did that and it works. Is there a way of making our code "create new files/folders as an administrator" ?<br /> <br /> Thanks <img src="https://www.coderanch.com/images/smilies/3b63d1616c5dfcf29f8a7a031aaa7cad.gif" /></div><div class="clear"></div>
+</div>
+</div>
+<div class="clear"></div>
+</div><div class="contentBackground2 postItem " data-pid="2671850">
+<div class="lcontent fl ">
+<div class="wp1">&nbsp;</div>
+<div class="wp2">
+<div class="name">
+<a href="/u/109202/Campbell-Ritchie" title="You must login or register" class="">Campbell Ritchie</a>
+</div>
+<div class="status userRankStatus">
+Marshal
+<span class="staffStar" title="This user is a Coderanch staff member"><img src="https://www.coderanch.com/templates/default/betaview/images/staff-star.png" /></span>
+</div>
+<div class="posts">Posts: 61750</div>
+<div class="cowPieSec">
+<div class="cowDisplayForUser" title="This user has earned a total of 193 cow(s)">
+<span class="numCowsImageText">193</span>
+<span class="numCowsImage"><b class="sprite1 cowIcon"></b></span>
+</div>
+<div class="microPieSection">
+<b class="sprite1 threadPie" title="This is a premium pie user"></b>
+</div>
+</div>
+</div>
+</div>
+<div class="rcontent fr">
+<div class="rcwrapper ">
+<span class="postdate">
+<span title="Jul 13, 2012 02:07:20" id="2671850">posted 6 years ago</span>
+</span>
+<span class="postButtonsToolbar">
+<ul class="fr">
+<li>
+<span id="like_message_2671850"
+>
+<img src="https://www.coderanch.com/templates/default/betaview/images/thumbs-up.gif" title="This post has earned 1 up vote" alt="Likes"/> 1
+</span>
+<li>
+<img id="likeImage_2671850" class="opaque pointer" src="https://www.coderanch.com/templates/default/betaview/images/plus-1-thumb.gif"
+alt="Mark post as helpful" title="You must log in or register to be able to give a thumbs up for this post" />
+<li>
+<span class="post-pie-section">
+<span class="pieoffer">
+<img class="piesender opaque" alt="send pies" title="You must log in to give Campbell pie on this post"
+src="https://www.coderanch.com/templates/default/images/pie/give-pie-button.png" width="42px" height="18px" />
+</span>
+</span>
+<li>
+<span class="opaque"><img src="https://www.coderanch.com/templates/default/betaview/images/quote_button.gif" alt="Quote" title="You must log in or register to be able to quote this post" class="pointer"/></span>
+<li>
+<img class="pointer opaque" alt="Report post to moderator" title="You must login or register to report this post" src="https://www.coderanch.com/templates/default/betaview/images/report_post.png" />
+</ul>
+<div class="clear"></div>
+</span>
+<div class="clear"></div><div class="postText ">Do you actually want code running on your computer in administrator mode? It is all right if you write it yourself, but what if somebody else wrote it . . .</div><div class="clear"></div>
+</div>
+</div>
+<div class="clear"></div>
+</div><div class="contentBackground1 postItem " data-pid="2672024">
+<div class="lcontent fl ">
+<div class="wp1">&nbsp;</div>
+<div class="wp2">
+<div class="name">
+<span class="" title="You must login or register" title="Joined: Jul 06, 2012">justin smythhe</span>
+</div>
+<div class="status userRankStatus">
+Ranch Hand
+</div>
+<div class="posts">Posts: 107</div>
+<div class="cowPieSec">
+</div>
+</div>
+</div>
+<div class="rcontent fr">
+<div class="rcwrapper ">
+<span class="postdate">
+<span title="Jul 13, 2012 08:38:38" id="2672024">posted 6 years ago</span>
+</span>
+<span class="postButtonsToolbar">
+<ul class="fr">
+<li>
+<img id="likeImage_2672024" class="opaque pointer" src="https://www.coderanch.com/templates/default/betaview/images/plus-1-thumb.gif"
+alt="Mark post as helpful" title="You must log in or register to be able to give a thumbs up for this post" />
+<li>
+<span class="post-pie-section">
+<span class="pieoffer">
+<img class="piesender opaque" alt="send pies" title="You must log in to give justin pie on this post"
+src="https://www.coderanch.com/templates/default/images/pie/give-pie-button.png" width="42px" height="18px" />
+</span>
+</span>
+<li>
+<span class="opaque"><img src="https://www.coderanch.com/templates/default/betaview/images/quote_button.gif" alt="Quote" title="You must log in or register to be able to quote this post" class="pointer"/></span>
+<li>
+<img class="pointer opaque" alt="Report post to moderator" title="You must login or register to report this post" src="https://www.coderanch.com/templates/default/betaview/images/report_post.png" />
+</ul>
+<div class="clear"></div>
+</span>
+<div class="clear"></div><div class="postText "><blockquote>
+			<p>
+				<cite>Campbell Ritchie wrote:</cite>Do you actually want code running on your computer in administrator mode? It is all right if you write it yourself, but what if somebody else wrote it . . .</p>
+		</blockquote><br /> Oh ! yes. <img src="https://www.coderanch.com/images/smilies/3b63d1616c5dfcf29f8a7a031aaa7cad.gif" /></div><div class="clear"></div>
+</div>
+</div>
+<div class="clear"></div>
+</div><div class="contentBackground2 postItem " data-pid="2672057">
+<div class="lcontent fl ">
+<div class="wp1">&nbsp;</div>
+<div class="wp2">
+<div class="name">
+<span class="" title="You must login or register" title="Joined: Oct 13, 2005">Campbell Ritchie</span>
+</div>
+<div class="status userRankStatus">
+Marshal
+<span class="staffStar" title="This user is a Coderanch staff member"><img src="https://www.coderanch.com/templates/default/betaview/images/staff-star.png" /></span>
+</div>
+<div class="posts">Posts: 61750</div>
+<div class="cowPieSec">
+<div class="cowDisplayForUser" title="This user has earned a total of 193 cow(s)">
+<span class="numCowsImageText">193</span>
+<span class="numCowsImage"><b class="sprite1 cowIcon"></b></span>
+</div>
+<div class="microPieSection">
+<b class="sprite1 threadPie" title="This is a premium pie user"></b>
+</div>
+</div>
+</div>
+</div>
+<div class="rcontent fr">
+<div class="rcwrapper ">
+<span class="postdate">
+<span title="Jul 13, 2012 09:41:30" id="2672057">posted 6 years ago</span>
+</span>
+<span class="postButtonsToolbar">
+<ul class="fr">
+<li>
+<img id="likeImage_2672057" class="opaque pointer" src="https://www.coderanch.com/templates/default/betaview/images/plus-1-thumb.gif"
+alt="Mark post as helpful" title="You must log in or register to be able to give a thumbs up for this post" />
+<li>
+<span class="post-pie-section">
+<span class="pieoffer">
+<img class="piesender opaque" alt="send pies" title="You must log in to give Campbell pie on this post"
+src="https://www.coderanch.com/templates/default/images/pie/give-pie-button.png" width="42px" height="18px" />
+</span>
+</span>
+<li>
+<span class="opaque"><img src="https://www.coderanch.com/templates/default/betaview/images/quote_button.gif" alt="Quote" title="You must log in or register to be able to quote this post" class="pointer"/></span>
+<li>
+<img class="pointer opaque" alt="Report post to moderator" title="You must login or register to report this post" src="https://www.coderanch.com/templates/default/betaview/images/report_post.png" />
+</ul>
+<div class="clear"></div>
+</span>
+<div class="clear"></div><div class="postText ">When you have worked out how to do it, please tell <a class="snap_shots" href="http://www.coderanch.com/t/586065/java/java/add-application-exception-list-windows" target="_new" >this chap</a> how to get accepted by a firewall, too <img src="https://www.coderanch.com/images/smilies/8a80c6485cd926be453217d59a84a888.gif" /></div><div class="clear"></div>
+</div>
+</div>
+<div class="clear"></div>
+</div>                
+            </div>
+<div class="fcontent-wrpr">
+<div class="fcontent">
+<div class="clearcld">
+<img src="https://www.coderanch.com/images/bunkhouse_smoke.gif" class="bunkhouse-smoke">
+<div>&nbsp;</div>
+</div>
+<div class="ad topicEndAd">
+<div class="bnwrpr">
+<table class="multbntab">
+<tr>
+<td class="bi">
+It is sorta covered in the <a href="https://coderanch.com/forums/banner/redirect/383">JavaRanch Style Guide</a>.
+</td>
+</tr>
+</table>
+</div>
+</div>
+</div>
+</div>
+<div class="flag-action-area">
+</div>
+</div>
+<div class="topicActionPanel">
+<div class="topicForumActionArea fl">
+<div class="clear"></div>
+</div>
+<div class="clear"></div>
+<ul>
+<li><span class="opaque topActBtn fl-button" title="You must log in or register to be able to reply">Post Reply</span>
+<span class="opaque topActBtn fl-button" title="You must login or register to be able to bookmark this topic">Bookmark Topic</span>
+<span class="opaque topActBtn fl-button" title="You must login or register to be notified when this topic is updated">Watch Topic</span>
+<li> <span class="opaque topActBtn fr-button" title="You must log in or register to be able to create a new topic">New Topic</span>
+</ul>
+<div class="clear"></div>
+</div>
+<div class="threadBottomLinksArea">
+<div class="clear"></div>
+<div class="threadBoostButtonArea">
+<span class="styled-button" style="cursor: default;" title="You have to be logged in for the feature to become available">Boost this thread!</span>
+</div>
+</div>
+<div>
+<div class="similar-topics">
+<div class="wrpr">
+<h1>Similar Threads</h1>
+<ul>
+<li class="similar-topics-entry contentBackground1">
+<div class="left item-section st-thumb sim">
+</div>
+<div class="left item-section subjectItemSec">
+<a href="/t/82687/application-servers/Tomcat-working-NT-service" class="subject">
+Tomcat4.1.24 not working as a NT service??
+</a>
+</div>
+<li class="similar-topics-entry contentBackground2">
+<div class="left item-section st-thumb sim">
+</div>
+<div class="left item-section subjectItemSec">
+<a href="/t/459724/java/Unable-Create-Read-Directories" class="subject">
+Unable to Create Non-Read-Only Directories...
+</a>
+</div>
+<li class="similar-topics-entry contentBackground1">
+<div class="left item-section st-thumb sim">
+</div>
+<div class="left item-section subjectItemSec">
+<a href="/t/305876/databases/convert-Blob-Type-File" class="subject">
+How to convert Blob Type back to File
+</a>
+</div>
+<li class="similar-topics-entry contentBackground2">
+<div class="left item-section st-thumb sim">
+</div>
+<div class="left item-section subjectItemSec">
+<a href="/t/353486/java/tomcat-log-file" class="subject">
+tomcat log file!!
+</a>
+</div>
+<li class="similar-topics-entry contentBackground1">
+<div class="left item-section st-thumb sim">
+</div>
+<div class="left item-section subjectItemSec">
+<a href="/t/507752/java/copy-files-folder-java" class="subject">
+copy files from one folder to another in java
+</a>
+</div>
+<li class="moreSimThreads"><a href="/forums/similars/similarTo/586864/java-io-FileNotFoundException-textfile-txt">More...</a>
+</ul>
+<div class="footer"></div>
+</div>
+</div>
+<div class="clear"></div>
+</div>
+</div>
+</div>
+</div>
+<footer>
+<div class="footer-banners">
+<div class="forum-top-banner fl">
+<div class="bnwrpr">
+<table class="multbntab">
+<tr>
+<td class="bi">
+<a href="/forums/banner/redirect/429" target="_blank">
+<img src="https://coderanch.com/t/684180/a/8716/ninja-banner-ad-coderanch.png" border="0" alt="It's not a secret anymore!"
+style="max-width: 1024px;"
+/></a>
+</td>
+</tr>
+</table>
+</div>
+</div>
+</div>
+<div class="timezone">
+<script>
+document.write("current ranch time (not your local time) is " + ("Dec 14, 2018 06:58:52".bold()));
+</script>
+<noscript>all times are in ranch time: GMT-6 in summer, GMT-7 in winter</noscript>
+</div>
+<div class="copyright">
+<a href="https://coderanch.com/t/660243/Wiki/Contact">contact us</a> | <a href="https://javaranch.com/advertising.jsp">advertise</a> |
+<form method="post" action="https://coderanch.com/t/586864/java/java-io-FileNotFoundException-textfile-txt" >
+<input type="hidden" name="OWASP_CSRFTOKEN" value="Z0V1-8UXH-SKP2-Z2UA-K0IX-98V6-YV1G-K2E4" />
+<input type="hidden" name="nonMobile" value="false" />
+<input type="submit" value="mobile view" />
+</form>
+| Powered by JForum | copyright &copy; 1998-2018 <a href="https://javaranch.com/paul-wheaton.jsp">paul wheaton</a>
+</div>
+<div id="actionMessageBar" class="hiddenDisplay"></div>
+</footer>
+<script>
+var _gaq = _gaq || [];
+_gaq.push(['_setAccount', 'UA-2371260-2']);
+_gaq.push(['_gat._anonymizeIp']);
+_gaq.push(['_trackPageview']);
+(function() {
+var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+})();
+</script>
+</body>
+</html>

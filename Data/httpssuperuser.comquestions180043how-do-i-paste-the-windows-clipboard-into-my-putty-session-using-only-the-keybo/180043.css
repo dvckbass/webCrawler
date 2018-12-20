@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<feed xmlns="http://www.w3.org/2005/Atom" xmlns:creativeCommons="http://backend.userland.com/creativeCommonsRssModule" xmlns:re="http://purl.org/atompub/rank/1.0">
+    <title type="text">How do I paste the Windows clipboard into my PuTTY session, using only the keyboard? - Super User</title>
+    <link rel="self" href="https://superuser.com/feeds/question/180043" type="application/atom+xml" />
+    <link rel="alternate" href="https://superuser.com/q/180043" type="text/html" />
+    <subtitle>most recent 30 from superuser.com</subtitle>
+    <updated>2018-12-20T10:10:29Z</updated>
+    <id>https://superuser.com/feeds/question/180043</id>
+    <creativeCommons:license>http://www.creativecommons.org/licenses/by-sa/3.0/rdf</creativeCommons:license> 
+    <entry>
+        <id>https://superuser.com/q/180043</id>
+        <re:rank scheme="https://superuser.com">121</re:rank>
+        <title type="text">How do I paste the Windows clipboard into my PuTTY session, using only the keyboard?</title>
+            <category scheme="https://superuser.com/tags" term="windows" />
+            <category scheme="https://superuser.com/tags" term="keyboard-shortcuts" />
+            <category scheme="https://superuser.com/tags" term="putty" />
+            <category scheme="https://superuser.com/tags" term="clipboard" />
+        <author>
+            <name>piyo</name>
+            <uri>https://superuser.com/users/21805</uri>
+        </author>
+        <link rel="alternate" href="https://superuser.com/questions/180043/how-do-i-paste-the-windows-clipboard-into-my-putty-session-using-only-the-keybo" />
+        <published>2010-08-24T13:46:01Z</published>
+        <updated>2018-10-08T14:59:52Z</updated>
+        <summary type="html">
+            
+
+            &lt;p&gt;I would like to paste text the Windows clipboard into my PuTTY session using only the keyboard. I am running PuTTY 0.60 on Windows XP.&lt;/p&gt;
+
+&lt;p&gt;Usage example: I just selected a bunch of &lt;strong&gt;nice&lt;/strong&gt; text inside of my Emacs on Windows. I then shift my focus to a Putty window. Then I press the magic keyboard shortcut, and the application waiting for input on the other side &lt;strong&gt;gets some&lt;/strong&gt;.&lt;/p&gt;
+
+&lt;p&gt;I have tried the &lt;a href=&quot;https://superuser.com/questions/16313/keyboard-shortcut-to-paste-in-windows-command-prompt&quot;&gt;keyboard shortcut to paste into &lt;code&gt;cmd&lt;/code&gt;, &lt;kbd&gt;Alt&lt;/kbd&gt;+&lt;kbd&gt;Space&lt;/kbd&gt;+&lt;kbd&gt;E&lt;/kbd&gt;+&lt;kbd&gt;P&lt;/kbd&gt;&lt;/a&gt;, but it doesn&#39;t paste the clipboard into my PuTTY window.&lt;/p&gt;
+
+&lt;p&gt;This &lt;a href=&quot;https://superuser.com/questions/149765/how-to-open-the-upper-left-context-menu-via-keystroke-for-putty-on-windows&quot;&gt;question and answer about opening the system menu using &lt;kbd&gt;Alt&lt;/kbd&gt;+&lt;kbd&gt;Space&lt;/kbd&gt;&lt;/a&gt; looks interesting, but it doesn&#39;t bring me closer to an answer.&lt;/p&gt;
+
+&lt;p&gt;So, does anyone know how can I paste the Windows clipboard into my PuTTY session using only the keyboard?&lt;/p&gt;
+
+        </summary>
+    </entry>
+    <entry>
+        <id>https://superuser.com/questions/180043/-/180045#180045</id>
+        <re:rank scheme="https://superuser.com">166</re:rank>
+        <title type="text">Answer by whitequark for How do I paste the Windows clipboard into my PuTTY session, using only the keyboard?</title>
+        <author>
+            <name>whitequark</name>
+            <uri>https://superuser.com/users/25472</uri>
+        </author>
+        <link rel="alternate" href="https://superuser.com/questions/180043/how-do-i-paste-the-windows-clipboard-into-my-putty-session-using-only-the-keybo/180045#180045" />
+        <published>2010-08-24T13:51:38Z</published>
+        <updated>2010-08-24T14:26:45Z</updated>
+        <summary type="html">&lt;p&gt;You can use &lt;kbd&gt;Shift&lt;/kbd&gt;+&lt;kbd&gt;Ins&lt;/kbd&gt; to paste text.&lt;/p&gt;
+
+&lt;p&gt;From PuTTY &lt;a href=&quot;http://the.earth.li/~sgtatham/putty/0.60/htmldoc/Chapter3.html&quot;&gt;documentation&lt;/a&gt;:&lt;/p&gt;
+
+&lt;blockquote&gt;
+Pasting is done using the right button (or the middle mouse button, if you have a three-button mouse and have set it up; see section 4.11.2). (Pressing Shift-Ins, or selecting ?Paste? from the Ctrl+right-click context menu, have the same effect.) When you click the right mouse button, PuTTY will read whatever is in the Windows clipboard and paste it into your session, exactly as if it had been typed at the keyboard.
+&lt;/blockquote&gt;
+</summary>
+    </entry>    <entry>
+        <id>https://superuser.com/questions/180043/-/1364887#1364887</id>
+        <re:rank scheme="https://superuser.com">0</re:rank>
+        <title type="text">Answer by Jimmy D for How do I paste the Windows clipboard into my PuTTY session, using only the keyboard?</title>
+        <author>
+            <name>Jimmy D</name>
+            <uri>https://superuser.com/users/868049</uri>
+        </author>
+        <link rel="alternate" href="https://superuser.com/questions/180043/how-do-i-paste-the-windows-clipboard-into-my-putty-session-using-only-the-keybo/1364887#1364887" />
+        <published>2018-10-08T14:59:52Z</published>
+        <updated>2018-10-08T14:59:52Z</updated>
+        <summary type="html">&lt;p&gt;From the Putty Documentation&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;4.10.3 Changing the actions of the mouse buttons PuTTY&#39;s copy and paste mechanism is modelled on the Unix xterm application. The X
+  Window System uses a three-button mouse, and the convention is that
+  the left button selects, the right button extends an existing
+  selection, and the middle button pastes.&lt;/p&gt;
+  
+  &lt;p&gt;Windows typically only has two mouse buttons, so in PuTTY&#39;s default
+  configuration, the right button pastes, and the middle button (if you
+  have one) extends a selection.&lt;/p&gt;
+  
+  &lt;p&gt;If you have a three-button mouse and you are already used to the xterm
+  arrangement, you can select it using the &quot;Action of mouse buttons&quot;
+  control.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;You have to change the default behavior by opening Putty &gt; Windows &gt; Selection &gt; Select &quot;xterm (Right extends, middle pastes)&quot;&lt;/p&gt;
+</summary>
+    </entry></feed>

@@ -1,0 +1,911 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<html>
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <meta http-equiv="Pragma" content="no-cache"/>
+    <meta http-equiv="Expires" content="-1"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <link rel="alternate" href="httpscoderanch.comt586864javajava-io-FileNotFoundException-textfile-txt/586864.css" type="application/rss+xml" title="JavaRanch: java.io.FileNotFoundException: C:\textfile.txt (Access is denied)"/>
+    <meta name="description" content="Why is access denied ??? I suspect this is a Windows 7 security related problem. How do i solve this problem ? java.io.IOException: Access is denied "/>
+    <meta name="keywords" content="exception,file,filenotfoundexception,text,fileoutputstream,filewriter,ioexception,method,native,outputstream"/>
+    <title>
+java.io.FileNotFoundException: C:\textfile.txt (Access is denied) (Beginning Java forum at Coderanch)    </title>
+    <style type="text/css">
+    </style>
+    <style type="text/css">
+    </style>
+<!--[if lt IE 9]>
+<script src="https://www.coderanch.com/templates/default/betaview/scripts/IE/html5shiv.js"></script>
+<style type="text/css">@import url(https://www.coderanch.com/templates/default/betaview/styles/ie-version-less-than-9.css?1543092693653);</style>
+<![endif]-->    <link rel="stylesheet" href="httpscoderanch.comt586864javajava-io-FileNotFoundException-textfile-txt/css.css" type="text/css"/>
+    <link rel="canonical" href="httpscoderanch.comt586864javajava-io-FileNotFoundException-textfile-txt/java-io-FileNotFoundException-.css"/>
+    <link rel="alternate" media="only screen and (max-width: 640px)" href="httpscoderanch.comt586864javajava-io-FileNotFoundException-textfile-txt/java-io-FileNotFoundException-_1.css"/>
+    <link rel="search" href="httpscoderanch.comt586864javajava-io-FileNotFoundException-textfile-txt/forum-search.xml.css" type="application/opensearchdescription+xml" title="JavaRanch forums"/>
+    <link rel="stylesheet" href="httpscoderanch.comt586864javajava-io-FileNotFoundException-textfile-txt/jquery-ui.css"/>
+  </head>
+  <body class="container borderBoxed ">
+    <header>
+      <div class="tmenu fixed">
+        <ul>
+          <li>
+            <a id="faq" href="https://coderanch.com/f/153/Wiki">
+FAQs            </a>
+          </li>
+          <li>
+            <a href="/forums/search/filters/33">
+Search            </a>
+          </li>
+          <li>
+            <a href="/forums/recentTopics/list">
+Recent Topics            </a>
+          </li>
+          <li>
+            <a href="/forums/posts/flagged">
+Flagged Topics            </a>
+          </li>
+          <li>
+            <a href="/forums/hottestTopics/list">
+Hot Topics            </a>
+          </li>
+          <li>
+            <a href="/forums/bestTopics/list">
+Best Topics            </a>
+          </li>
+          <li class="lastItem">
+            <a id="loginLink" href="/forums/user/login" data-login-path="/t/586864/java/java-io-FileNotFoundException-textfile-txt">
+Register / Login            </a>
+          </li>
+        </ul>
+      </div>
+      <div class="mooseandads">
+        <div class="clear headerWrpr">
+          <span class="moose fl">
+            <img alt="Logo" onerror="if (this.src!='https://www.coderanch.com/mooseImages/moosefly.gif') {this.src = 'https://www.coderanch.com/mooseImages/moosefly.gif'}" title="" class="site-header-logo" src="httpscoderanch.comt586864javajava-io-FileNotFoundException-textfile-txt/moosefly.gif"/>
+          </span>
+          <div class="forum-top-banner fl">
+            <div class="bnwrpr">
+              <table class="multbntab">
+                <tbody>
+                  <tr>
+                    <td class="bi">
+                      <center>
+                        <table width="70%" vspace="30" border="1" cellpadding="15">
+                          <tbody>
+                            <tr bgcolor="#f0e6d5">
+                              <td>
+                                <center>
+                                  <font size="2">
+This week's book giveaway is in the                                    <a href="https://coderanch.com/f/96/Spring">
+Spring                                    </a>
+forum.                                    <br/>
+We're giving away four copies of                                    <b>
+Spring in Action (5th edition)                                    </b>
+and have Craig Walls on-line!                                    <br/>
+See                                    <a href="https://coderanch.com/t/703448/frameworks/Craig-Walls">
+this thread                                    </a>
+for details.                                  </font>
+                                </center>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </center>
+                    </td>
+                    <td class="str">
+                      <a style="text-decoration:none" href="/forums/banner/list" title="Click on this asterisk to learn more about advertising like this on CodeRanch!">
+                        <img src="httpscoderanch.comt586864javajava-io-FileNotFoundException-textfile-txt/20x20_orange_asterisk.gif"/>
+                      </a>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="siteInfoMessage announcementSeparator fl">
+Win a copy of        <a href="https://www.amazon.com/Spring-Action-Craig-Walls/dp/1617294942/?tag=crfa12-20">
+Spring in Action (5th edition)        </a>
+this week in the        <a href="https://coderanch.com/f/96/Spring">
+Spring        </a>
+forum!      </div>
+      <div class="clear">
+      </div>
+    </header>
+    <div class="middle fl ">
+      <style type="text/css">
+      </style>
+      <div class="topicActionPanel fl" xmlns="http://www.w3.org/1999/html">
+        <div class="homeLinks fl">
+          <ul>
+          </ul>
+        </div>
+        <div class="topicActionButtons fl">
+          <ul>
+            <li>
+              <span class="opaque topActBtn fl-button" title="You must log in or register to be able to reply">
+Post Reply              </span>
+              <span class="opaque topActBtn fl-button" title="You must login or register to be able to bookmark this topic">
+Bookmark Topic              </span>
+              <span class="opaque topActBtn fl-button" title="You must login or register to be notified when this topic is updated">
+Watch Topic              </span>
+            </li>
+            <li>
+              <span class="opaque topActBtn fr-button" title="You must log in or register to be able to create a new topic">
+New Topic              </span>
+            </li>
+          </ul>
+          <div class="clear">
+          </div>
+        </div>
+      </div>
+      <div class="topicRightArea">
+        <style>
+        </style>
+        <div id="categorySidebar" class="leftPanel fl ">
+          <div>
+            <a class="catLstBtn catLstBtn-l4 pointer" href="/forums" title="forums home">
+programming forums            </a>
+            <a class="catLstBtn catLstBtn-l1 pointer" href="/c/java" title="Java">
+Java            </a>
+            <a class="catLstBtn catLstBtn-l1 pointer" href="/c/mobile" title="Mobile">
+Mobile            </a>
+            <a class="catLstBtn catLstBtn-l1 pointer" href="/c/certification" title="Certification">
+Certification            </a>
+            <a class="catLstBtn catLstBtn-l1 pointer" href="/c/databases" title="Databases">
+Databases            </a>
+            <a class="catLstBtn catLstBtn-l1 pointer" href="/c/caching" title="Caching">
+Caching            </a>
+            <a class="catLstBtn catLstBtn-l1 pointer" href="/c/books" title="Books">
+Books            </a>
+            <a class="catLstBtn catLstBtn-l1 pointer" href="/c/engineering" title="Engineering">
+Engineering            </a>
+            <a class="catLstBtn catLstBtn-l1 pointer" href="/c/micro-controllers" title="Micro Controllers">
+Micro Controllers            </a>
+            <a class="catLstBtn catLstBtn-l1 pointer" href="/c/os" title="OS">
+OS            </a>
+            <a class="catLstBtn catLstBtn-l1 pointer" href="/c/languages" title="Languages">
+Languages            </a>
+            <a class="catLstBtn catLstBtn-l1 pointer" href="/c/paradigms" title="Paradigms">
+Paradigms            </a>
+            <a class="catLstBtn catLstBtn-l1 pointer" href="/c/ide" title="IDEs">
+IDEs            </a>
+            <a class="catLstBtn catLstBtn-l1 pointer" href="/c/build-tools" title="Build Tools">
+Build Tools            </a>
+            <a class="catLstBtn catLstBtn-l1 pointer" href="/c/frameworks" title="Frameworks">
+Frameworks            </a>
+            <a class="catLstBtn catLstBtn-l1 pointer" href="/c/application-servers" title="Application Servers">
+Application Servers            </a>
+            <a class="catLstBtn catLstBtn-l1 pointer" href="/c/open-source" title="Open Source">
+Open Source            </a>
+            <a class="catLstBtn catLstBtn-l1 pointer" href="/c/4" title="This Site">
+This Site            </a>
+            <a class="catLstBtn catLstBtn-l1 pointer" href="/c/careers" title="Careers">
+Careers            </a>
+            <a class="catLstBtn catLstBtn-l1 pointer" href="/c/6" title="Other">
+Other            </a>
+            <a class="catLstBtn catLstBtn-l1 pointer" href="/forums/forums/allForums" title="list of all forums">
+all forums            </a>
+            <div class="leftEdgeStaff">
+              <div class="descr">
+this forum made possible by our volunteer staff, including ...              </div>
+              <div class="rankName">
+Marshals:              </div>
+              <ul>
+                <li>
+                  <span class="stf">
+Campbell Ritchie                  </span>
+                </li>
+                <li>
+                  <span class="stf">
+Bear Bibeault                  </span>
+                </li>
+                <li>
+                  <span class="stf">
+Devaka Cooray                  </span>
+                </li>
+                <li>
+                  <span class="stf">
+Liutauras Vilda                  </span>
+                </li>
+                <li>
+                  <span class="stf">
+Jeanne Boyarsky                  </span>
+                </li>
+              </ul>
+              <div class="rankName">
+Sheriffs:              </div>
+              <ul>
+                <li>
+                  <span class="stf">
+Knute Snortum                  </span>
+                </li>
+                <li>
+                  <span class="stf">
+Junilu Lacar                  </span>
+                </li>
+                <li>
+                  <span class="stf">
+paul wheaton                  </span>
+                </li>
+              </ul>
+              <div class="rankName">
+Saloon Keepers:              </div>
+              <ul>
+                <li>
+                  <span class="stf">
+Ganesh Patekar                  </span>
+                </li>
+                <li>
+                  <span class="stf">
+Frits Walraven                  </span>
+                </li>
+                <li>
+                  <span class="stf">
+Tim Moores                  </span>
+                </li>
+                <li>
+                  <span class="stf">
+Ron McLeod                  </span>
+                </li>
+                <li>
+                  <span class="stf">
+Carey Brown                  </span>
+                </li>
+              </ul>
+              <div class="rankName">
+Bartenders:              </div>
+              <ul>
+                <li>
+                  <span class="stf">
+Stephan van Hulst                  </span>
+                </li>
+                <li>
+                  <span class="stf">
+salvin francis                  </span>
+                </li>
+                <li>
+                  <span class="stf">
+Tim Holloway                  </span>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <div id="rightPanel" class="rightPanel fl">
+          <div class="content ">
+            <div class="topicForums">
+              <label title="This thread resides in one forum">
+Forum:              </label>
+              <ul>
+                <li class="finalItem">
+                  <a href="/f/33/java" title="Beginning Java forum">
+Beginning Java                  </a>
+                </li>
+              </ul>
+            </div>
+            <div class="topicSubject">
+              <h1 class="fl">
+                <span id="topicFlags" class="flag">
+                </span>
+                <span id="topicSubject">
+java.io.FileNotFoundException: C:\textfile.txt (Access is denied)                </span>
+                 <a href="/forums/rss/topicPosts/586864">
+                  <img border="0" alt="RSS feed" title="RSS feed" src="httpscoderanch.comt586864javajava-io-FileNotFoundException-textfile-txt/rss.png"/>
+                </a>
+              </h1>
+              <div class="clear">
+              </div>
+            </div>
+            <div class="section topicBodyAndFooter">
+              <div class="contentBackground1 postItem " data-pid="2671733">
+                <div class="lcontent fl ">
+                  <div class="wp1">
+                  </div>
+                  <div class="wp2">
+                    <div class="name">
+                      <a href="/u/269361/justin-smythhe" title="You must login or register" class="">
+justin smythhe                      </a>
+                    </div>
+                    <div class="status userRankStatus">
+Ranch Hand                    </div>
+                    <div class="posts">
+Posts: 107                    </div>
+                    <div class="cowPieSec">
+                    </div>
+                  </div>
+                </div>
+                <div class="rcontent fr">
+                  <div class="rcwrapper ">
+                    <span class="postdate">
+                      <span title="Jul 12, 2012 18:50:17" id="2671733">
+posted 6 years ago                      </span>
+                    </span>
+                    <span class="postButtonsToolbar">
+                      <ul class="fr">
+                        <li>
+                          <img alt="Mark post as helpful" id="likeImage_2671733" title="You must log in or register to be able to give a thumbs up for this post" class="opaque pointer" src="httpscoderanch.comt586864javajava-io-FileNotFoundException-textfile-txt/plus-1-thumb.gif"/>
+                        </li>
+                        <li>
+                          <span class="post-pie-section">
+                            <span class="pieoffer">
+                              <img src="httpscoderanch.comt586864javajava-io-FileNotFoundException-textfile-txt/give-pie-button.png" alt="send pies" width="42px" title="You must log in to give justin pie on this post" class="piesender opaque" height="18px"/>
+                            </span>
+                          </span>
+                        </li>
+                        <li>
+                          <span class="opaque">
+                            <img alt="Quote" title="You must log in or register to be able to quote this post" src="httpscoderanch.comt586864javajava-io-FileNotFoundException-textfile-txt/quote_button.gif" class="pointer"/>
+                          </span>
+                        </li>
+                        <li>
+                          <img alt="Report post to moderator" title="You must login or register to report this post" class="pointer opaque" src="httpscoderanch.comt586864javajava-io-FileNotFoundException-textfile-txt/report_post.png"/>
+                        </li>
+                      </ul>
+                      <div class="clear">
+                      </div>
+                    </span>
+                    <div class="clear">
+                    </div>
+                    <div class="postText ">
+Why is access denied ??? I suspect this is a Windows 7 security related problem. How do i solve this problem ?                      <br/>
+                      <br/>
+java.io.IOException: Access is denied                      <br/>
+Caught exception - Cannot create your file !!!                      <br/>
+java.io.FileNotFoundException: C:\textfile.txt (Access is denied)                      <br/>
+at java.io.FileOutputStream.open(Native Method)                      <br/>
+at java.io.FileOutputStream.<init>(FileOutputStream.java:180)                      <br/>
+at java.io.FileOutputStream.<init>(FileOutputStream.java:122)                      <br/>
+at java.io.FileWriter.<init>(FileWriter.java:62)                      <br/>
+                      <br/>
+                    </div>
+                    <div class="clear">
+                    </div>
+                  </div>
+                </div>
+                <div class="clear">
+                </div>
+              </div>
+              <div class="contentBackground2 postItem " data-pid="2671743">
+                <div class="lcontent fl ">
+                  <div class="wp1">
+                  </div>
+                  <div class="wp2">
+                    <div class="name">
+                      <a href="/u/239008/Paul-Adcock" title="You must login or register" class="">
+Paul Adcock                      </a>
+                    </div>
+                    <div class="status userRankStatus">
+Ranch Hand                    </div>
+                    <div class="posts">
+Posts: 48                    </div>
+                    <div class="cowPieSec">
+                    </div>
+                    <div class="icon">
+                      <a class="nonForumLink" href="https://coderanch.com/t/660301/Wiki/Bumper-Stickers" target="_blank">
+I like...                      </a>
+                    </div>
+                    <div class="stickers-section">
+                      <a href="http://www.coderanch.com/how-to/java/BumperStickers" target="_blank">
+                        <img alt="Firefox Browser" border="0" title="Firefox Browser" class="bumper-sticker s" src="httpscoderanch.comt586864javajava-io-FileNotFoundException-textfile-txt/16_firefox.gif"/>
+                      </a>
+                      <img alt="Java" border="0" title="Java" class="bumper-sticker s" src="httpscoderanch.comt586864javajava-io-FileNotFoundException-textfile-txt/16_java.gif"/>
+                      <img alt="Notepad" border="0" title="Notepad" class="bumper-sticker s" src="httpscoderanch.comt586864javajava-io-FileNotFoundException-textfile-txt/16_notepad.gif"/>
+                    </div>
+                  </div>
+                </div>
+                <div class="rcontent fr">
+                  <div class="rcwrapper ">
+                    <span class="postdate">
+                      <span title="Jul 12, 2012 19:27:39" id="2671743">
+posted 6 years ago                      </span>
+                    </span>
+                    <span class="postButtonsToolbar">
+                      <ul class="fr">
+                        <li>
+                          <span id="like_message_2671743">
+                            <img alt="Likes" title="This post has earned 1 up vote" src="httpscoderanch.comt586864javajava-io-FileNotFoundException-textfile-txt/thumbs-up.gif"/>
+1                          </span>
+                        </li>
+                        <li>
+                          <img alt="Mark post as helpful" id="likeImage_2671743" title="You must log in or register to be able to give a thumbs up for this post" class="opaque pointer" src="httpscoderanch.comt586864javajava-io-FileNotFoundException-textfile-txt/plus-1-thumb_1.gif"/>
+                        </li>
+                        <li>
+                          <span class="post-pie-section">
+                            <span class="pieoffer">
+                              <img src="httpscoderanch.comt586864javajava-io-FileNotFoundException-textfile-txt/give-pie-button_1.png" alt="send pies" width="42px" title="You must log in to give Paul pie on this post" class="piesender opaque" height="18px"/>
+                            </span>
+                          </span>
+                        </li>
+                        <li>
+                          <span class="opaque">
+                            <img alt="Quote" title="You must log in or register to be able to quote this post" src="httpscoderanch.comt586864javajava-io-FileNotFoundException-textfile-txt/quote_button_1.gif" class="pointer"/>
+                          </span>
+                        </li>
+                        <li>
+                          <img alt="Report post to moderator" title="You must login or register to report this post" class="pointer opaque" src="httpscoderanch.comt586864javajava-io-FileNotFoundException-textfile-txt/report_post_1.png"/>
+                        </li>
+                      </ul>
+                      <div class="clear">
+                      </div>
+                    </span>
+                    <div class="clear">
+                    </div>
+                    <div class="postText ">
+I think I found the problem. I checked by trying to save a text file right to that location manually and got a "you don't have permission error".                      <br/>
+                      <br/>
+You can't save directly to the C drive like that I think.                      <br/>
+                      <br/>
+Normally, since most Computers have a Users directory underneath the C drive, yours might not but the chances are high that it does,                      <br/>
+                      <br/>
+then you would make a new Directory under the users directory, you might be able to just create it programmatically.                      <br/>
+                      <br/>
+                      <br/>
+Anyway,                      <br/>
+                      <br/>
+try creating it as C:/Users/SomeDirectory/textfile.txt                      <br/>
+                      <br/>
+                      <br/>
+At the very least, you need a subdirectory underneath C. You can't just save something as a file itself to the C drive itself.                      <br/>
+                      <br/>
+Sorry, scratch that, normally under the Users directory, you have a directoy that is your computer name. I wouldn't know what yours is.                      <br/>
+                      <br/>
+so it's                      <br/>
+                      <br/>
+C:/Users/YourComputerName/textfile.txt                      <br/>
+                      <br/>
+that will work.                      <br/>
+                      <br/>
+                      <br/>
+                      <br/>
+                    </div>
+                    <div class="clinks">
+                      <p>
+Repeal Obamacare.                        <br/>
+http://www.dontfundobamacare.com/                        <br/>
+http://liberty-amendments.freeforums.net/                      </p>
+                    </div>
+                    <div class="clear">
+                    </div>
+                  </div>
+                </div>
+                <div class="clear">
+                </div>
+              </div>
+              <div class="contentBackground1 postItem " data-pid="2671804">
+                <div class="lcontent fl ">
+                  <div class="wp1">
+                  </div>
+                  <div class="wp2">
+                    <div class="name">
+                      <span class="" title="You must login or register">
+justin smythhe                      </span>
+                    </div>
+                    <div class="status userRankStatus">
+Ranch Hand                    </div>
+                    <div class="posts">
+Posts: 107                    </div>
+                    <div class="cowPieSec">
+                    </div>
+                  </div>
+                </div>
+                <div class="rcontent fr">
+                  <div class="rcwrapper ">
+                    <span class="postdate">
+                      <span title="Jul 13, 2012 00:04:42" id="2671804">
+posted 6 years ago                      </span>
+                    </span>
+                    <span class="postButtonsToolbar">
+                      <ul class="fr">
+                        <li>
+                          <img alt="Mark post as helpful" id="likeImage_2671804" title="You must log in or register to be able to give a thumbs up for this post" class="opaque pointer" src="httpscoderanch.comt586864javajava-io-FileNotFoundException-textfile-txt/plus-1-thumb_2.gif"/>
+                        </li>
+                        <li>
+                          <span class="post-pie-section">
+                            <span class="pieoffer">
+                              <img src="httpscoderanch.comt586864javajava-io-FileNotFoundException-textfile-txt/give-pie-button_2.png" alt="send pies" width="42px" title="You must log in to give justin pie on this post" class="piesender opaque" height="18px"/>
+                            </span>
+                          </span>
+                        </li>
+                        <li>
+                          <span class="opaque">
+                            <img alt="Quote" title="You must log in or register to be able to quote this post" src="httpscoderanch.comt586864javajava-io-FileNotFoundException-textfile-txt/quote_button_2.gif" class="pointer"/>
+                          </span>
+                        </li>
+                        <li>
+                          <img alt="Report post to moderator" title="You must login or register to report this post" class="pointer opaque" src="httpscoderanch.comt586864javajava-io-FileNotFoundException-textfile-txt/report_post_2.png"/>
+                        </li>
+                      </ul>
+                      <div class="clear">
+                      </div>
+                    </span>
+                    <div class="clear">
+                    </div>
+                    <div class="postText ">
+Yes, I did that and it works. Is there a way of making our code "create new files/folders as an administrator" ?                      <br/>
+                      <br/>
+Thanks                      <img src="httpscoderanch.comt586864javajava-io-FileNotFoundException-textfile-txt/3b63d1616c5dfcf29f8a7a031aaa7c.gif"/>
+                    </div>
+                    <div class="clear">
+                    </div>
+                  </div>
+                </div>
+                <div class="clear">
+                </div>
+              </div>
+              <div class="contentBackground2 postItem " data-pid="2671850">
+                <div class="lcontent fl ">
+                  <div class="wp1">
+                  </div>
+                  <div class="wp2">
+                    <div class="name">
+                      <a href="/u/109202/Campbell-Ritchie" title="You must login or register" class="">
+Campbell Ritchie                      </a>
+                    </div>
+                    <div class="status userRankStatus">
+Marshal                      <span class="staffStar" title="This user is a Coderanch staff member">
+                        <img src="httpscoderanch.comt586864javajava-io-FileNotFoundException-textfile-txt/staff-star.png"/>
+                      </span>
+                    </div>
+                    <div class="posts">
+Posts: 61750                    </div>
+                    <div class="cowPieSec">
+                      <div class="cowDisplayForUser" title="This user has earned a total of 193 cow(s)">
+                        <span class="numCowsImageText">
+193                        </span>
+                        <span class="numCowsImage">
+                          <b class="sprite1 cowIcon"/>
+                        </span>
+                      </div>
+                      <div class="microPieSection">
+                        <b class="sprite1 threadPie" title="This is a premium pie user"/>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="rcontent fr">
+                  <div class="rcwrapper ">
+                    <span class="postdate">
+                      <span title="Jul 13, 2012 02:07:20" id="2671850">
+posted 6 years ago                      </span>
+                    </span>
+                    <span class="postButtonsToolbar">
+                      <ul class="fr">
+                        <li>
+                          <span id="like_message_2671850">
+                            <img alt="Likes" title="This post has earned 1 up vote" src="httpscoderanch.comt586864javajava-io-FileNotFoundException-textfile-txt/thumbs-up_1.gif"/>
+1                          </span>
+                        </li>
+                        <li>
+                          <img alt="Mark post as helpful" id="likeImage_2671850" title="You must log in or register to be able to give a thumbs up for this post" class="opaque pointer" src="httpscoderanch.comt586864javajava-io-FileNotFoundException-textfile-txt/plus-1-thumb_3.gif"/>
+                        </li>
+                        <li>
+                          <span class="post-pie-section">
+                            <span class="pieoffer">
+                              <img src="httpscoderanch.comt586864javajava-io-FileNotFoundException-textfile-txt/give-pie-button_3.png" alt="send pies" width="42px" title="You must log in to give Campbell pie on this post" class="piesender opaque" height="18px"/>
+                            </span>
+                          </span>
+                        </li>
+                        <li>
+                          <span class="opaque">
+                            <img alt="Quote" title="You must log in or register to be able to quote this post" src="httpscoderanch.comt586864javajava-io-FileNotFoundException-textfile-txt/quote_button_3.gif" class="pointer"/>
+                          </span>
+                        </li>
+                        <li>
+                          <img alt="Report post to moderator" title="You must login or register to report this post" class="pointer opaque" src="httpscoderanch.comt586864javajava-io-FileNotFoundException-textfile-txt/report_post_3.png"/>
+                        </li>
+                      </ul>
+                      <div class="clear">
+                      </div>
+                    </span>
+                    <div class="clear">
+                    </div>
+                    <div class="postText ">
+Do you actually want code running on your computer in administrator mode? It is all right if you write it yourself, but what if somebody else wrote it . . .                    </div>
+                    <div class="clear">
+                    </div>
+                  </div>
+                </div>
+                <div class="clear">
+                </div>
+              </div>
+              <div class="contentBackground1 postItem " data-pid="2672024">
+                <div class="lcontent fl ">
+                  <div class="wp1">
+                  </div>
+                  <div class="wp2">
+                    <div class="name">
+                      <span class="" title="You must login or register">
+justin smythhe                      </span>
+                    </div>
+                    <div class="status userRankStatus">
+Ranch Hand                    </div>
+                    <div class="posts">
+Posts: 107                    </div>
+                    <div class="cowPieSec">
+                    </div>
+                  </div>
+                </div>
+                <div class="rcontent fr">
+                  <div class="rcwrapper ">
+                    <span class="postdate">
+                      <span title="Jul 13, 2012 08:38:38" id="2672024">
+posted 6 years ago                      </span>
+                    </span>
+                    <span class="postButtonsToolbar">
+                      <ul class="fr">
+                        <li>
+                          <img alt="Mark post as helpful" id="likeImage_2672024" title="You must log in or register to be able to give a thumbs up for this post" class="opaque pointer" src="httpscoderanch.comt586864javajava-io-FileNotFoundException-textfile-txt/plus-1-thumb_4.gif"/>
+                        </li>
+                        <li>
+                          <span class="post-pie-section">
+                            <span class="pieoffer">
+                              <img src="httpscoderanch.comt586864javajava-io-FileNotFoundException-textfile-txt/give-pie-button_4.png" alt="send pies" width="42px" title="You must log in to give justin pie on this post" class="piesender opaque" height="18px"/>
+                            </span>
+                          </span>
+                        </li>
+                        <li>
+                          <span class="opaque">
+                            <img alt="Quote" title="You must log in or register to be able to quote this post" src="httpscoderanch.comt586864javajava-io-FileNotFoundException-textfile-txt/quote_button_4.gif" class="pointer"/>
+                          </span>
+                        </li>
+                        <li>
+                          <img alt="Report post to moderator" title="You must login or register to report this post" class="pointer opaque" src="httpscoderanch.comt586864javajava-io-FileNotFoundException-textfile-txt/report_post_4.png"/>
+                        </li>
+                      </ul>
+                      <div class="clear">
+                      </div>
+                    </span>
+                    <div class="clear">
+                    </div>
+                    <div class="postText ">
+                      <blockquote>
+                        <p>
+                          <cite>
+Campbell Ritchie wrote:                          </cite>
+Do you actually want code running on your computer in administrator mode? It is all right if you write it yourself, but what if somebody else wrote it . . .                        </p>
+                      </blockquote>
+                      <br/>
+Oh ! yes.                      <img src="httpscoderanch.comt586864javajava-io-FileNotFoundException-textfile-txt/3b63d1616c5dfcf29f8a7a031aaa7c_1.gif"/>
+                    </div>
+                    <div class="clear">
+                    </div>
+                  </div>
+                </div>
+                <div class="clear">
+                </div>
+              </div>
+              <div class="contentBackground2 postItem " data-pid="2672057">
+                <div class="lcontent fl ">
+                  <div class="wp1">
+                  </div>
+                  <div class="wp2">
+                    <div class="name">
+                      <span class="" title="You must login or register">
+Campbell Ritchie                      </span>
+                    </div>
+                    <div class="status userRankStatus">
+Marshal                      <span class="staffStar" title="This user is a Coderanch staff member">
+                        <img src="httpscoderanch.comt586864javajava-io-FileNotFoundException-textfile-txt/staff-star_1.png"/>
+                      </span>
+                    </div>
+                    <div class="posts">
+Posts: 61750                    </div>
+                    <div class="cowPieSec">
+                      <div class="cowDisplayForUser" title="This user has earned a total of 193 cow(s)">
+                        <span class="numCowsImageText">
+193                        </span>
+                        <span class="numCowsImage">
+                          <b class="sprite1 cowIcon"/>
+                        </span>
+                      </div>
+                      <div class="microPieSection">
+                        <b class="sprite1 threadPie" title="This is a premium pie user"/>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="rcontent fr">
+                  <div class="rcwrapper ">
+                    <span class="postdate">
+                      <span title="Jul 13, 2012 09:41:30" id="2672057">
+posted 6 years ago                      </span>
+                    </span>
+                    <span class="postButtonsToolbar">
+                      <ul class="fr">
+                        <li>
+                          <img alt="Mark post as helpful" id="likeImage_2672057" title="You must log in or register to be able to give a thumbs up for this post" class="opaque pointer" src="httpscoderanch.comt586864javajava-io-FileNotFoundException-textfile-txt/plus-1-thumb_5.gif"/>
+                        </li>
+                        <li>
+                          <span class="post-pie-section">
+                            <span class="pieoffer">
+                              <img src="httpscoderanch.comt586864javajava-io-FileNotFoundException-textfile-txt/give-pie-button_5.png" alt="send pies" width="42px" title="You must log in to give Campbell pie on this post" class="piesender opaque" height="18px"/>
+                            </span>
+                          </span>
+                        </li>
+                        <li>
+                          <span class="opaque">
+                            <img alt="Quote" title="You must log in or register to be able to quote this post" src="httpscoderanch.comt586864javajava-io-FileNotFoundException-textfile-txt/quote_button_5.gif" class="pointer"/>
+                          </span>
+                        </li>
+                        <li>
+                          <img alt="Report post to moderator" title="You must login or register to report this post" class="pointer opaque" src="httpscoderanch.comt586864javajava-io-FileNotFoundException-textfile-txt/report_post_5.png"/>
+                        </li>
+                      </ul>
+                      <div class="clear">
+                      </div>
+                    </span>
+                    <div class="clear">
+                    </div>
+                    <div class="postText ">
+When you have worked out how to do it, please tell                      <a class="snap_shots" href="http://www.coderanch.com/t/586065/java/java/add-application-exception-list-windows" target="_new">
+this chap                      </a>
+how to get accepted by a firewall, too                      <img src="httpscoderanch.comt586864javajava-io-FileNotFoundException-textfile-txt/8a80c6485cd926be453217d59a84a8.gif"/>
+                    </div>
+                    <div class="clear">
+                    </div>
+                  </div>
+                </div>
+                <div class="clear">
+                </div>
+              </div>
+            </div>
+            <div class="fcontent-wrpr">
+              <div class="fcontent">
+                <div class="clearcld">
+                  <img src="httpscoderanch.comt586864javajava-io-FileNotFoundException-textfile-txt/bunkhouse_smoke.gif" class="bunkhouse-smoke"/>
+                  <div>
+                   </div>
+                </div>
+                <div class="ad topicEndAd">
+                  <div class="bnwrpr">
+                    <table class="multbntab">
+                      <tbody>
+                        <tr>
+                          <td class="bi">
+With a little knowledge, a                            <a href="https://coderanch.com/forums/banner/redirect/377">
+cast iron skillet                            </a>
+is non-stick and lasts a lifetime.                          </td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="flag-action-area">
+            </div>
+          </div>
+          <div class="topicActionPanel">
+            <div class="topicForumActionArea fl">
+              <div class="clear">
+              </div>
+            </div>
+            <div class="clear">
+            </div>
+            <ul>
+              <li>
+                <span class="opaque topActBtn fl-button" title="You must log in or register to be able to reply">
+Post Reply                </span>
+                <span class="opaque topActBtn fl-button" title="You must login or register to be able to bookmark this topic">
+Bookmark Topic                </span>
+                <span class="opaque topActBtn fl-button" title="You must login or register to be notified when this topic is updated">
+Watch Topic                </span>
+              </li>
+              <li>
+                <span class="opaque topActBtn fr-button" title="You must log in or register to be able to create a new topic">
+New Topic                </span>
+              </li>
+            </ul>
+            <div class="clear">
+            </div>
+          </div>
+          <div class="threadBottomLinksArea">
+            <div class="clear">
+            </div>
+            <div class="threadBoostButtonArea">
+              <span class="styled-button" style="cursor: default;" title="You have to be logged in for the feature to become available">
+Boost this thread!              </span>
+            </div>
+          </div>
+          <div>
+            <div class="similar-topics">
+              <div class="wrpr">
+                <h1>
+Similar Threads                </h1>
+                <ul>
+                  <li class="similar-topics-entry contentBackground1">
+                    <div class="left item-section st-thumb sim">
+                    </div>
+                    <div class="left item-section subjectItemSec">
+                      <a href="/t/82687/application-servers/Tomcat-working-NT-service" class="subject">
+Tomcat4.1.24 not working as a NT service??                      </a>
+                    </div>
+                  </li>
+                  <li class="similar-topics-entry contentBackground2">
+                    <div class="left item-section st-thumb sim">
+                    </div>
+                    <div class="left item-section subjectItemSec">
+                      <a href="/t/459724/java/Unable-Create-Read-Directories" class="subject">
+Unable to Create Non-Read-Only Directories...                      </a>
+                    </div>
+                  </li>
+                  <li class="similar-topics-entry contentBackground1">
+                    <div class="left item-section st-thumb sim">
+                    </div>
+                    <div class="left item-section subjectItemSec">
+                      <a href="/t/305876/databases/convert-Blob-Type-File" class="subject">
+How to convert Blob Type back to File                      </a>
+                    </div>
+                  </li>
+                  <li class="similar-topics-entry contentBackground2">
+                    <div class="left item-section st-thumb sim">
+                    </div>
+                    <div class="left item-section subjectItemSec">
+                      <a href="/t/353486/java/tomcat-log-file" class="subject">
+tomcat log file!!                      </a>
+                    </div>
+                  </li>
+                  <li class="similar-topics-entry contentBackground1">
+                    <div class="left item-section st-thumb sim">
+                    </div>
+                    <div class="left item-section subjectItemSec">
+                      <a href="/t/507752/java/copy-files-folder-java" class="subject">
+copy files from one folder to another in java                      </a>
+                    </div>
+                  </li>
+                  <li class="moreSimThreads">
+                    <a href="/forums/similars/similarTo/586864/java-io-FileNotFoundException-textfile-txt">
+More...                    </a>
+                  </li>
+                </ul>
+                <div class="footer">
+                </div>
+              </div>
+            </div>
+            <div class="clear">
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <footer>
+      <div class="footer-banners">
+        <div class="forum-top-banner fl">
+          <div class="bnwrpr">
+            <table class="multbntab">
+              <tbody>
+                <tr>
+                  <td class="bi">
+                    <a href="/forums/banner/redirect/429" target="_blank">
+                      <img border="0" alt="It's not a secret anymore!" style="max-width: 1024px;" src="httpscoderanch.comt586864javajava-io-FileNotFoundException-textfile-txt/ninja-banner-ad-coderanch.png"/>
+                    </a>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+      <div class="timezone">
+        <noscript>
+all times are in ranch time: GMT-6 in summer, GMT-7 in winter        </noscript>
+      </div>
+      <div class="copyright">
+        <a href="https://coderanch.com/t/660243/Wiki/Contact">
+contact us        </a>
+|        <a href="https://javaranch.com/advertising.jsp">
+advertise        </a>
+|        <form method="post" action="https://coderanch.com/t/586864/java/java-io-FileNotFoundException-textfile-txt">
+          <input type="hidden" name="OWASP_CSRFTOKEN" value="Z0V1-8UXH-SKP2-Z2UA-K0IX-98V6-YV1G-K2E4"/>
+          <input type="hidden" name="nonMobile" value="false"/>
+          <input type="submit" value="mobile view"/>
+        </form>
+| Powered by JForum | copyright © 1998-2018        <a href="https://javaranch.com/paul-wheaton.jsp">
+paul wheaton        </a>
+      </div>
+      <div id="actionMessageBar" class="hiddenDisplay">
+      </div>
+    </footer>
+  </body>
+</html>

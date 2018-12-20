@@ -1,0 +1,302 @@
+<html><head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<meta http-equiv="Pragma" content="no-cache" />
+<meta http-equiv="Expires" content="-1" />
+<style type="text/css">
+@import url( /templates/default/mobile/styles/mobile.css?1543092693653 ) ;
+</style>
+<meta name="viewport" content="width=device-width" />
+<meta name="theme-color" content="#5d3a22" />
+<title>java.io.FileNotFoundException: C:\textfile.txt (Access is denied) (Beginning Java forum at Coderanch)</title>
+<link rel="canonical" href="https://coderanch.com/t/586864/java/java-io-FileNotFoundException-textfile-txt"/>
+<link rel="alternate" media="handheld" href="https://coderanch.com/mobile/t/586864/java/java-io-FileNotFoundException-textfile-txt">
+</head>
+<body class="en_US">
+<div class="siteTopArea">
+<a name="top"></a>
+<a href="#main-menu" class="menubutton"><hr><hr><hr></a>
+<table cellspacing="0" cellpadding="0" border="0" class="headerTable">
+<tr>
+<td align="center">
+<a href="/forums/list"><img
+src="/templates/default/mobile/images/mobile-moose.gif"
+vspace="1" border="0" alt="[Logo]" /></a>
+</td>
+<td class="logo" valign="center">
+A friendly place for programming greenhorns!
+<a href="#bottom"><img src="/templates/default/mobile/images/down_arrow.gif" width="10" height="10" alt="Jump to bottom of page" /></a>
+</td>
+</tr>
+</table>
+<div class="siteTopActBts paddinglr">
+<a class="left" href="https://coderanch.com/forums">Forums</a>
+<a id="register" class="mainmenu" href="/forums/user/insert">Register</a>
+<a id="login" class="mainmenu" href="/forums/user/login">Login</a>
+</div>
+</div>
+<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.5.2/jquery.min.js"></script>
+<script src="/templates/default/mobile/js/post-show-public.js?1543092693653"></script>
+<script language="JavaScript">
+function confirmDelete(postId)
+{
+if (confirm("Really delete the selected message?")) {
+var reason = prompt("Change reason:");
+if (reason == null || reason == "") {
+alert("Please inform the reason you're changing this message");
+return false;
+}
+var extra = "&log_description=" + encodeURIComponent(reason) + "&log_type=1";
+submitFormByPostIdAndAction('posts', 'delete', postId, extra);
+return true;
+}
+return false;
+}
+</script>
+<script type="text/javascript" src="/templates/default/js/moderation.js?1543092693653"></script>
+<script type="text/javascript">
+function submitFormByPostIdAndAction(module, action, postId, extraParams) {
+var form = document.getElementById("helperForm");
+form.action = '/jforum?module=' + module + '&action=' + action + '&post_id='+postId+'&amp;start=0';
+if (extraParams) {
+form.action += extraParams;
+}
+form.submit();
+}
+function submitForm(newAction) {
+var form = document.getElementById("helperForm");
+form.action = newAction;
+form.submit();
+}
+</script>
+<form id="helperForm" method="POST" action="#">
+<input type="hidden" name="OWASP_CSRFTOKEN" value="Z0V1-8UXH-SKP2-Z2UA-K0IX-98V6-YV1G-K2E4" />
+</form>
+<div class="breadcrumbs paddinglr">
+<a class="item" href="/forums/c/java">Java</a> <i>&raquo;</i>
+<a class="item" href="/f/33/java">Beginning Java</a>
+</div>
+<div class="subject">
+java.io.FileNotFoundException: C:\textfile.txt (Access is denied)
+</div>
+<div class="threadBody">
+<div class="mobilePostBody">
+<a name="2671733" id="2671733"></a>
+<div class="postAuthor">
+<i>Post by:</i><span class="name">
+<span class="a" href="/user/profile/269361">justin smythhe</span>
+,
+<span class="utitle">
+Ranch Hand
+</span>
+</span>
+</div>
+<time>Jul 12, 2012 18:50:17</time>
+<span>
+<span id="like_message_2671733"
+>
+</span>
+</span>
+</div>
+<div class="mobilePostText ">
+<span class="postbody ">Why is access denied ??? I suspect this is a Windows 7 security related problem. How do i solve this problem ?<br /><br /> java.io.IOException: Access is denied<br /> Caught exception - Cannot create your file !!!<br /> java.io.FileNotFoundException: C:\textfile.txt (Access is denied)<br /> at java.io.FileOutputStream.open(Native Method)<br /> at java.io.FileOutputStream.&lt;init&gt;(FileOutputStream.java:180)<br /> at java.io.FileOutputStream.&lt;init&gt;(FileOutputStream.java:122)<br /> at java.io.FileWriter.&lt;init&gt;(FileWriter.java:62)<br /><br /> </span>
+</div>
+<div class="mobilePostBody">
+<a name="2671743" id="2671743"></a>
+<div class="postAuthor">
+<i>Post by:</i><span class="name">
+<span class="a" href="/user/profile/239008">Paul Adcock</span>
+,
+<span class="utitle">
+Ranch Hand
+</span>
+</span>
+</div>
+<time>Jul 12, 2012 19:27:39</time>
+<span>
+<span id="like_message_2671743"
+>
+(1 like)
+</span>
+</span>
+</div>
+<div class="mobilePostText ">
+<span class="postbody ">I think I found the problem. I checked by trying to save a text file right to that location manually and got a "you don't have permission error".<br /><br /> You can't save directly to the C drive like that I think.<br /><br /> Normally, since most Computers have a Users directory underneath the C drive, yours might not but the chances are high that it does,<br /><br /> then you would make a new Directory under the users directory, you might be able to just create it programmatically.<br /><br /><br /> Anyway,<br /><br /> try creating it as C:/Users/SomeDirectory/textfile.txt<br /><br /><br /> At the very least, you need a subdirectory underneath C. You can't just save something as a file itself to the C drive itself.<br /><br /> Sorry, scratch that, normally under the Users directory, you have a directoy that is your computer name. I wouldn't know what yours is.<br /><br /> so it's<br /><br /> C:/Users/YourComputerName/textfile.txt<br /><br /> that will work.<br /><br /><br /><br /> </span>
+</div>
+<div class="mobilePostBody">
+<a name="2671804" id="2671804"></a>
+<div class="postAuthor">
+<i>Post by:</i><span class="name">
+<span class="a" href="/user/profile/269361">justin smythhe</span>
+,
+<span class="utitle">
+Ranch Hand
+</span>
+</span>
+</div>
+<time>Jul 13, 2012 00:04:42</time>
+<span>
+<span id="like_message_2671804"
+>
+</span>
+</span>
+</div>
+<div class="mobilePostText ">
+<span class="postbody ">Yes, I did that and it works. Is there a way of making our code "create new files/folders as an administrator" ?<br /><br /> Thanks <img src="https://www.coderanch.com/images/smilies/3b63d1616c5dfcf29f8a7a031aaa7cad.gif" /></span>
+</div>
+<div class="mobilePostBody">
+<a name="2671850" id="2671850"></a>
+<div class="postAuthor">
+<i>Post by:</i><span class="name">
+<span class="a" href="/user/profile/109202">Campbell Ritchie</span>
+,
+<span class="utitle">
+Marshal
+<span class="userStaffIcn" title="This user is a Coderanch staff member">staff</span>
+</span>
+</span>
+</div>
+<time>Jul 13, 2012 02:07:20</time>
+<span>
+<span id="like_message_2671850"
+>
+(1 like)
+</span>
+</span>
+</div>
+<div class="mobilePostText ">
+<span class="postbody ">Do you actually want code running on your computer in administrator mode? It is all right if you write it yourself, but what if somebody else wrote it . . .</span>
+</div>
+<div class="mobilePostBody">
+<a name="2672024" id="2672024"></a>
+<div class="postAuthor">
+<i>Post by:</i><span class="name">
+<span class="a" href="/user/profile/269361">justin smythhe</span>
+,
+<span class="utitle">
+Ranch Hand
+</span>
+</span>
+</div>
+<time>Jul 13, 2012 08:38:38</time>
+<span>
+<span id="like_message_2672024"
+>
+</span>
+</span>
+</div>
+<div class="mobilePostText ">
+<span class="postbody ">&nbsp;<blockquote>
+<p>
+<cite>Campbell Ritchie wrote:</cite>Do you actually want code running on your computer in administrator mode? It is all right if you write it yourself, but what if somebody else wrote it . . .</p>
+</blockquote><br /> Oh ! yes. <img src="https://www.coderanch.com/images/smilies/3b63d1616c5dfcf29f8a7a031aaa7cad.gif" /></span>
+</div>
+<div class="mobilePostBody">
+<a name="2672057" id="2672057"></a>
+<div class="postAuthor">
+<i>Post by:</i><span class="name">
+<span class="a" href="/user/profile/109202">Campbell Ritchie</span>
+,
+<span class="utitle">
+Marshal
+<span class="userStaffIcn" title="This user is a Coderanch staff member">staff</span>
+</span>
+</span>
+</div>
+<time>Jul 13, 2012 09:41:30</time>
+<span>
+<span id="like_message_2672057"
+>
+</span>
+</span>
+</div>
+<div class="mobilePostText ">
+<span class="postbody ">When you have worked out how to do it, please tell <a class="snap_shots" href="http://www.coderanch.com/t/586065/java/java/add-application-exception-list-windows" target="_new" >this chap</a> how to get accepted by a firewall, too <img src="https://www.coderanch.com/images/smilies/8a80c6485cd926be453217d59a84a888.gif" /></span>
+</div>
+</div>
+<div class="threadBottomLinksArea">
+</div>
+<br />
+<div class="center paddinglr">
+<input type="button" value="New Topic" onclick="location.href='/jforum?module=posts&amp;action=insert&amp;forum_id=33'" />
+</div>
+<div class="center">This thread has been viewed 23890 times.</div>
+<script>
+if( (typeof pageContainsReviewGrid !== 'undefined') && pageContainsReviewGrid === true) {
+var gridScript = document.createElement('script');
+gridScript.type = "text/javascript";
+gridScript.src = "/templates/default/mobile/js/review-grid.js?1543092693653";
+document.body.appendChild(gridScript);
+}
+</script>
+<!-- SyntaxHighlighter 3.0.9 -->
+<script type="text/javascript" src="/templates/default/syntaxhighlighter/scripts/shCore.min.js"></script>
+<script type="text/javascript" src="/templates/default/syntaxhighlighter/scripts/shLegacy.js"></script>
+<script type="text/javascript" src="/templates/default/syntaxhighlighter/scripts/shBrushJava.js"></script>
+<script type="text/javascript" src="/templates/default/syntaxhighlighter/scripts/shBrushCss.js"></script>
+<script type="text/javascript" src="/templates/default/syntaxhighlighter/scripts/shBrushCpp.js"></script>
+<script type="text/javascript" src="/templates/default/syntaxhighlighter/scripts/shBrushJScript.js"></script>
+<script type="text/javascript" src="/templates/default/syntaxhighlighter/scripts/shBrushPython.js"></script>
+<script type="text/javascript" src="/templates/default/syntaxhighlighter/scripts/shBrushRuby.js"></script>
+<script type="text/javascript" src="/templates/default/syntaxhighlighter/scripts/shBrushSql.js"></script>
+<script type="text/javascript" src="/templates/default/syntaxhighlighter/scripts/shBrushXml.js"></script>
+<script type="text/javascript" src="/templates/default/syntaxhighlighter/scripts/shBrushPlain.js"></script>
+<script type="text/javascript" src="/templates/default/syntaxhighlighter/scripts/shBrushPhp.js"></script>
+<script type="text/javascript" src="/templates/default/syntaxhighlighter/scripts/shBrushErlang.js"></script>
+<script type="text/javascript" src="/templates/default/syntaxhighlighter/scripts/shBrushBash.js"></script>
+<script type="text/javascript" src="/templates/default/syntaxhighlighter/scripts/shBrushDiff.js"></script>
+<script type="text/javascript" src="/templates/default/syntaxhighlighter/scripts/shBrushGroovy.js"></script>
+<script type="text/javascript" src="/templates/default/syntaxhighlighter/scripts/shBrushJavaFX.js"></script>
+<script type="text/javascript" src="/templates/default/syntaxhighlighter/scripts/shBrushPerl.js"></script>
+<script type="text/javascript" src="/templates/default/syntaxhighlighter/scripts/shBrushScala.js"></script>
+<script type="text/javascript" src="/templates/default/syntaxhighlighter/scripts/shBrushJavaBytecode.js"></script>
+<script type="text/javascript" src="/templates/default/syntaxhighlighter/scripts/shBrushTypeScript.js"></script>
+<script type="text/javascript">
+<!--
+dp.SyntaxHighlighter.HighlightAll('code');
+-->
+</script><br />
+<div class="gensmall center paddinglr timeDeclr">
+All times above are in ranch (not your local) time.<br />
+The current ranch time is <br />
+<span class="mobileLabel">Dec 14, 2018 06:58:53</span>.
+</div>
+<br />
+<div class="bottommenu" id="main-menu">
+<a id="faq" href="https://coderanch.com/f/153/Wiki">FAQs</a>
+<a id="search" href="/forums/search/filters/33">Search</a>
+<a href="/forums/recentTopics/list">Recent Topics</a>
+<a id="latest" class="mainmenu" href="/forums/posts/flagged">Flagged Topics</a>
+<a id="zero" class="mainmenu" href="/forums/posts/zeroReplies">Zero Replies</a>
+<a id="zero" class="mainmenu" href="/forums/bestTopics/list">Best Topics</a>
+<a id="zero" class="mainmenu" href="/forums/hottestTopics/list">Hot Topics</a>
+</div>
+<script type="text/javascript">
+var _gaq = _gaq || [];
+_gaq.push(['_setAccount', 'UA-2371260-2']);
+_gaq.push(['_gat._anonymizeIp']);
+_gaq.push(['_trackPageview']);
+(function() {
+var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+})();
+</script>
+<style type="text/css">@import url( /templates/default/syntaxhighlighter/styles/shCore.css?1543092693653 );</style>
+<style type="text/css">@import url( /templates/default/syntaxhighlighter/styles/shThemeDefault.css?1543092693653 );</style>
+<style type="text/css">@import url( /templates/default/styles/shThemeCodeRanch.css?1543092693653 );</style>
+<style type="text/css">@import url( /templates/default/styles/shThemeCodeRanchMobile.css?1543092693653 );</style>
+<div class="footer paddinglr">
+<div class="links">
+<a href="https://coderanch.com/t/660243/Wiki/Contact">Contact Us</a> | <a href="https://javaranch.com/advertising.jsp">advertise</a> |
+<form method="post" action="https://coderanch.com/t/586864/java/java-io-FileNotFoundException-textfile-txt" >
+<input type="hidden" name="OWASP_CSRFTOKEN" value="Z0V1-8UXH-SKP2-Z2UA-K0IX-98V6-YV1G-K2E4" />
+<input type="hidden" name="nonMobile" value="true" />
+<input type="submit" value="Desktop view" />
+</form>
+</div>
+<div class="copy">Copyright &copy; 1998-2018 <a href="https://javaranch.com/paul-wheaton.jsp">paul wheaton</a></div>
+<div class="uparw"><a href="#top"><img src="/templates/default/mobile/images/up_arrow.gif" width="10" height="10" alt="Jump to top of page" /></a></div>
+</div>
+<a name="bottom"></a>
+</body>
+</html>
